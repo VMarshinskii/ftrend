@@ -1,0 +1,51 @@
+{% load static %}
+<div id="header-bottom">
+    <div class="left-nav">
+        <ul>
+            <li>
+                <a href="#">По категории <img class="arrow" src="{% static "images/arrow.png" %}" alt="arr"/></a>
+                <div>
+                    <ul>
+                        {% for category in categories %}
+                        <li><a href="/catalog/{{ category.url }}/">{{ category }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </li>
+            <li class="is-checked">
+                <a href="/catalog">По возрасту <img class="arrow" src="{% static "images/arrow.png" %}" alt="arr"/></a>
+                <div>
+                    <ul style="border-right: 1px solid #fff">
+                        <li class="top_menu_title">Для девочек</li>
+                        {% for category in age_girls %}
+                        <li><a href="/catalog/age/{{ category.id }}/">{{ category.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    <ul>
+                        <li class="top_menu_title">Для мальчиков</li>
+                        {% for category in age_boys %}
+                        <li><a href="/catalog/age/{{ category.id }}/">{{ category.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="#">Бренды <img class="arrow" src="{% static "images/arrow.png" %}" alt="arr"/></a>
+                <div>
+                    <ul>
+                        {% for brand in brands %}
+                        <li><a href="/catalog/brand/{{ brand.id }}/">{{ brand.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="right-nav">
+        <ul>
+            <li><a href="#">Все акции</a></li>
+            <li><a href="#">Популярное</a></li>
+            <li><a href="#">Контакты</a></li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,130 @@
+{% load static %}
+{% load top_menu %}
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/reset.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/ion.rangeSlider.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/ion.rangeSlider.skinNice.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/sliderkit-core.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/jquery.formstyler.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="selectize.css" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
+
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500,700italic,400italic,500italic,300italic,300&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <header>
+        <div id="header-wrapper">
+            <div id="header-top">
+                <div id="h-l-block">
+                    <a href="#" class="my-account login_show">Мой аккаунт</a>
+                    <a href="#" class="my-orders login_show">Мои заказы</a>
+                    <a href="#" class="my-help">Помощь</a>
+                </div>
+                <div id="h-r-block">
+                    <div class="number">8 800 700-52-25</div>
+                    <a href="#" class="call-me">Обратный звонок</a>
+                </div>
+            </div>
+            <a href="/" id="header-logo">
+                <div class="logo-img"></div>
+                <div class="logo-splitter"></div>
+                <div class="slogan">Магазин детской одежды</div>
+            </a>
+            <div id="header-items">
+                <div class="header-item"><a href="#"><div class="header-img-block"><img src="{% static "images/i-1.png" %}" alt="img1"/></div><p>Условия <br/>  доставки</p></a></div>
+                <div class="header-item"><a href="#"><div class="header-img-block"><img src="{% static "images/i-2.png" %}" alt="img2"/></div><p>Разные <br/> способы оплаты</p></a></div>
+                <div class="header-item"><a href="#"><div class="header-img-block"><img src="{% static "images/i-3.png" %}" alt="img3"/></div><p>Гарантия <br/> лучшей цены</p></a></div>
+                <div class="header-item"><div class="header-img-block"><img src="{% static "images/i-4.png" %}" alt="img4"/></div><span><a href="/cart/">(0) Корзина</a></span></div>
+            </div>
+
+            {% top_menu %}
+
+            <div class="white-line"></div>
+        </div>
+    </header>
+
+    <div id="content-wrapper">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+        <div id="footer-inside">
+            <div class="footer-logo">
+                <a href="#"><img src="{% static "images/footer-logo.png" %}" alt="Logo"/></a>
+                <div class="footer-copyright"><p> 2015 Family Trend. <br/> Все права защищены.</p></div>
+            </div>
+            <div id="footer-menu">
+                <ul>
+                    <li>
+                        <a href="#">О компании</a>
+                        <ul>
+                            <li><a href="#">О Family Trend</a></li>
+                            <li><a href="#">Работа в Family Trend</a></li>
+                            <li><a href="#">Сотрудничество</a></li>
+                            <li><a href="#">Для моделей</a></li>
+                            <li><a href="#">Отзывы клиентов</a></li>
+                            <li><a href="#">Контактов</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Личный аккаунт</a>
+                        <ul>
+                            <li><a href="#">Мои заказы</a></li>
+                            <li><a href="#">Личная информация</a></li>
+                            <li><a href="#">Мои приглашения</a></li>
+                            <li><a href="#">Любимые бренды</a></li>
+                            <li><a href="#">Подарочные карты</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Сервис и помощь</a>
+                        <ul>
+                            <li><a href="#">Вопросы и ответы</a></li>
+                            <li><a href="#">Оформление заказа</a></li>
+                            <li><a href="#">Доставка таваров</a></li>
+                            <li><a href="#">Правила возврата</a></li>
+                            <li><a href="#">Условия продажи</a></li>
+                            <li><a href="#">Карта сайта</a></li>
+                            <li><a href="#">Архив акций</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="soc-link">
+                <a href="#"><div class="soc-item vk"><img src="{% static "images/sl-vk.png" %}" alt="vk"/></div></a>
+                <a href="#"><div class="soc-item ok"><img src="{% static "images/sl-ok.png" %}" alt="ok"/></div></a>
+                <a href="#"><div class="soc-item fb"><img src="{% static "images/sl-fb.png" %}" alt="fb"/></div></a>
+                <a href="#"><div class="soc-item tw"><img src="{% static "images/sl-tw.png" %}" alt="tw"/></div></a>
+                <a href="#"><div class="soc-item gp"><img src="{% static "images/sl-gp.png" %}" alt="gp"/></div></a>
+            </div>
+            <div class="footer-info">
+                <p>Служба клиентской поддержки</p>
+                <p><span>8 800 700-52-25</span><br/> Бесплатный звонок <br/> по России</p>
+                <p><span>8 800 700-52-25</span><br/> Звонок по Москве</p>
+                <p><span>ВРЕМЯ РАБОТЫ:</span> С 8:00 до 20:00 без выходных</p>
+            </div>
+        </div>
+        <div class="last-menu">
+            <ul>
+                <li><a href="#">Все акции</a></li>
+                <li><a href="#">По категории</a></li>
+                <li><a href="#">По возрасту</a></li>
+                <li><a href="#">Бренды</a></li>
+                <li><a href="#">Популярное</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="/static/js/jquery-2.1.3.min.js"></script>
+    <script src="/static/js/ion.rangeSlider.min.js"></script>
+    <script src="/static/js/jquery.sliderkit.1.4.min.js"></script>
+    <script src="/static/js/jquery.formstyler.min.js"></script>
+    <script src="/static/js/script.js"></script>
+    {% block script %}{% endblock %}
+</body>
+</html>

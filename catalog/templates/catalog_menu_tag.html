@@ -1,0 +1,10 @@
+{% for parent in categories %}
+<div class="left-menu">
+    <a href="/catalog/{{ parent.url }}/" class="title girl">{{ parent }}</a>
+    <ul>
+        {% for child in parent.childs %}
+        <li><a href="/catalog/{{ child.url }}/">{{ child }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endfor %}

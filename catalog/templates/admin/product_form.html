@@ -1,0 +1,370 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrahead %}{{ block.super }}
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="/static/admin/js/jquery.js"></script>
+    <script src="{% static "ajaxuploader/js/fileuploader.js" %}" ></script>
+    <link href="{% static "ajaxuploader/css/fileuploader.css" %}" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/static/redactor/css/redactor.css" type="text/css" media="all" rel="stylesheet" />
+    <link href="/static/redactor/css/django_admin.css" type="text/css" media="all" rel="stylesheet" />
+
+    <link href="/static/redactor/css/redactor.css" type="text/css" media="all" rel="stylesheet" />
+    <link href="/static/redactor/css/django_admin.css" type="text/css" media="all" rel="stylesheet" />
+    <script type="text/javascript" src="/static/admin/js/core.js"></script>
+    <script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+    <script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+    <script type="text/javascript" src="/static/admin/js/actions.js"></script>
+    <script type="text/javascript" src="/static/redactor/jquery.redactor.init.js"></script>
+    <script type="text/javascript" src="/static/redactor/redactor.js"></script>
+    <script type="text/javascript" src="/static/redactor/langs/ru.js"></script>
+    <script>
+        function randWD(n){  // [ 2 ] random words and digits
+            return Math.random().toString(36).slice(2, 2 + Math.max(1, Math.min(n, 10)) );
+        }
+        function set_cookie(name, value, expires)
+        {
+            if (!expires)
+            {
+                expires = new Date();
+            }
+            document.cookie = name + "=" + escape(value) + "; expires=" + expires.toGMTString() +  "; path=/";
+        }
+        function get_cookie(name)
+        {
+            var cookie_name = name + "=";
+            var cookie_length = document.cookie.length;
+            var cookie_begin = 0;
+            while (cookie_begin < cookie_length)
+            {
+                var value_begin = cookie_begin + cookie_name.length;
+                if (document.cookie.substring(cookie_begin, value_begin) == cookie_name)
+                {
+                    var value_end = document.cookie.indexOf (";", value_begin);
+                    if (value_end == -1)
+                    {
+                        value_end = cookie_length;
+                    }
+                    return unescape(document.cookie.substring(value_begin, value_end));
+                }
+                cookie_begin = document.cookie.indexOf(" ", cookie_begin) + 1;
+                if (cookie_begin == 0)
+                {
+                break;
+                }
+            }
+            return null;
+        }
+
+        var click_head_img = function(){
+            var parent = $(this).parent("div");
+            var img = parent.attr("data-image");
+            $("#hidden_image").val(img);
+            $(".hidden_image_active").css('opacity', '0.3');
+            $(".hidden_image_active").removeClass("hidden_image_active");
+            $(this).addClass("hidden_image_active");
+            $(this).css('opacity', '1');
+        }
+
+        var expires = new Date(); // получаем текущую дату
+        expires.setTime(expires.getTime() + (1000 * 86400 * 365));
+        set_cookie("filename", randWD(8), expires);
+
+        $(function(){
+            var uploader = new qq.FileUploader({
+                action: "/ajax-upload",
+                element: $('#file-uploader')[0],
+                multiple: true,
+                onComplete: function(id, fileName, responseJSON) {
+                    if(responseJSON.success) {
+                        var wer = get_cookie("filename") + '.' + fileName.split('.')[1];
+                        $(".adminBoxImgLast").before('<div class="adminBoxImg"><img src="/static/uploads/' + wer + '" alt=""/><div data-image="' + wer + '" class="adminBoxSettingsImages"><img class="adminBoxImgClose" src="/static/images/close_icon.png" alt="Удалить"/><img class="adminBoxImgHead" src="/static/images/icon_writing.png" alt="Главная"/></div></div>');
+                        var expires = new Date(); // получаем текущую дату
+                        expires.setTime(expires.getTime() + (1000 * 86400 * 365));
+                        set_cookie("filename", randWD(8), expires);
+                        var img = $('#hidden_images').val();
+                        var str = img + ';' + wer;
+                        $('#hidden_images').val(str);
+
+                        if($(".adminBoxImg").size() == 2)
+                        {
+                            var img2 = $(".adminBoxImg").eq(0).children(".adminBoxSettingsImages").attr("data-image");
+                            $("#hidden_image").val(img2);
+
+                            var icon = $(".adminBoxImg").children(".adminBoxSettingsImages").children(".adminBoxImgHead");
+                            icon.addClass("hidden_image_active");
+                            icon.css('opacity', '1');
+                        }
+                    } else {
+                        alert("upload failed!");
+                    }
+                },
+                params: {
+                    'csrf_token': '{{ csrf_token }}',
+                    'csrf_name': 'csrfmiddlewaretoken',
+                    'csrf_xname': 'X-CSRFToken'
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $(".adminCatalogSearchProduct").hide();
+            $("#id_search_products_ajax").keyup(function(){
+                var key = $("#id_search_products_ajax").val();
+                $(".adminCatalogSearchProduct").load("/admin/catalog/product/edit_ajax_related/?key=" + key);
+                $(".adminCatalogSearchProduct").show(400);
+
+                $(".controls").click(function(){
+                    $(".adminCatalogSearchProduct").hide(300);
+                });
+            });
+
+            $(".adminCatalogSearchProductItem").live("click", function(){
+                var val = $("#id_related_products").val();
+                val = val + ";" + $(this).attr("data-id");
+                $("#id_related_products").val(val);
+
+                $(".adminCatalogResearchProducts").append('<div class="adminCatalogResearchProductsItem"></div>');
+                $(".adminCatalogResearchProductsItem").last().hide();
+                $(".adminCatalogResearchProductsItem").last().load("/admin/catalog/product/edit_ajax_research/" + $(this).attr("data-id"));
+                $(".adminCatalogResearchProductsItem").last().show(300);
+            });
+
+            $(".adminBoxImgClose").live("click", function(){
+                var parent = $(this).parent("div");
+                var img = parent.attr("data-image");
+                var images = $("#hidden_images").val();
+                $("#hidden_images").val(images.replace(';' + img, ''));
+                parent.parent("div").remove();
+
+                var parent = $(".adminBoxImgClose").parent("div");
+                if(parent.children(".adminBoxImgHead"))
+                {
+                    var img2 = $(".adminBoxImg").eq(0).children(".adminBoxSettingsImages").attr("data-image");
+                    $("#hidden_image").val(img2);
+
+                    var icon = $(".adminBoxImg").eq(0).children(".adminBoxSettingsImages").children(".adminBoxImgHead");
+                    icon.addClass("hidden_image_active");
+                    icon.css('opacity', '1');
+                }
+            });
+
+            $(".adminBoxImgHead").live('click', click_head_img);
+
+            $(".adminBoxProductsClose").live("click", function(){
+                var current = $(this).parent("div").attr("data-id");
+                var val = $("#id_related_products").val();
+                $("#id_related_products").val(val.replace(';' + current, ''));
+                $(this).parents(".adminCatalogResearchProductsItem").hide(300);
+                $(this).remove();
+            });
+        });
+    </script>
+{% endblock %}
+{% block extrastyle %}{{ block.super }}
+{% endblock %}
+{% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
+
+{% block content %}
+    <ul class="breadcrumb">
+        <li>
+            <a href="/admin/">Начало</a>
+            <span class="divider">»</span>
+        </li>
+        <li>
+            <a href="/admin/catalog/">Catalog</a>
+            <span class="divider">»</span>
+        </li>
+        <li>
+            <a href="/admin/catalog/product/">
+            Products</a>
+            <span class="divider">»</span>
+        </li>
+        <li class="active">
+            Добавить product
+        </li>
+    </ul>
+
+    <div id="content" class="colM row-fluid">
+       <h2 class="content-title">Добавить product</h2>
+       <div id="content-main" class="inner-two-columns">
+          <form enctype="multipart/form-data" action="" method="post" id="product_form" class="form-horizontal">
+             <div class="inner-right-column">
+                <div class="box save-box">
+                   <div class="submit-row clearfix">
+                      <button type="submit" class="btn btn-high btn-info" name="_save">Сохранить</button>
+                      <button type="submit" name="_continue" class=" btn btn-high">Сохранить и продолжить редактирование</button>
+                      <button type="submit" name="_addanother" class="btn">Сохранить и добавить другой объект</button>
+                   </div>
+                </div>
+             </div>
+             <div class="inner-center-column">
+                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                <div class="tab-content tab-content-main">
+                   <fieldset class="module aligned first ">
+                      <div class="control-group form-row field-name ">
+                         <div>
+                            <div class="control-label"><label class="required" for="id_name">Название:</label></div>
+                            <div class="controls"><input class="vTextField" style="width: 500px" id="id_name" value="{{ model.name }}" maxlength="200" name="name" type="text" required></div>
+                         </div>
+                      </div>
+
+                       <div class="control-group form-row field-price ">
+                         <div>
+                            <div class="control-label"><label class="required" for="id_price">Цена:</label></div>
+                            <div class="controls"><input class="vIntegerField" id="id_price" value="{{ model.price }}" name="price" type="text" required></div>
+                         </div>
+                      </div>
+
+                        <div class="control-group form-row field-product_category ">
+                            <div>
+                                <div class="control-label"><label class="required" for="id_product_category">Категория:</label></div>
+                                <div class="controls">
+                                    <select id="id_product_category" name="product_category">
+                                        <option value="-1"{% if model.category == None %}selected{% endif %}>---------</option>
+                                        {% for cat in categories %}
+                                        <option value="{{ cat.id }}" {% if model.category == cat %}selected{% endif %}>{{ cat.title }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <a href="/admin/catalog/category/add/?_to_field=id" class="add-another" id="add_id_product_category" onclick="return showAddAnotherPopup(this);"><img src="/static/admin/img/icon_addlink.gif" width="10" height="10" alt="Добавить еще"></a>
+                                </div>
+                            </div>
+                        </div>
+
+                      <div class="control-group form-row field-sale ">
+                         <div>
+                            <div class="control-label"><label for="id_sale">Скидка, %:</label></div>
+                            <div class="controls">
+                                <input class="vIntegerField" id="id_sale" value="{{ model.sale }}" name="sale" type="text"/>
+                                <input {% if model.sale_status == 1 %}checked{% endif %} style="display: inline-block; margin: 0 3px 0 10px;" name="sale_status" value="1" type="checkbox"/>
+                                <label style="display: inline-block;">Сделать скидку</label>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="control-group form-row field-count ">
+                         <div>
+                            <div class="control-label"><label for="id_count">Товар в наличии:</label></div>
+                            <div class="controls">
+                                <input class="vIntegerField" id="id_count" value="{{ model.count }}" name="count" type="text">
+                                <input {% if model.count_status == 1 %}checked{% endif %} style="display: inline-block; margin: 0 3px 0 10px;" name="count_status" value="1" type="checkbox"/>
+                                <label style="display: inline-block;">Поставка под заказ</label>
+                            </div>
+                         </div>
+                      </div>
+
+                        <div class="control-group form-row field-short_text ">
+                            <div>
+                                <div class="control-label"><label class="required" for="id_text">Описание:</label></div>
+                                <div class="controls">
+                                    <textarea cols="40" id="id_text" name="text" rows="10" required>{{ model.text }}</textarea>
+                                    <script>
+                                        jQuery(document).ready(function(){
+                                            jQuery("#id_text").redactor(jQuery.extend({},
+                                                    redactor_default_options,
+                                                    {
+                                                        "lang": "ru",
+                                                        "fileUpload": "/redactor/upload/file/",
+                                                        "imageUpload": "/redactor/upload/image/",
+                                                        "buttonSource": "true"
+                                                    }
+                                            ));
+                                        });</script>
+                                </div>
+                            </div>
+                        </div>
+
+                       <div class="control-group form-row field-short_text ">
+                            <div>
+                                <div class="control-label"><label for="id_images">Изображения:</label></div>
+                                <div class="controls">
+                                    <input style="display: none" id="hidden_image" name="image" value="{{ model.image }}" type="text"/>
+                                    <input style="display: none" id="hidden_images" name="images" value="{{ model.images }}" type="text"/>
+                                    {% for image in img %}
+                                    <div class="adminBoxImg">
+                                        <img src="/static/uploads/{{ image }}" alt=""/>
+                                        <div class="adminBoxSettingsImages" data-image="{{ image }}">
+                                            <img class="adminBoxImgClose" src="{% static "images/close_icon.png" %}" alt="Удалить"/>
+                                            <img class="adminBoxImgHead {%  if image == model.image %}hidden_image_active{% endif %}" src="{% static "images/icon_writing.png" %}" alt="Главная"/>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    <div class="adminBoxImg adminBoxImgLast">
+                                        <div id="file-uploader">
+                                            <noscript>
+                                                <p>Please enable JavaScript to use file uploader.</p>
+                                            </noscript>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                      <div class="control-group form-row field-status ">
+                         <div>
+                            <div class="control-label"><label for="id_status">Рекламные метки:</label></div>
+                            <div class="controls">
+                                <select id="id_status" name="status">
+                                    <option value="0" {% if model.status == 0 %}selected{% endif %}>нет</option>
+                                    <option value="1" {% if model.status == 1 %}selected{% endif %}>Хит</option>
+                                    <option value="2" {% if model.status == 2 %}selected{% endif %}>Акция</option>
+                                    <option value="3" {% if model.status == 3 %}selected{% endif %}>Хит</option>
+                                    <option value="4" {% if model.status == 4 %}selected{% endif %}>Распродажа</option>
+                                    <option value="5" {% if model.status == 5 %}selected{% endif %}>Товар дня</option>
+                                    <option value="6" {% if model.status == 6 %}selected{% endif %}>Товар недели</option>
+                                    <option value="7" {% if model.status == 7 %}selected{% endif %}>Товар месяца</option>
+                                </select>
+                                <input {% if model.home_status == 1 %}checked{% endif %} style="display: inline-block; margin: 0 3px 0 10px;" name="home_status" value="1" type="checkbox"/>
+                                <label style="display: inline-block;">На главной</label>
+                            </div>
+                         </div>
+                      </div>
+                   </fieldset>
+
+                    <fieldset class="module aligned with-legend collapse">
+                        <h2 class="legend">С этим товаром покупают</h2>
+                        <div class="control-group form-row field-keywords ">
+                            <div style="min-height: 303px;">
+                                <div class="control-label"><label for="id_keywords">Товары:</label></div>
+                                <div class="controls">
+                                    <input style="display: none" id="id_related_products" maxlength="200" name="related_products" value="{{ model.related_products }}" type="text">
+                                    <input style="width: 500px" class="vTextField" id="id_search_products_ajax" maxlength="200" name="search_products_ajax" type="text">
+                                    <div class="adminCatalogSearchProduct"></div>
+                                    <div class="adminCatalogResearchProducts">
+                                        {% for product in related_products %}
+                                        <div class="adminCatalogResearchProductsItem">
+                                            <div class="adminBoxSettingsImages" data-id="{{ product.id }}" style="width: 17px; height: 17px;">
+                                                <img class="adminBoxProductsClose" src="{% static "images/close_icon.png" %}" alt="Удалить"/>
+                                            </div>
+                                            <img src="/static/uploads/{{ product.image }}" alt=""/>
+                                            <h3>{{ product.name }}</h3>
+                                            <p>{{ product.price }} руб.</p>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="module aligned with-legend collapse">
+                        <h2 class="legend">SEO</h2>
+                        <div class="control-group form-row field-keywords ">
+                            <div>
+                                <div class="control-label"><label for="id_keywords">Ключевые слова:</label></div>
+                                <div class="controls"><input class="vTextField" id="id_keywords" maxlength="200" value="{{ model.keywords }}" name="keywords" type="text"></div>
+                            </div>
+                        </div>
+                        <div class="control-group form-row field-description ">
+                            <div>
+                                <div class="control-label"><label for="id_description">Description:</label></div>
+                                <div class="controls"><input class="vTextField" id="id_description" maxlength="200" value="{{ model.description }}" name="description" type="text"></div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                </div>
+             </div>
+          </form>
+       </div>
+    </div>
+{% endblock %}

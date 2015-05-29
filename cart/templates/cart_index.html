@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load catalog_menu %}
+
+
+{% block content %}
+<div id="left-block">
+    {% catalog_menu %}
+</div>
+
+<div id="center-block" class="user_cart">
+    <h1 class="title_h1">Корзина</h1>
+
+    <table class="table-cart">
+        <tr>
+            <th colspan="2">Наименование товара</th>
+            <th width="80px">Цена</th>
+            <th width="100px">Количество</th>
+            <th width="90px">Сумма</th>
+            <th width="30px"></th>
+        </tr>
+        {% for product_cart in product_carts %}
+        <tr class="product_item">
+            <td width="80px">
+                <img src="/static/uploads/{{ product_cart.product.image }}" width="75px" alt=""/>
+            </td>
+            <td>
+                <a href="#" class="product_title">{{ product_cart.product.name }}</a>
+                <p class="product_color">Цвет: {{ product_cart.color }}</p>
+                <p class="product_size">Размер: {{ product_cart.size }}</p>
+            </td>
+            <td>{{ product_cart.product.price }} руб.</td>
+            <td align="center">
+                <div class="count_box">
+                    <span class="cart_plus change_count" data-count="1" data-id="{{ product_cart.id }}"></span>
+                    <span>{{ product_cart.count }}</span>
+                    <span class="cart_minus change_count" data-count="-1" data-id="{{ product_cart.id }}"></span>
+                </div>
+            </td>
+            <td>
+                {{ product_cart.sum }} руб.
+            </td>
+            <td>
+                <span class="cart_delete change_count" data-count="-1000" data-id="{{ product_cart.id }}"></span>
+            </td>
+        </tr>
+        {% endfor %}
+
+
+        <tr class="result">
+            <td colspan="3" align="right">Итого без учёта доставки:</td>
+            <td></td>
+            <td colspan="2"><span id="cart_result_sum">{{ sum }} руб.</span></td>
+        </tr>
+    </table>
+
+    <div class="r-c-i-block">
+        <div class="time-item">
+            <a href="/orders/create/">Оформить заказ</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

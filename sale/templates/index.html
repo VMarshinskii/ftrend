@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h1 class="title_h1">Акции</h1>
+<div class="clear"></div>
+<div class="sale_home">
+    <a href="/sale/{{ sale_1.url }}/">
+        <div class="img-block"><img src="/{{ sale_1.image }}" alt="{{ sale_1.title }}"/></div>
+        <div class="itrm-link">
+            <a href="/sale/{{ sale_1.url }}/">{{ sale_1.title }}</a>
+            <p>{{ sale_1.description }}</p>
+        </div>
+        <div class="time-item">
+            <p>{{ sale_1.datetime }}</p>
+            <a href="/sale/{{ sale_1.url }}/">Посмотреть</a>
+        </div>
+    </a>
+</div>
+<div class="wrapper-rekl">
+    <div class="wrapper-rekl-header">
+        <div class="head-of-block"><p>Заголовок !</p></div>
+        <div class="about-block"><p>Реклама или спецпредложение</p></div>
+    </div>
+    <div class="body-of-block">
+        <img class="demos" src="{% static "images/photo3.jpg" %}" alt="Photo"/>
+        <div class="wrapper-rekl-header">
+            <div class="head-of-block"><p>Заголовок !</p></div>
+            <div class="about-block"><p>Реклама или спецпредложение</p></div>
+        </div>
+        <div class="soc-link">
+            <a href="#"><div class="soc-item vk"><img src="{% static "images/sl-vk.png" %}" alt="vk"/></div></a>
+            <a href="#"><div class="soc-item ok"><img src="{% static "images/sl-ok.png" %}" alt="ok"/></div></a>
+            <a href="#"><div class="soc-item fb"><img src="{% static "images/sl-fb.png" %}" alt="fb"/></div></a>
+            <a href="#"><div class="soc-item tw"><img src="{% static "images/sl-tw.png" %}" alt="tw"/></div></a>
+            <a href="#"><div class="soc-item gp"><img src="{% static "images/sl-gp.png" %}" alt="gp"/></div></a>
+        </div>
+    </div>
+</div>
+
+{% for sale in sales %}
+<div class="sale_home small">
+    <a href="/sale/{{ sale.url }}/">
+        <div class="img-block"><img src="/{{ sale.image }}" alt="{{ sale.title }}"/></div>
+        <div class="itrm-link">
+            <a href="/sale/{{ sale.url }}/">{{ sale.title }}</a>
+            <p>{{ sale.description }}</p>
+        </div>
+        <div class="time-item">
+            <p>{{ sale.datetime }}</p>
+            <a href="/sale/{{ sale.url }}/">Посмотреть</a>
+        </div>
+    </a>
+</div>
+{% endfor %}
+<div class="sale_home small">
+    <div class="img-block"><img src="{% static "images/photo2.jpg" %}" alt="Photo"/></div>
+    <div class="itrm-link">
+        <a href="#">Vitamins</a>
+        <p>Милый гардероб для малышей</p>
+    </div>
+    <div class="time-item">
+        <p>18:36:57</p>
+        <a href="#">Посмотреть</a>
+    </div>
+</div>
+{% endblock %}

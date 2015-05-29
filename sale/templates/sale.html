@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load catalog_menu %}
+
+
+{% block content %}
+<div id="left-block">
+    {% catalog_menu %}
+</div>
+
+<div id="center-block">
+
+    <div class="sale_information">
+        <div class="image">
+            <img src="/{{ sale.image }}" alt="{{ sale.title }}"/>
+        </div>
+        <div class="description">
+            <h1>{{ sale.title }}</h1>
+            <p>{{ sale.text }}</p>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+
+    <div class="category-sort">
+        <div class="category-sort-left">
+            <div class="sort-price">
+                <label>Цена (Руб):</label>
+                <div class="irs-block">
+                    <input id="input-price" class="" readonly="">
+                </div>
+            </div>
+            <div class="sort-price">
+                <label>Рост (См.):</label>
+                <div class="irs-block">
+                    <input id="input-size" class="" readonly="">
+                </div>
+            </div>
+        </div>
+        <div class="category-sort-right">
+            <div class="category-sort-right-header"><p>Коллекции:</p></div>
+            <div class="category-sort-right-collection">
+                <input type="checkbox" id="test-check1"/>
+                <label for="test-check1">Весна-лето 2015</label>
+                <input type="checkbox" id="test-check2"/>
+                <label for="test-check2">Весна-лето 2015</label>
+                <input type="checkbox" id="test-check3"/>
+                <label for="test-check3">Весна-лето 2015</label>
+                <input type="checkbox" id="test-check4"/>
+                <label for="test-check4">Весна-лето 2015</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="categories">
+        {% for product in products %}
+        <div class="content-item">
+            <div class="img-block"><img src="/static/uploads/{{ product.image }}" alt="Photo"/></div>
+
+            <a href="/catalog/product/{{ product.id }}/">{{ product.name }}</a>
+
+            <div class="itrm-link">
+                <p class="cat-price "><span>{{ product.price }}</span> руб.</p>
+                <p class="cat-price"><span>{{ product.price }}</span> руб.</p>
+            </div>
+
+            <div class="time-item">
+                <input type="submit" class="catalog_order_submit" value="В корзину"/>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

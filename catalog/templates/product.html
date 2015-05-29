@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="cart">
+    <div class="bread-crumbs"><a href="#">Главная</a> → <a href="#">ComusL</a> → <span>Платье</span></div>
+    <div id="cart-left">
+        <div class="cart-img"><img src="/static/uploads/{{ product.image }}" alt="{{ product.name }}"/></div>
+        {% for image in images %}
+        <div class="small-cart-img"><img src="/static/uploads/{{ image }}" alt="image"/></div>
+        {% endfor %}
+        <div class="header-of-block"><p>Похожие товары: </p></div>
+        <div class="sliderkit carousel">
+            <div class="sliderkit-nav">
+                <div class="sliderkit-nav-clip">
+                    <ul>
+                        <li><a href="#" title="[link title]"><img src="/static/images/cart3.jpg" alt="image"/></a></li>
+                        <li><a href="#" title="[link title]"><img src="/static/images/cart2.jpg" alt="image"/></a></li>
+                        <li><a href="#" title="[link title]"><img src="/static/images/cart3.jpg" alt="image"/></a></li>
+                        <li><a href="#" title="[link title]"><img src="/static/images/cart4.jpg" alt="image"/></a></li>
+                        <li><a href="#" title="[link title]"><img src="/static/images/cart3.jpg" alt="image"/></a></li>
+                        <li><a href="#" title="[link title]"><img src="/static/images/cart2.jpg" alt="image"/></a></li>
+                        <li><a href="#" title="[link title]"><img src="/static/images/cart3.jpg" alt="image"/></a></li>
+                        <li><a href="#" title="[link title]"><img src="/static/images/cart4.jpg" alt="image"/></a></li>
+                        <li><a href="#" title="[link title]"><img src="/static/images/cart3.jpg" alt="image"/></a></li>
+                    </ul>
+                </div>
+                <div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-prev"><a href="#" title="Previous line"><span></span></a></div>
+                <div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-next"><a href="#" title="Next line"><span></span></a></div>
+            </div>
+        </div>
+    </div>
+    <div id="cart-right">
+        <div class="top-cart-block">
+            <div class="cart-category"><p>{{ product.category.title }}</p></div>
+            <h1 class="cart-title">{{ product.name }}</h1>
+            <div class="cart-price"><p><span>{{ product.price }}</span> руб.<span class="cart-old-price"><del>23360 руб.</del></span></p></div>
+            <div class="cart-sale"><p>Скидка {{ product.sale }}%</p></div>
+        </div>
+        <div class="cart-size-block">
+            <div class="header-of-block"><p>Выберете рост:</p></div>
+            <div class="cart-size-body"><p>Рост: 100 см, Возраст: 3 года - 4 года, Размер на этикетке: 100, В комплекте: Платье,
+                <br/> Год производства: 01.2013</p></div>
+            <div class="cart-radiobt">
+                <form>
+                    {% for size in sizes %}
+                    <input type="radio" id="test-check{{ forloop.counter }}" name="size" value="{{ size }}"/>
+                    <label for="test-check{{ forloop.counter }}">{{ size }}</label>
+                    {% endfor %}
+                </form>
+            </div>
+        </div>
+        <div class="cart-info-block">
+            <div class="l-c-i-block">
+                <label for="select1">Цвет:</label>
+                <select id="select1" class="selectpicker" name="colors[]">
+                    {% for color in colors %}
+                    <option>{{ color }}</option>
+                    {% endfor %}
+                </select>
+                <label for="select2">Количество:</label>
+                <input type="text" name="count" id="id_count" value="1"/>
+            </div>
+            <div class="r-c-i-block">
+                <div class="time-item">
+                    <a href="/cart/add_product/" class="add_product" data-id="{{ product.id }}">Добавить в корзину</a>
+                </div>
+            </div>
+        </div>
+        <div class="cart-about">
+            <div class="cart-about-header"><p>Описание</p></div>
+            <article><p>Простое и в то же время нарядное платье для маленьких красавиц. Округлый ворот, <br/>
+                короткие рукава с синей оторочкой, небольшая оборка по поясу и перфорированная ткань делают
+                это платье изящным и воздушным. Замечательное летнее решение для тех, кто предпочитает натуральный
+                стиль.</p>
+                <table>
+                    <tr>
+                        <td>Код товара:</td>
+                        <td>19665137</td>
+                    </tr>
+                    <tr>
+                        <td>Страна производства:</td>
+                        <td>Китай</td>
+                    </tr>
+                    <tr>
+                        <td>В комплекте:</td>
+                        <td>Платье</td>
+                    </tr>
+                    <tr>
+                        <td>Пол:</td>
+                        <td>{{ product.male }}</td>
+                    </tr>
+                    <tr>
+                        <td>Рост:</td>
+                        <td>100 см</td>
+                    </tr>
+                    <tr>
+                        <td>Возраст:</td>
+                        <td>{{ product.age.title }}</td>
+                    </tr>
+                    <tr>
+                        <td>Размер на этикетке:</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Цвет:</td>
+                        <td>Белый</td>
+                    </tr>
+                    <tr>
+                        <td>Состав:</td>
+                        <td>Верх: 100% хлопок; подкладка: 100% хлопок</td>
+                    </tr>
+                    <tr>
+                        <td>Сезон/коллекция:</td>
+                        <td>весна-лето 2014</td>
+                    </tr>
+                    <tr>
+                        <td>Год производства:</td>
+                        <td>01.2013</td>
+                    </tr>
+                </table>
+            </article>
+        </div>
+        <div class="cart-to-user">
+            <article>
+                <table>
+                    <tr class="top-cu">
+                        <td>О доставке:</td>
+                        <td><a href="#">Подробнее об условиях</a></td>
+                    </tr>
+                    <tr>
+                        <td>Доставка:</td>
+                        <td>с 17 Мая 2015 года. <br/> Узнать об условиях бесплатной доставки</td>
+                    </tr>
+                    <tr>
+                        <td>Оплата:</td>
+                        <td>анковской картой при оформлении или наличными при доставке</td>
+                    </tr>
+                    <tr>
+                        <td>Возврат:</td>
+                        <td>существляется в течение 14 дней с момента покупки, за <br/>исключением предметов личной гигиены, чулочно-носочных
+                            <br/>изделий, нижнего белья, а также других товаров, не подлежащих <br/>возврату в соответствии с законодательством РФ
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Условия:</td>
+                        <td>доставка по всей России и некоторым городам Казахстана и <br/>Белоруссии</td>
+                    </tr>
+                </table>
+            </article>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}
