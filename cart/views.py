@@ -25,12 +25,12 @@ def cart_index_view(request):
 
 
 def add_product_ajax(request):
-    if request.POST:
+    if request.GET:
         cart = get_cart(request)
-        form = CartProductForm(request.POST)
+        form = CartProductForm(request.GET)
         cart_product = form.save(commit=False)
         try:
-            cart_product.product = Product.objects.get(id=int(request.POST.get('product_id', -1)))
+            cart_product.product = Product.objects.get(id=int(request.GET.get('product_id', -1)))
             cart_product.cart = cart
             cart_product.save()
             return HttpResponse("Товар добавлен в корзину")
@@ -40,9 +40,9 @@ def add_product_ajax(request):
 
 
 def count_product_ajax(request):
-    if request.POST:
-        cart_product_id = request.POST.get('product_id', -1)
-        count = int(request.POST.get('count', 1))
+    if request.GET:
+        cart_product_id = request.GET.get('product_id', -1)
+        count = int(request.GET.get('count', 1))
         try:
             cart_product = CartProduct.objects.get(id=cart_product_id)
             new_count = cart_product.count + count
