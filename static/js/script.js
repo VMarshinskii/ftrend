@@ -102,9 +102,8 @@ $(document).ready(function(){
     /* ================  Корзина  ================ */
 
     $(document).on('click', '.add_product', function() {
-        $.post("/cart/add_product/",
+        $.get("/cart/add_product/",
             {
-                csrfmiddlewaretoken: getCookie("csrftoken"),
                 product_id: $(this).attr("data-id"),
                 size: $('input[name=size]:checked').val(),
                 count: $("#id_count").val(),
@@ -121,9 +120,8 @@ $(document).ready(function(){
 
 
     $(document).on('click', '.catalog_order_submit', function() {
-        $.post("/cart/add_product/",
+        $.get("/cart/add_product/",
             {
-                csrfmiddlewaretoken: getCookie("csrftoken"),
                 product_id: $(this).attr("data-id"),
                 size: "",
                 count: "1",
@@ -137,9 +135,8 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '.change_count', function() {
-        $.post("/cart/change_count_product/",
+        $.get("/cart/change_count_product/",
             {
-                csrfmiddlewaretoken: getCookie("csrftoken"),
                 product_id: $(this).attr("data-id"),
                 count: $(this).attr("data-count")
             },
