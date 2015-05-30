@@ -152,3 +152,8 @@ class Product(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if self.sale_status is True:
+            self.price_sale = self.price / 100 * (100 - self.sale_value)
+        super(Product, self).save(*args, **kwargs)

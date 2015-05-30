@@ -13,6 +13,7 @@ class CartProduct(models.Model):
     count = models.IntegerField("Количество", blank=True)
     size = models.CharField("Размер", max_length=200, blank=True)
     color = models.CharField("Цвет", max_length=200, blank=True)
+    price_order = models.IntegerField("Цена при заказе", default=0)
 
 
 

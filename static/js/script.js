@@ -120,6 +120,22 @@ $(document).ready(function(){
     });
 
 
+    $(document).on('click', '.catalog_order_submit', function() {
+        $.post("/cart/add_product/",
+            {
+                csrfmiddlewaretoken: getCookie("csrftoken"),
+                product_id: $(this).attr("data-id"),
+                size: "",
+                count: "1",
+                color: ""
+            },
+             function(msg){
+                 alert(msg);
+            }
+        );
+        return false;
+    });
+
     $(document).on('click', '.change_count', function() {
         $.post("/cart/change_count_product/",
             {
