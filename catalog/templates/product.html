@@ -9,20 +9,14 @@
         {% for image in images %}
         <div class="small-cart-img"><img src="/static/uploads/{{ image }}" alt="image"/></div>
         {% endfor %}
-        <div class="header-of-block"><p>рекомендуем: </p></div>
+        <div class="header-of-block"><p>Рекомендуем: </p></div>
         <div class="sliderkit carousel">
             <div class="sliderkit-nav">
                 <div class="sliderkit-nav-clip">
                     <ul>
-                        <li><a href="#" title="[link title]"><img src="/static/images/cart3.jpg" alt="image"/></a></li>
-                        <li><a href="#" title="[link title]"><img src="/static/images/cart2.jpg" alt="image"/></a></li>
-                        <li><a href="#" title="[link title]"><img src="/static/images/cart3.jpg" alt="image"/></a></li>
-                        <li><a href="#" title="[link title]"><img src="/static/images/cart4.jpg" alt="image"/></a></li>
-                        <li><a href="#" title="[link title]"><img src="/static/images/cart3.jpg" alt="image"/></a></li>
-                        <li><a href="#" title="[link title]"><img src="/static/images/cart2.jpg" alt="image"/></a></li>
-                        <li><a href="#" title="[link title]"><img src="/static/images/cart3.jpg" alt="image"/></a></li>
-                        <li><a href="#" title="[link title]"><img src="/static/images/cart4.jpg" alt="image"/></a></li>
-                        <li><a href="#" title="[link title]"><img src="/static/images/cart3.jpg" alt="image"/></a></li>
+                        {% for pr in recommended %}
+                        <li><a href="/catalog/product/{{ pr.id }}/"><img src="/static/uploads/{{ pr.image }}" alt="{{ pr.name }}"/></a></li>
+                        {% endfor %}
                     </ul>
                 </div>
                 <div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-prev"><a href="#" title="Previous line"><span></span></a></div>

@@ -30,6 +30,7 @@ def product_view(request, id=-1):
             'images': images,
             'sizes': product.sizes.split(","),
             'colors': product.colors.all(),
+            'recommended': product.similar.all()
         })
     except Product.DoesNotExist:
         raise Http404
