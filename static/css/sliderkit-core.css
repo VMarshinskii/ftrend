@@ -19,7 +19,7 @@
 .sliderkit a,
 .sliderkit a:hover{text-decoration:none;}
 .sliderkit a:focus{outline:1px dotted #000;/*optional*/}
-.sliderkit img{border:0;}
+.sliderkit img{border:0; width: 100%}
 
 /*---------------------------------
  *  Navigation
