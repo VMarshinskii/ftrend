@@ -9,73 +9,83 @@
 <div id="center-block" class="orders">
     <h1 class="title_h1">Оформление заказа</h1>
 
+    {% if user_active %}
     <div class="user_information">
         <img src="/static/images/user91.png" alt="">
-        <p>Вы авторизованы как <a href="#">Вячеслав Маршинский</a>. Пожалуйста, подтвердите или обновите вашу контактную информацию. Изменения будут автоматически сохранены в вашем профиле.</p>
+        <p>Вы авторизованы как <a href="/account/">{{ user.last_name }} {{ user.first_name }}</a>. Пожалуйста, подтвердите или обновите вашу контактную информацию. Изменения будут автоматически сохранены в вашем профиле.</p>
     </div>
+    {% else %}
+     <div class="user_information">
+        <p>У меня уже есть аккаунт на FamilyTrend - <a href="#">войти</a></p>
+     </div>
+    {% endif %}
 
-    <form action="">
+    <form action="/orders/create/" method="post">
+        {% csrf_token %}
 
         <div class="form_group" style="border-right: 1px solid #eee;">
             <h3>Информация о получателе</h3>
-            <div class="form_group_item">
-                <label for="first_name">Ваше имя * </label>
-                <input type="text" name="first_name" id="first_name"/>
+            {% if user_inform_error %}
+            <span style="display:block; margin: 10px 0; color:#ff0000;">Заполните обязательные поля</span>
+            {% endif %}
+            <div class="form_group_item {{ first_name_error }}">
+                <label for="id_first_name">Ваше имя * </label>
+                <input type="text" name="first_name" value="{{ form.first_name.value }}" id="id_first_name"/>
             </div>
-            <div class="form_group_item">
-                <label for="first_name">Фамилия * </label>
-                <input type="text" name="first_name" id="first_name"/>
+            <div class="form_group_item {{ last_name_error }}">
+                <label for="id_last_name">Фамилия * </label>
+                <input type="text" name="last_name" value="{{ form.last_name.value }}" id="id_last_name"/>
             </div>
-            <div class="form_group_item">
-                <label for="first_name">Email * </label>
-                <input type="text" name="first_name" id="first_name"/>
+            <div class="form_group_item {{ email_error }}">
+                <label for="id_email">Email * </label>
+                <input type="text" name="email" value="{{ form.email.value }}" id="id_email"/>
             </div>
-            <div class="form_group_item">
-                <label for="first_name">Телефон * </label>
-                <input type="text" name="first_name" id="first_name"/>
+            <div class="form_group_item {{ phone_error }}">
+                <label for="id_phone">Телефон * </label>
+                <input type="text" name="phone" value="{{ form.phone.value }}" id="id_phone"/>
             </div>
             <div style="clear: both"></div>
         </div>
 
         <div class="form_group" style="margin-left: 15px">
             <h3>Информация о доставке</h3>
-            <div class="form_group_item">
-                <label for="first_name">Город * </label>
-                <input type="text" name="first_name" id="first_name"/>
+            {% if address_inform_error %}
+            <span style="display:block; margin: 10px 0; color:#ff0000;">Заполните обязательные поля</span>
+            {% endif %}
+            <div class="form_group_item {{ city_error }}">
+                <label for="id_city">Город * </label>
+                <input type="text" name="city" value="{{ form.city.value }}" id="id_city"/>
             </div>
-            <div class="form_group_item">
-                <label for="first_name">Полный адрес * </label>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+            <div class="form_group_item {{ address_error }}">
+                <label for="id_address">Полный адрес * </label>
+                <textarea name="address" id="id_address" cols="30" rows="10">{{ form.address.value }}</textarea>
             </div>
             <div style="clear: both"></div>
         </div>
 
         <div class="form_group" style="width: 664px; border-top: 1px solid #eee;">
+            {% if register_error %}
+            <span style="display:block; margin-top: 10px; color:#ff0000;">{{ register_error }}</span>
+            {% endif %}
             <div class="reg_client">
-                <input type="checkbox"/>
-                <label for="">Зарегистрироваться как постоянный покупатель</label>
+                <input type="checkbox" name="register" id="id_register"/>
+                <label for="id_register">Зарегистрироваться как постоянный покупатель</label>
             </div>
         </div>
 
         <div class="form_group delivery_group">
             <h3>Вариант доставки</h3>
-
+            {% if delivery_error %}
+            <span style="display:block; margin: 10px 0; color: #ff0000">Выберите тип доставки</span>
+            {% endif %}
             <ul class="delivery_option">
+                {% for delivery_item in delivery_mass %}
                 <li>
-                    <input type="radio"/>
-                    <label for="">Самовывоз - <span>300 руб.</span></label>
+                    <input name="delivery" id="id_delivery_{{ delivery_item.id }}" type="radio" value="{{ delivery_item.id }}" data-sum="{{ delivery_item.price }}"/>
+                    <label for="id_delivery_{{ delivery_item.id }}">{{ delivery_item.title }} - <span>{{ delivery_item.price }} руб.</span></label>
                     <p>Полное описание самовывоза</p>
                 </li>
-                <li>
-                    <input type="radio"/>
-                    <label for="">Самовывоз - <span>300 руб.</span></label>
-                    <p>Полное описание самовывоза</p>
-                </li>
-                <li>
-                    <input type="radio"/>
-                    <label for="">Самовывоз - <span>300 руб.</span></label>
-                    <p>Полное описание самовывоза</p>
-                </li>
+                {% endfor %}
             </ul>
         </div>
 
@@ -88,21 +98,21 @@
                     <tbody>
                         <tr>
                             <td width="150px">Сумма заказа:</td>
-                            <td align="right"><span>5190</span> руб.</td>
+                            <td align="right"><span id="cart_sum" data-sum="{{ cart_sum }}">{{ cart_sum }}</span> руб.</td>
                         </tr>
                         <tr>
                             <td>Доставка:</td>
-                            <td align="right"><span>0</span> руб.</td>
+                            <td align="right"><span id="delivery_sum">0</span> руб.</td>
                         </tr>
                         <tr style="border-top: 1px solid #eee">
                             <td>Итого:</td>
-                            <td align="right"><span>5190</span> руб.</td>
+                            <td align="right"><span id="all_sum">{{ cart_sum }}</span> руб.</td>
                         </tr>
                     </tbody>
                 </table>
 
                 <div class="time-item">
-                    <a href="#">Оформить заказ</a>
+                    <input type="submit" value="Оформить заказ" class="yellow_button"/>
                 </div>
             </div>
         </div>

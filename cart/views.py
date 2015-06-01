@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response, HttpResponse
 from catalog.models import Product
 from cart.models import CartProduct
 from forms import CartProductForm
-from additions import get_cart
+from additions import get_cart, get_count
 
 
 def cart_index_view(request):
@@ -13,8 +13,12 @@ def cart_index_view(request):
 
     for product_cart in CartProduct.objects.filter(cart=cart):
         product = product_cart
-        product.sum = product_cart.product.price * product_cart.count
-        cart_sum += product_cart.product.price * product_cart.count
+        if product.product.sale_status:
+            product.sum = product_cart.product.price_sale * product_cart.count
+            cart_sum += product_cart.product.price_sale * product_cart.count
+        else:
+            product.sum = product_cart.product.price * product_cart.count
+            cart_sum += product_cart.product.price * product_cart.count
         product_carts.append(product)
 
     return render_to_response("cart_index.html", {
@@ -59,8 +63,12 @@ def count_product_ajax(request):
 
     for product_cart in CartProduct.objects.filter(cart=cart):
         product = product_cart
-        product.sum = product_cart.product.price * product_cart.count
-        cart_sum += product_cart.product.price * product_cart.count
+        if product.product.sale_status:
+            product.sum = product_cart.product.price_sale * product_cart.count
+            cart_sum += product_cart.product.price_sale * product_cart.count
+        else:
+            product.sum = product_cart.product.price * product_cart.count
+            cart_sum += product_cart.product.price * product_cart.count
         product_carts.append(product)
 
     return render_to_response("cart_index_ajax.html", {
@@ -68,3 +76,6 @@ def count_product_ajax(request):
         'sum': cart_sum
     })
 
+
+def get_count_cart(request):
+    return HttpResponse(get_count(request))

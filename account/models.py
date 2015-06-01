@@ -12,4 +12,6 @@ AbstractUser._meta.get_field('first_name').default = ""
 
 
 class User(AbstractUser):
-    address = models.CharField("Адрес", max_length=250)
+    address = models.TextField("Адрес", blank=True)
+    city = models.TextField("Город", max_length=200, blank=True)
+    phone = models.TextField("Телефон", max_length=200, blank=True)

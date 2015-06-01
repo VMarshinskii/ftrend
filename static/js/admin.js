@@ -27,6 +27,21 @@ $(document).ready(function(){
         });
     }
 
+    if($("select").is("#id_similar"))
+    {
+        $('#id_similar').selectize({
+            delimiter: ','
+        });
+    }
+
+    if($("select").is("#id_products"))
+    {
+        $('#id_products').selectize({
+            delimiter: ','
+        });
+    }
+
+
     if($("input").is("#id_images"))
     {
         $("#id_images").hide();

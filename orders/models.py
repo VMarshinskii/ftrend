@@ -21,7 +21,7 @@ class Order(models.Model):
     email = models.CharField("Email", max_length=200, default="")
     phone = models.CharField("Телефон", max_length=200, default="")
     city = models.CharField("Город", max_length=200, default="")
-    address = models.TextField("Адрес")
+    address = models.TextField("Адрес", default="")
 
     delivery = models.CharField("Доставка", max_length=200, default="")
     delivery_price = models.IntegerField("Стоимость доставки")
@@ -29,4 +29,21 @@ class Order(models.Model):
     date_create = models.DateField("Дата создания заказа", auto_now_add=True)
     date_now = models.DateField("Дата редактирования", auto_now=True)
 
-    products = models.ManyToManyField(CartProduct, verbose_name="Товары")
+    products = models.ManyToManyField(CartProduct, verbose_name="Товары", blank=True, editable=False)
+
+    class Meta:
+        verbose_name = "Заказ"
+        verbose_name_plural = "Заказы"
+
+
+class DeliveryType(models.Model):
+    title = models.CharField("Название", max_length=200)
+    price = models.IntegerField("Стоиомость", default=0)
+    description = models.CharField("Описание", max_length=200, default="")
+
+    class Meta:
+        verbose_name = "Тип доставки"
+        verbose_name_plural = "Типы доставки"
+
+    def __unicode__(self):
+        return self.title

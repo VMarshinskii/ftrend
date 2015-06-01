@@ -144,6 +144,7 @@ class Product(models.Model):
     structure = models.CharField("Состав", max_length=250, blank=True)
     keywords = models.CharField("Ключевые слова", max_length=200)
     description = models.CharField("Description", max_length=200)
+    similar = models.ManyToManyField("self", verbose_name="Похожие товары", blank=True)
     is_active = models.BooleanField("Видимость", default=True)
 
     class Meta:

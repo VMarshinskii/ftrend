@@ -14,19 +14,19 @@ function randWDn(n){
 
 $(document).ready(function(){
 
+    $("#top_count_cart").load("/cart/get_count_cart/");
+
     $(document).on('click', '.login_show', function(){
         $("#popup_box").remove();
         $("body").append('<div id="popup_box" style="display:none"></div>');
         $("#popup_box").load("/login/", function(){
             $(document).on('click', '.login', function(){
-                alert("ok");
                 $.get("/login/",
                     {
                         'email': $("#email").val(),
                         'password': $("#password").val()
                     },
                     function(data){
-                        alert(data);
                         if(data === 'true'){
                             $("#popup_box").fadeOut(300);
                             location.reload()
@@ -113,6 +113,7 @@ $(document).ready(function(){
                  alert(msg);
                  $('input[name=size]:checked').removeAttr("checked");
                  $("#id_count").val(1);
+                 $("#top_count_cart").load("/cart/get_count_cart/");
             }
         );
         return false;
@@ -129,6 +130,7 @@ $(document).ready(function(){
             },
              function(msg){
                  alert(msg);
+                 $("#top_count_cart").load("/cart/get_count_cart/");
             }
         );
         return false;
@@ -142,8 +144,22 @@ $(document).ready(function(){
             },
             function(data) {
                 $(".user_cart").html(data);
+                $("#top_count_cart").load("/cart/get_count_cart/");
             }
         );
+    });
+
+    $(document).on('click', '.delivery_option input', function() {
+        var price =  parseInt($(this).attr('data-sum'));
+        var sum_cart = parseInt($("#cart_sum").attr('data-sum'));
+        $("#delivery_sum").html(price);
+        $("#all_sum").html(price + sum_cart);
+    });
+
+
+    $(document).on('click', '.small-cart-img img', function(){
+        var link = $(this).attr('src');
+        $(".cart-img img").attr('src', link);
     });
 
 

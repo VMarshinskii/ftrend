@@ -18,7 +18,14 @@
             <p class="product_color">Цвет: {{ product_cart.color }}</p>
             <p class="product_size">Размер: {{ product_cart.size }}</p>
         </td>
-        <td>{{ product_cart.product.price }} руб.</td>
+        <td>
+            {% if product_cart.product.sale_status %}
+                <p>{{ product_cart.product.price_sale }} руб.</p>
+                <p style="font-size: 13px; color: #888; text-decoration: line-through">{{ product_cart.product.price }} руб.</p>
+            {% else %}
+                {{ product_cart.product.price }} руб.
+            {% endif %}
+        </td>
         <td align="center">
             <div class="count_box">
                 <span class="cart_plus change_count" data-count="1" data-id="{{ product_cart.id }}"></span>
@@ -30,7 +37,7 @@
             {{ product_cart.sum }} руб.
         </td>
         <td>
-            <span class="cart_delete"></span>
+            <span class="cart_delete change_count" data-count="-1000" data-id="{{ product_cart.id }}"></span>
         </td>
     </tr>
     {% endfor %}

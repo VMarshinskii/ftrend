@@ -3,13 +3,13 @@
 
 {% block content %}
 <div class="cart">
-    <div class="bread-crumbs"><a href="#">Главная</a> → <a href="#">ComusL</a> → <span>Платье</span></div>
+    <div class="bread-crumbs"><a href="/">Главная</a> → <a href="/catalog/{{ product.category.url }}/">{{ product.category.title }}</a> → <span>{{ product.name }}</span></div>
     <div id="cart-left">
         <div class="cart-img"><img src="/static/uploads/{{ product.image }}" alt="{{ product.name }}"/></div>
         {% for image in images %}
         <div class="small-cart-img"><img src="/static/uploads/{{ image }}" alt="image"/></div>
         {% endfor %}
-        <div class="header-of-block"><p>Похожие товары: </p></div>
+        <div class="header-of-block"><p>рекомендуем: </p></div>
         <div class="sliderkit carousel">
             <div class="sliderkit-nav">
                 <div class="sliderkit-nav-clip">
@@ -43,8 +43,10 @@
         </div>
         <div class="cart-size-block">
             <div class="header-of-block"><p>Выберете рост:</p></div>
-            <div class="cart-size-body"><p>Рост: 100 см, Возраст: 3 года - 4 года, Размер на этикетке: 100, В комплекте: Платье,
-                <br/> Год производства: 01.2013</p></div>
+            <div class="cart-size-body">
+{#                <p>Рост: 100 см, Возраст: 3 года - 4 года, Размер на этикетке: 100, В комплекте: Платье,#}
+{#                <br/> Год производства: 01.2013</p>#}
+            </div>
             <div class="cart-radiobt">
                 <form>
                     {% for size in sizes %}
@@ -73,30 +75,23 @@
         </div>
         <div class="cart-about">
             <div class="cart-about-header"><p>Описание</p></div>
-            <article><p>Простое и в то же время нарядное платье для маленьких красавиц. Округлый ворот, <br/>
-                короткие рукава с синей оторочкой, небольшая оборка по поясу и перфорированная ткань делают
-                это платье изящным и воздушным. Замечательное летнее решение для тех, кто предпочитает натуральный
-                стиль.</p>
+            <article><p>{{ product.text }}</p>
                 <table>
                     <tr>
                         <td>Код товара:</td>
-                        <td>19665137</td>
+                        <td>{{ product.code }}</td>
                     </tr>
                     <tr>
                         <td>Страна производства:</td>
-                        <td>Китай</td>
+                        <td>{{ product.country }}</td>
                     </tr>
                     <tr>
                         <td>В комплекте:</td>
-                        <td>Платье</td>
+                        <td>{{ product.included  }}</td>
                     </tr>
                     <tr>
                         <td>Пол:</td>
                         <td>{{ product.male }}</td>
-                    </tr>
-                    <tr>
-                        <td>Рост:</td>
-                        <td>100 см</td>
                     </tr>
                     <tr>
                         <td>Возраст:</td>
@@ -104,24 +99,17 @@
                     </tr>
                     <tr>
                         <td>Размер на этикетке:</td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-                        <td>Цвет:</td>
-                        <td>Белый</td>
+                        <td>{{ product.size_label }}</td>
                     </tr>
                     <tr>
                         <td>Состав:</td>
-                        <td>Верх: 100% хлопок; подкладка: 100% хлопок</td>
+                        <td>{{ product.structure }}</td>
                     </tr>
-                    <tr>
-                        <td>Сезон/коллекция:</td>
-                        <td>весна-лето 2014</td>
-                    </tr>
-                    <tr>
-                        <td>Год производства:</td>
-                        <td>01.2013</td>
-                    </tr>
+
+{#                    <tr>#}
+{#                        <td>Сезон/коллекция:</td>#}
+{#                        <td></td>#}
+{#                    </tr>#}
                 </table>
             </article>
         </div>
@@ -130,7 +118,7 @@
                 <table>
                     <tr class="top-cu">
                         <td>О доставке:</td>
-                        <td><a href="#">Подробнее об условиях</a></td>
+                        <td><a href="/usloviya-dostavki/">Подробнее об условиях</a></td>
                     </tr>
                     <tr>
                         <td>Доставка:</td>
@@ -138,17 +126,17 @@
                     </tr>
                     <tr>
                         <td>Оплата:</td>
-                        <td>анковской картой при оформлении или наличными при доставке</td>
+                        <td>Банковской картой при оформлении или наличными при доставке</td>
                     </tr>
                     <tr>
                         <td>Возврат:</td>
-                        <td>существляется в течение 14 дней с момента покупки, за <br/>исключением предметов личной гигиены, чулочно-носочных
+                        <td>Осуществляется в течение 14 дней с момента покупки, за <br/>исключением предметов личной гигиены, чулочно-носочных
                             <br/>изделий, нижнего белья, а также других товаров, не подлежащих <br/>возврату в соответствии с законодательством РФ
                         </td>
                     </tr>
                     <tr>
                         <td>Условия:</td>
-                        <td>доставка по всей России и некоторым городам Казахстана и <br/>Белоруссии</td>
+                        <td>Доставка по всей России и некоторым городам Казахстана и <br/>Белоруссии</td>
                     </tr>
                 </table>
             </article>

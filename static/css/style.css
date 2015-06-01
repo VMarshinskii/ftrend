@@ -1345,7 +1345,8 @@ label[for=select2] {
     background: url("../images/clock.png") 0 0 no-repeat;
 
 }
-.r-c-i-block .time-item a {
+.r-c-i-block .time-item a,
+.yellow_button {
     display: inline-block;
     padding: 10px 10px 9px 10px;
     color: #fff;
@@ -1356,6 +1357,9 @@ label[for=select2] {
     text-shadow: 0 0 2px rgba(0,0,0,.5);
     border-radius: 3px;
     border-bottom: 1px solid #bf8e2b;
+}
+.yellow_button {
+    font-size: 14px;
 }
 .r-c-i-block .time-item a:hover {
     background: #808080;
@@ -1581,6 +1585,9 @@ label[for=select2] {
     list-style: none;
     margin-left: 10px;
 }
+.delivery_option input {
+    cursor: pointer;
+}
 .delivery_option li {
     display: block;
     width: 300px;
@@ -1718,11 +1725,14 @@ p.catalog_price_stable {
     color: #333 !important;
     font-weight: bold;
 }
-.catalog_price_old, {
-    color: #666 !important;
+.catalog_price_old {
     font-size: 13px !important;
     text-decoration: line-through;
 }
 .catalog_price_stable {
     margin-top: 5px;
+}
+
+.error_field label {
+    color: #ff0000;
 }
