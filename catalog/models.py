@@ -139,7 +139,6 @@ class Product(models.Model):
     images = models.CharField("Изображения", max_length=250, blank=True)
     country = models.CharField("Страна производства", max_length=250, blank=True)
     included = models.CharField("В комплекте", max_length=250, blank=True)
-    growth = models.CharField("Рост", max_length=250, blank=True)
     structure = models.CharField("Состав", max_length=250, blank=True)
     keywords = models.CharField("Ключевые слова", max_length=200)
     description = models.CharField("Description", max_length=200)
