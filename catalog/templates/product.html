@@ -77,24 +77,37 @@
                         <td>{{ product.code }}</td>
                     </tr>
                     {% endif %}
-                    {% if product.country %}
-                    <tr>
-                        <td>Страна производства:</td>
-                        <td>{{ product.country }}</td>
-                    </tr>
-                    {% endif %}
-                    {% if product.included %}
-                    <tr>
-                        <td>В комплекте:</td>
-                        <td>{{ product.included  }}</td>
-                    </tr>
-                    {% endif %}
                     {% if product.growth %}
                     <tr>
                         <td>Рост:</td>
                         <td>{{ product.growth}}</td>
                     </tr>
                     {% endif %}
+                    {% if product.age %}
+                    <tr>
+                        <td>Возраст:</td>
+                        <td>
+                        {% for ag in ages %}
+                            {{ ag }},
+                        {% endfor %}
+                        </td>
+                    </tr>
+                    {% endif %}
+
+                    {% if product.included %}
+                    <tr>
+                        <td>В комплекте:</td>
+                        <td>{{ product.included  }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if product.country %}
+                    <tr>
+                        <td>Страна производитель:</td>
+                        <td>{{ product.country }}</td>
+                    </tr>
+                    {% endif %}
+
                     {% if product.structure %}
                     <tr>
                         <td>Состав:</td>
