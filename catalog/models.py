@@ -123,11 +123,11 @@ MALE = (('boys', 'Для мальчиков'), ('girls', 'Для девочек'
 class Product(models.Model):
     name = models.CharField("Название", max_length=200)
     price = models.IntegerField("Цена", default=0)
-    sale_status = models.BooleanField("Сделать скидку", blank=True)
     price_sale = models.IntegerField("Цена со скидкой", default=0, editable=False)
     code = models.CharField("Код товара", max_length=200, blank=True)
     category = models.ForeignKey(Category, verbose_name="Категория", blank=True, null=True)
     sale_value = models.IntegerField("Скидка, %", default=0)
+    sale_status = models.BooleanField("Сделать скидку", blank=True)
     sizes = models.CharField("Размеры", max_length=200, blank=True)
     colors = models.ManyToManyField(Color, verbose_name="Цвета", blank=True)
     age = models.ForeignKey(Age, verbose_name="Возраст", blank=True, null=True, on_delete=models.SET_NULL)
