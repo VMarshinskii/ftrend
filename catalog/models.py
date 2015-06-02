@@ -123,6 +123,7 @@ MALE = (('boys', 'Для мальчиков'), ('girls', 'Для девочек'
 class Product(models.Model):
     name = models.CharField("Название", max_length=200)
     price = models.IntegerField("Цена", default=0)
+    bl = models.BooleanField("sdjsnkd")
     price_sale = models.IntegerField("Цена со скидкой", default=0, editable=False)
     code = models.CharField("Код товара", max_length=200, blank=True)
     category = models.ForeignKey(Category, verbose_name="Категория", blank=True, null=True)
