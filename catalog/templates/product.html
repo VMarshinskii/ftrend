@@ -36,7 +36,7 @@
             {% endif %}
         </div>
         <div class="cart-size-block">
-            <div class="header-of-block"><p>Выберете рост:</p></div>
+            <div class="header-of-block"><p>Выберете рост/размер:</p></div>
             <div class="cart-size-body">
 {#                <p>Рост: 100 см, Возраст: 3 года - 4 года, Размер на этикетке: 100, В комплекте: Платье,#}
 {#                <br/> Год производства: 01.2013</p>#}
@@ -71,39 +71,36 @@
             <div class="cart-about-header"><p>Описание</p></div>
             <article><p>{{ product.text }}</p>
                 <table>
+                    {% if product.code %}
                     <tr>
-                        <td>Код товара:</td>
+                        <td>Артикул:</td>
                         <td>{{ product.code }}</td>
                     </tr>
+                    {% endif %}
+                    {% if product.country %}
                     <tr>
                         <td>Страна производства:</td>
                         <td>{{ product.country }}</td>
                     </tr>
+                    {% endif %}
+                    {% if product.included %}
                     <tr>
                         <td>В комплекте:</td>
                         <td>{{ product.included  }}</td>
                     </tr>
+                    {% endif %}
+                    {% if product.growth %}
                     <tr>
-                        <td>Пол:</td>
-                        <td>{{ product.male }}</td>
+                        <td>Рост:</td>
+                        <td>{{ product.growth}}</td>
                     </tr>
-                    <tr>
-                        <td>Возраст:</td>
-                        <td>{{ product.age.title }}</td>
-                    </tr>
-                    <tr>
-                        <td>Размер на этикетке:</td>
-                        <td>{{ product.size_label }}</td>
-                    </tr>
+                    {% endif %}
+                    {% if product.structure %}
                     <tr>
                         <td>Состав:</td>
                         <td>{{ product.structure }}</td>
                     </tr>
-
-{#                    <tr>#}
-{#                        <td>Сезон/коллекция:</td>#}
-{#                        <td></td>#}
-{#                    </tr>#}
+                    {% endif %}
                 </table>
             </article>
         </div>

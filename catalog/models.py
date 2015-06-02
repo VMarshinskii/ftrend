@@ -83,6 +83,8 @@ class Brand(models.Model):
 AGE_CHOICES = (('boys', 'Мальчики'),
                ('girls', 'Девочки'))
 
+List = {'boys': 'Мальчики', 'girls': 'Девочки'}
+
 
 class Age(models.Model):
     type = models.CharField("Для кого", max_length=200, choices=AGE_CHOICES, default='boys')
@@ -93,7 +95,9 @@ class Age(models.Model):
         verbose_name = "Возраст"
 
     def __unicode__(self):
-        return self.type + " " + self.title
+        if str(self.type) == 'boys':
+            return u"Для мальчиков " + " " + self.title
+        return u"Для девочек " + " " + self.title
 
     def name(self):
         if self.type == 'boys':
@@ -117,30 +121,25 @@ class Collection(models.Model):
         return self.title
 
 
-MALE = (('boys', 'Для мальчиков'), ('girls', 'Для девочек'))
-
-
 class Product(models.Model):
     name = models.CharField("Название", max_length=200)
     price = models.IntegerField("Цена", default=0)
     price_sale = models.IntegerField("Цена со скидкой", default=0, editable=False)
-    code = models.CharField("Код товара", max_length=200, blank=True)
+    code = models.CharField("Артикул", max_length=200, blank=True)
     category = models.ForeignKey(Category, verbose_name="Категория", blank=True, null=True)
     sale_value = models.IntegerField("Скидка, %", default=0)
     sale_status = models.BooleanField("Сделать скидку", default=False)
     sizes = models.CharField("Размеры", max_length=200, blank=True)
     colors = models.ManyToManyField(Color, verbose_name="Цвета", blank=True)
-    age = models.ForeignKey(Age, verbose_name="Возраст", blank=True, null=True, on_delete=models.SET_NULL)
+    age = models.ManyToManyField(Age, verbose_name="Возраст", blank=True)
     brand = models.ForeignKey(Brand, verbose_name="Бренд", blank=True, null=True, on_delete=models.SET_NULL)
-    collection = models.ForeignKey(Collection, verbose_name="Коллекция", blank=True, null=True, on_delete=models.SET_NULL)
+    collection = models.ManyToManyField(Collection, verbose_name="Коллекция", blank=True)
     text = models.TextField("Описание")
     image = models.CharField("Изображение", max_length=200, blank=True)
     images = models.CharField("Изображения", max_length=250, blank=True)
     country = models.CharField("Страна производства", max_length=250, blank=True)
     included = models.CharField("В комплекте", max_length=250, blank=True)
-    male = models.CharField("Пол", max_length=250, blank=True, choices=MALE)
     growth = models.CharField("Рост", max_length=250, blank=True)
-    size_label = models.CharField("Размер на этикетке", max_length=250, blank=True)
     structure = models.CharField("Состав", max_length=250, blank=True)
     keywords = models.CharField("Ключевые слова", max_length=200)
     description = models.CharField("Description", max_length=200)

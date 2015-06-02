@@ -41,6 +41,20 @@ $(document).ready(function(){
         });
     }
 
+    if($("select").is("#id_age"))
+    {
+        $('#id_age').selectize({
+            delimiter: ','
+        });
+    }
+
+    if($("select").is("#id_collection"))
+    {
+        $('#id_collection').selectize({
+            delimiter: ','
+        });
+    }
+
 
     if($("input").is("#id_images"))
     {
