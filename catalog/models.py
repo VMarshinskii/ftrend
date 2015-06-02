@@ -127,7 +127,7 @@ class Product(models.Model):
     code = models.CharField("Код товара", max_length=200, blank=True)
     category = models.ForeignKey(Category, verbose_name="Категория", blank=True, null=True)
     sale_value = models.IntegerField("Скидка, %", default=0)
-    status_sale = models.BooleanField("Сделать скидку", blank=True)
+    sale_status = models.BooleanField("Сделать скидку", default=False)
     sizes = models.CharField("Размеры", max_length=200, blank=True)
     colors = models.ManyToManyField(Color, verbose_name="Цвета", blank=True)
     age = models.ForeignKey(Age, verbose_name="Возраст", blank=True, null=True, on_delete=models.SET_NULL)
