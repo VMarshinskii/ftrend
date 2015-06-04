@@ -17,9 +17,9 @@ $(document).ready(function(){
     $("#top_count_cart").load("/cart/get_count_cart/");
 
     $(".img-block img").each(function(element){
-        var width = element.width();
+        var width = $(element).width();
         var left = - (width - 233) / 2;
-        element.css('left', left + "px")
+        $(element).css('left', left + "px")
     });
 
     $(document).on('click', '.login_show', function(){
