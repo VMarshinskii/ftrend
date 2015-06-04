@@ -437,10 +437,12 @@ a.catalog_item_link {
     height: 233px;
     margin-bottom: 5px;
     overflow: hidden;
+    position: relative;
 }
 #content-wrapper .content-item .img-block img {
     width: 100%;
     height: auto;
+    position: relative;
 }
 #content-wrapper .content-item .itrm-link {
     position: absolute;
@@ -922,7 +924,7 @@ footer .last-menu:before {
     margin-right: 0!important;
 }
 .categories .content-item .img-block img {
-    height: 250px !important;
+    height: 235px !important;
     width: auto !important;
 }
 .categories .content-item .itrm-link {

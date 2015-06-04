@@ -16,6 +16,12 @@ $(document).ready(function(){
 
     $("#top_count_cart").load("/cart/get_count_cart/");
 
+    $(".img-block img").each(function(element){
+        var width = element.width();
+        var left = - (width - 233) / 2;
+        element.css('left', left + "px")
+    });
+
     $(document).on('click', '.login_show', function(){
         $("#popup_box").remove();
         $("body").append('<div id="popup_box" style="display:none"></div>');
