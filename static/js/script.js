@@ -16,7 +16,7 @@ $(document).ready(function(){
 
     $("#top_count_cart").load("/cart/get_count_cart/");
 
-    $(".img-block img").each(function(element){
+    $(".img-block img").each(function(indx, element){
         var width = $(element).width();
         var left = - (width - 233) / 2;
         $(element).css('left', left + "px")
