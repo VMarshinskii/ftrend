@@ -6,15 +6,17 @@
     <div class="bread-crumbs"><a href="/">Главная</a> → <a href="/catalog/{{ product.category.url }}/">{{ product.category.title }}</a> → <span>{{ product.name }}</span></div>
     <div id="cart-left">
         <div class="cart-img">
-            <a href="/static/uploads/{{ product.image }}" data-fancybox-group="thumb" class="product_image">
-                <img src="/static/uploads/{{ product.image }}" alt="{{ product.name }}"/>
-            </a>
+            <img src="/static/uploads/{{ product.image }}" alt="{{ product.name }}" class="product_image_head"/>
         </div>
         {% for image in images %}
         <div class="small-cart-img">
+            {% if image == product.image %}
+
+
             <a data-fancybox-group="thumb" href="/static/uploads/{{ image }}" class="product_image">
                 <img src="/static/uploads/{{ image }}" alt="image"/>
             </a>
+            {% endif %}
         </div>
         {% endfor %}
         <div class="header-of-block"><p>Рекомендуем: </p></div>

@@ -26,6 +26,7 @@ $(document).ready(function(){
 
     if ($("a").is(".product_image"))
     {
+
         $('.product_image').fancybox({
             prevEffect : 'none',
             nextEffect : 'none',
@@ -40,6 +41,10 @@ $(document).ready(function(){
                     height : 50
                 }
             }
+        });
+
+        $(".product_image_head").click(function(){
+            $(".product_image").eq(0).click();
         });
 
     }
