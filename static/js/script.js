@@ -18,7 +18,7 @@ $(document).ready(function(){
 
     $(".img-block img").each(function(indx, element){
         var width = $(element).width();
-        var left = - (width - 233) / 2;
+        var left =(width - 233) / -2;
         $(element).css('left', left + "px")
     });
 
