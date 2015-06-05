@@ -16,13 +16,13 @@ $(document).ready(function(){
 
     $("#top_count_cart").load("/cart/get_count_cart/");
 
-    $(".img-block img").each(function(){
-        $(this).load(function(){
-            var width = $(this).width();
-            var left = (width - 233) / 2;
-            $(this).animate({'left': (-1 * left) + "px"}, 200);
-        });
-    });
+    //$(".img-block img").each(function(){
+    //    $(this).load(function(){
+    //        var width = $(this).width();
+    //        var left = (width - 233) / 2;
+    //        $(this).animate({'left': (-1 * left) + "px"}, 200);
+    //    });
+    //});
 
     $(document).on('click', '.login_show', function(){
         $("#popup_box").remove();

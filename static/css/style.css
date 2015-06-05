@@ -437,12 +437,14 @@ a.catalog_item_link {
     height: 233px;
     margin-bottom: 5px;
     overflow: hidden;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 #content-wrapper .content-item .img-block img {
     width: 100%;
     height: auto;
-    position: relative;
 }
 #content-wrapper .content-item .itrm-link {
     position: absolute;
