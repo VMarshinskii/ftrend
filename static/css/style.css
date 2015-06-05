@@ -1742,9 +1742,11 @@ p.catalog_price_stable {
 }
 
 #lightbox-container-image-box {
-  max-width:970px; // Or your max-width
+  max-width:970px;
+  max-height:800px;
 }
 
 #lightbox-container-image img {
- max-width:950px; // (your max width - 20)
+    max-width:950px;
+    max-height:780px;
 }
