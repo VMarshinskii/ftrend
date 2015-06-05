@@ -16,11 +16,11 @@ $(document).ready(function(){
 
     $("#top_count_cart").load("/cart/get_count_cart/");
 
-    $(".img-block img").each(function(indx, element){
-        var width = $(element).width();
-        alert($(element).position().left + " : " + $(element).position().right);
+    $(".img-block img").load(function(){
+        var width = $(this).width();
+
         var left = (width - 233) / 2;
-        $(element).css('left', (-1 * left) + "px")
+        $(this).css('left', (-1 * left) + "px")
     });
 
     $(document).on('click', '.login_show', function(){
