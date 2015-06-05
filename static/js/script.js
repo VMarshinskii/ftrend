@@ -24,6 +24,11 @@ $(document).ready(function(){
     //    });
     //});
 
+    if ($("a").is(".product_image"))
+    {
+        $(".product_image").lightBox();
+    }
+
     $(document).on('click', '.login_show', function(){
         $("#popup_box").remove();
         $("body").append('<div id="popup_box" style="display:none"></div>');
