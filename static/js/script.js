@@ -16,13 +16,12 @@ $(document).ready(function(){
 
     $("#top_count_cart").load("/cart/get_count_cart/");
 
-    $(".img-block img").load(function(){
-        var width = $(this).width();
-
-        //alert(width);
-
-        var left = (width - 233) / 2;
-        $(this).css('left', (-1 * left) + "px")
+    $(".img-block img").each(function(){
+        $(this).load(function(){
+            var width = $(this).width();
+            var left = (width - 233) / 2;
+            $(this).css('left', (-1 * left) + "px")
+        });
     });
 
     $(document).on('click', '.login_show', function(){
