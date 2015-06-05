@@ -1740,3 +1740,11 @@ p.catalog_price_stable {
 .error_field label {
     color: #ff0000;
 }
+
+#lightbox-container-image-box {
+  max-width:970px; // Or your max-width
+}
+
+#lightbox-container-image img {
+ max-width:950px; // (your max width - 20)
+}
