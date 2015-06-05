@@ -18,8 +18,9 @@ $(document).ready(function(){
 
     $(".img-block img").each(function(indx, element){
         var width = $(element).width();
-        var left =(width - 233) / -2;
-        $(element).css('left', left + "px")
+        alert(width);
+        var left = (width - 233) / 2;
+        $(element).css('left', (-1 * left) + "px")
     });
 
     $(document).on('click', '.login_show', function(){
