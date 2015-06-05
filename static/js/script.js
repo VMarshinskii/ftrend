@@ -19,6 +19,8 @@ $(document).ready(function(){
     $(".img-block img").load(function(){
         var width = $(this).width();
 
+        alert(width);
+
         var left = (width - 233) / 2;
         $(this).css('left', (-1 * left) + "px")
     });
