@@ -52,7 +52,7 @@ def random_str(n):
 
 
 def upload_file(f, path):
-    filename = random_str(20) + "." + f.name.split('.')[1:][0]
+    filename = random_str(20) + "." + f.name.split('.')[-1]
     try:
         shutil.copy(f.temporary_file_path(), BASE_DIR + path + filename)
         return path + f.name
