@@ -17,10 +17,10 @@ $(document).ready(function(){
     $("#top_count_cart").load("/cart/get_count_cart/");
 
     $(".img-block img").each(function(){
-        $(this).ready(function(){
+        $(this).load(function(){
             var width = $(this).width();
             var left = (width - 233) / 2;
-            $(this).css('left', (-1 * left) + "px")
+            $(this).animate({'left': (-1 * left) + "px"}, 200);
         });
     });
 
