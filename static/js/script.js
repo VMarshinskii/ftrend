@@ -26,12 +26,19 @@ $(document).ready(function(){
 
     if ($("a").is(".product_image"))
     {
-        $("a[rel=example_group]").fancybox({
-            'transitionIn'		: 'none',
-            'transitionOut'		: 'none',
-            'titlePosition' 	: 'over',
-            'titleFormat'		: function(title, currentArray, currentIndex, currentOpts) {
-                return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+        $('.product_image').fancybox({
+            prevEffect : 'none',
+            nextEffect : 'none',
+
+            closeBtn  : false,
+            arrows    : false,
+            nextClick : true,
+
+            helpers : {
+                thumbs : {
+                    width  : 50,
+                    height : 50
+                }
             }
         });
 

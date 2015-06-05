@@ -8,7 +8,7 @@
         <div class="cart-img"><img src="/static/uploads/{{ product.image }}" alt="{{ product.name }}"/></div>
         {% for image in images %}
         <div class="small-cart-img">
-            <a rel="example_group" href="/static/uploads/{{ image }}" class="product_image">
+            <a data-fancybox-group="thumb" href="/static/uploads/{{ image }}" class="product_image">
                 <img src="/static/uploads/{{ image }}" alt="image"/>
             </a>
         </div>
