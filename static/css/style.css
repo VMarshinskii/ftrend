@@ -1743,10 +1743,10 @@ p.catalog_price_stable {
 
 #lightbox-container-image-box {
   max-width:970px;
-  max-height:800px;
+  max-height:620px;
 }
 
 #lightbox-container-image img {
     max-width:950px;
-    max-height:780px;
+    max-height:600px;
 }
