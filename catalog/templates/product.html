@@ -11,8 +11,10 @@
         {% for image in images %}
         <div class="small-cart-img">
             {% if image == product.image %}
-
-
+                <a data-fancybox-group="thumb" href="/static/uploads/{{ image }}" class="product_image prev_head">
+                    <img src="/static/uploads/{{ image }}" alt="image"/>
+                </a>
+            {% else %}
             <a data-fancybox-group="thumb" href="/static/uploads/{{ image }}" class="product_image">
                 <img src="/static/uploads/{{ image }}" alt="image"/>
             </a>

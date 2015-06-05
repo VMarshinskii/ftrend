@@ -44,7 +44,7 @@ $(document).ready(function(){
         });
 
         $(".product_image_head").click(function(){
-            $(".product_image").eq(0).click();
+            $(".prev_head").click();
         });
 
     }
