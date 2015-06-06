@@ -123,3 +123,7 @@ def thank_order(request):
 
 def reg_thank_order(request):
     return render_to_response("thank_register_order.html")
+
+
+def orders_view(request):
+    return render_to_response("orders.html")

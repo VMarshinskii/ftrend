@@ -208,6 +208,9 @@ $(document).ready(function(){
             $("#id_old_password").val('');
             $("#id_new_password").val('');
             alert(data);
+            if (data == "Ваш пароль изменён!") {
+                location.reload()
+            }
         });
 
         return false;
