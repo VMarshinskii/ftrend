@@ -1753,7 +1753,8 @@ p.catalog_price_stable {
 
 
 .form_group_item.account {
-    width: 100%;
+    width: 600px;
+    margin-left: 30px;
 }
 .form_group_item.account label {
     font-size: 15px;
@@ -1761,4 +1762,7 @@ p.catalog_price_stable {
 .form_group_item.account input {
     width: 270px;
     padding: 5px;
+}
+.form_group_item.account .yellow_button {
+    margin: 10px 216px 10px 0;
 }
