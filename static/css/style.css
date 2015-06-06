@@ -1366,7 +1366,8 @@ label[for=select2] {
     font-size: 14px;
     cursor: pointer;
 }
-.r-c-i-block .time-item a:hover {
+.r-c-i-block .time-item a:hover
+.yellow_button:hover {
     background: #808080;
     border-bottom: 1px solid #606060;
     transition:  background 1s, border 1s;

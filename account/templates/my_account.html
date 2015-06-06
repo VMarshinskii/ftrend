@@ -26,6 +26,10 @@
         <div class="form_group" style="width: 664px; border-bottom: 1px solid #eee;">
             <h3>Личные данные</h3>
 
+            {% if error %}
+                <span style="display:block; margin: 10px 0; color:#ff0000;">Заполните обязательные поля</span>
+            {% endif %}
+
             {% if user_inform_error %}
             <span style="display:block; margin: 10px 0; color:#ff0000;">Заполните обязательные поля</span>
             {% endif %}
@@ -69,7 +73,7 @@
         </div>
 
         <div class="time-item">
-            <input type="submit" style="float: right" value="Изменить пароль" class="yellow_button account"/>
+            <input type="submit" style="float: right; margin-right: 249px;" value="Изменить пароль" class="yellow_button account"/>
         </div>
     </form>
 

@@ -1,5 +1,6 @@
 # _*_ coding: utf-8 _*_
 from django.shortcuts import render_to_response, HttpResponse
+from django.core.context_processors import csrf
 from django.contrib import auth
 from models import User
 from forms import RegistrationForm
@@ -49,7 +50,39 @@ def registration(request):
 
 
 def account_view(request):
-    return render_to_response("my_account.html", {
+    args = {
         'user': request.user,
         'user_active': request.user.is_authenticated(),
-    })
+    }
+    args.update(csrf(request))
+    args['error'] = False
+
+    if request.POST:
+        user = request.user
+
+        if 'first_name' in request.POST and request.POST.get('first_name', '') != '':
+            user.first_name = request.POST['first_name']
+        else:
+            args['error'] = True
+            args['error_first_name'] = "error_field"
+
+        if 'last_name' in request.POST and request.POST.get('last_name', '') != '':
+            user.last_name = request.POST['last_name']
+        else:
+            args['error'] = True
+            args['error_last_name'] = "error_field"
+
+        if 'email' in request.POST and request.POST.get('last_name', '') != '':
+            user.email = request.POST['email']
+        else:
+            args['error'] = True
+            args['error_email'] = "error_field"
+
+        if 'phone' in request.POST:
+            user.first_name = request.POST['phone']
+
+        if args['error'] is False:
+            user.save()
+            return HttpResponse("Данные сохранены")
+
+    return render_to_response("my_account.html", args)
