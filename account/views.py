@@ -49,4 +49,7 @@ def registration(request):
 
 
 def account_view(request):
-    return render_to_response("my_account.html", {'user': request.user})
+    return render_to_response("my_account.html", {
+        'user': request.user,
+        'user_active': request.user.is_authenticated(),
+    })
