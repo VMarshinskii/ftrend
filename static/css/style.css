@@ -1364,6 +1364,7 @@ label[for=select2] {
 }
 .yellow_button {
     font-size: 14px;
+    cursor: pointer;
 }
 .r-c-i-block .time-item a:hover {
     background: #808080;
@@ -1758,6 +1759,7 @@ p.catalog_price_stable {
 }
 .form_group_item.account label {
     font-size: 15px;
+    width: 116px;
 }
 .form_group_item.account input {
     width: 270px;

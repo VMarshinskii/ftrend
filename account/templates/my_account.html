@@ -12,7 +12,12 @@
     {% if user_active %}
     <div class="user_information">
         <img src="/static/images/user91.png" alt="">
-        <p>Вы авторизованы как <a href="/account/">{{ user.last_name }} {{ user.first_name }}</a>. Пожалуйста, подтвердите или обновите вашу контактную информацию. Изменения будут автоматически сохранены в вашем профиле.</p>
+        <p>Вы авторизованы
+            {% if user.first_name %}
+            как <a href="/account/">{{ user.last_name }} {{ user.first_name }}</a>
+            {% endif %}
+            .Здесь вы можете обновить вашу личную информацию. Все изменения будут сохранены в вашем профиле.
+        </p>
     </div>
 
     <form action="/account/" method="post">
