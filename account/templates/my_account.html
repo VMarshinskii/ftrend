@@ -35,19 +35,19 @@
             {% endif %}
             <div class="form_group_item account {{ first_name_error }}">
                 <label for="id_first_name">Ваше имя * </label>
-                <input type="text" name="first_name" value="{{ form.first_name.value }}" id="id_first_name"/>
+                <input type="text" name="first_name" value="{{ user.first_name }}" id="id_first_name"/>
             </div>
             <div class="form_group_item account {{ last_name_error }}">
                 <label for="id_last_name">Фамилия * </label>
-                <input type="text" name="last_name" value="{{ form.last_name.value }}" id="id_last_name"/>
+                <input type="text" name="last_name" value="{{ user.last_name }}" id="id_last_name"/>
             </div>
             <div class="form_group_item account {{ email_error }}">
                 <label for="id_email">Email * </label>
-                <input type="text" name="email" value="{{ form.email.value }}" id="id_email"/>
+                <input type="text" name="email" value="{{ user.email }}" id="id_email"/>
             </div>
             <div class="form_group_item account {{ phone_error }}">
-                <label for="id_phone">Телефон * </label>
-                <input type="text" name="phone" value="{{ form.phone.value }}" id="id_phone"/>
+                <label for="id_phone">Телефон </label>
+                <input type="text" name="phone" value="{{ user.phone }}" id="id_phone"/>
             </div>
             <div style="clear: both"></div>
 
