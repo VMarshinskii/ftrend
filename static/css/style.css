@@ -1763,6 +1763,6 @@ p.catalog_price_stable {
     width: 270px;
     padding: 5px;
 }
-.form_group_item.account .yellow_button {
+.yellow_button.account {
     margin: 10px 216px 10px 0;
 }
