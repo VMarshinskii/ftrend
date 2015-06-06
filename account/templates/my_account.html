@@ -18,40 +18,55 @@
     <form action="/account/" method="post">
         {% csrf_token %}
 
-        <div class="form_group" style="width: 664px; border-right: 1px solid #eee;">
+        <div class="form_group" style="width: 664px; border-bottom: 1px solid #eee;">
+            <h3>Личные данные</h3>
+
             {% if user_inform_error %}
             <span style="display:block; margin: 10px 0; color:#ff0000;">Заполните обязательные поля</span>
             {% endif %}
-            <div class="form_group_item {{ first_name_error }}">
+            <div class="form_group_item account {{ first_name_error }}">
                 <label for="id_first_name">Ваше имя * </label>
                 <input type="text" name="first_name" value="{{ form.first_name.value }}" id="id_first_name"/>
             </div>
-            <div class="form_group_item {{ last_name_error }}">
+            <div class="form_group_item account {{ last_name_error }}">
                 <label for="id_last_name">Фамилия * </label>
                 <input type="text" name="last_name" value="{{ form.last_name.value }}" id="id_last_name"/>
             </div>
-            <div class="form_group_item {{ email_error }}">
+            <div class="form_group_item account {{ email_error }}">
                 <label for="id_email">Email * </label>
                 <input type="text" name="email" value="{{ form.email.value }}" id="id_email"/>
             </div>
-            <div class="form_group_item {{ phone_error }}">
+            <div class="form_group_item account {{ phone_error }}">
                 <label for="id_phone">Телефон * </label>
                 <input type="text" name="phone" value="{{ form.phone.value }}" id="id_phone"/>
             </div>
             <div style="clear: both"></div>
-        </div>
-
-        <div class="form_group" style="width: 100%; margin-top: 10px">
-            <h3>Сохранить изменения</h3>
 
             <div class="time-item">
                 <input type="submit" style="float: right" value="Сохранть" class="yellow_button"/>
             </div>
         </div>
+    </form>
+
+    <form action="">
+        <div class="form_group" style="width: 100%; margin-top: 10px">
+            <h3>Изменить пароль</h3>
+
+            <div class="form_group_item account {{ last_name_error }}">
+                <label for="id_last_name">Старый пароль</label>
+                <input type="password" name="last_name" value="{{ form.last_name.value }}" id="id_last_name"/>
+            </div>
+
+            <div class="form_group_item account {{ last_name_error }}">
+                <label for="id_last_name">Новый пароль</label>
+                <input type="password" name="last_name" value="{{ form.last_name.value }}" id="id_last_name"/>
+            </div>
+        </div>
+    </form>
 
         <div style="clear: both"></div>
 
-    </form>
+
     {% else %}
      <div class="user_information">
         <p>Вы не вошли в систему - <a href="#" class="login_show">войти</a></p>

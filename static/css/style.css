@@ -1750,3 +1750,15 @@ p.catalog_price_stable {
     max-width:950px;
     max-height:600px;
 }
+
+
+.form_group_item.account {
+    width: 100%;
+}
+.form_group_item.account label {
+    font-size: 15px;
+}
+.form_group_item.account input {
+    width: 270px;
+    padding: 5px;
+}
