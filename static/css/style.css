@@ -1775,3 +1775,14 @@ p.catalog_price_stable {
     color: #f6b436;
     text-decoration: underline;
 }
+.table-order tr td {
+    padding: 8px 5px;
+}
+.my_order_status {
+    padding: 1px 3px;
+    border-radius: 2px;
+    background-color: #f29400;
+    border: 1px solid #E08A03;
+    color: #fff;
+    font-size: 14px;
+}
