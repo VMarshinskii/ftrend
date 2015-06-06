@@ -98,6 +98,7 @@ def change_password(request):
             return HttpResponse("Новый пароль не может быть пустым")
         elif request.user.check_password(old_password):
             request.user.set_password(new_password)
+            request.user.save()
             return HttpResponse("Ваш пароль изменён!")
         else:
             return HttpResponse("Старый пароль не верный!")
