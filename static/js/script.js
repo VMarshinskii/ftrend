@@ -196,4 +196,22 @@ $(document).ready(function(){
     });
 
 
+    $("#change_password").click(function(){
+        var old_password = $("#id_old_password").val();
+        var new_password = $("#id_new_password").val();
+
+        $.get("/account/change_password/", {
+            old_password: old_password,
+            new_password: new_password
+        },
+        function(data){
+            $("#id_old_password").val('');
+            $("#id_new_password").val('');
+            alert(data);
+        });
+
+        return false;
+    });
+
+
 });

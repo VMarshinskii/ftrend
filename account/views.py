@@ -79,10 +79,27 @@ def account_view(request):
             args['email_error'] = "error_field"
 
         if 'phone' in request.POST:
-            user.first_name = request.POST['phone']
+            user.phone = request.POST['phone']
 
         if args['error'] is False:
             user.save()
             return HttpResponse("Данные сохранены")
 
     return render_to_response("my_account.html", args)
+
+
+def change_password(request):
+    if request.user.is_authenticated() and request.GET:
+
+        old_password = request.GET.get('old_password', '')
+        new_password = request.GET.get('new_password', '')
+
+        if new_password == '' :
+            return HttpResponse("Новый пароль не может быть пустым")
+        elif request.user.check_password(old_password):
+            request.user.set_password(new_password)
+            return HttpResponse("Ваш пароль изменён!")
+        else:
+            return HttpResponse("Старый пароль не верный!")
+    else:
+        return HttpResponse("Ошибка")

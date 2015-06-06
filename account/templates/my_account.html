@@ -57,23 +57,24 @@
         </div>
     </form>
 
-    <form action="">
+    <form action="/account/change_password/" method="post">
+        {% csrf_token %}
         <div class="form_group" style="width: 664px; margin-top: 10px">
             <h3>Изменить пароль</h3>
 
-            <div class="form_group_item account {{ last_name_error }}">
-                <label for="id_last_name">Старый пароль</label>
-                <input type="password" name="last_name" value="{{ form.last_name.value }}" id="id_last_name"/>
+            <div class="form_group_item account">
+                <label for="id_old_password">Старый пароль</label>
+                <input type="password" name="old_password" id="id_old_password"/>
             </div>
 
-            <div class="form_group_item account {{ last_name_error }}">
-                <label for="id_last_name">Новый пароль</label>
-                <input type="password" name="last_name" value="{{ form.last_name.value }}" id="id_last_name"/>
+            <div class="form_group_item account">
+                <label for="id_new_password">Новый пароль</label>
+                <input type="password" name="new_password" id="id_new_password"/>
             </div>
         </div>
 
         <div class="time-item">
-            <input type="submit" style="float: right; margin-right: 249px;" value="Изменить пароль" class="yellow_button account"/>
+            <input type="button" style="float: right; margin-right: 249px;" value="Изменить пароль" id="change_password" class="yellow_button account"/>
         </div>
     </form>
 
