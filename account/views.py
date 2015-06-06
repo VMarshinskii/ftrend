@@ -83,7 +83,7 @@ def account_view(request):
 
         if args['error'] is False:
             user.save()
-            return HttpResponse("Данные сохранены")
+            return render_to_response("my_account.html", args)
 
     return render_to_response("my_account.html", args)
 
