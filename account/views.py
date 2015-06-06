@@ -72,7 +72,7 @@ def account_view(request):
             args['error'] = True
             args['last_name_error'] = "error_field"
 
-        if 'email' in request.POST and request.POST.get('last_name', '') != '':
+        if 'email' in request.POST and request.POST.get('email', '') != '':
             user.email = request.POST['email']
         else:
             args['error'] = True
