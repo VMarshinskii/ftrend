@@ -64,19 +64,19 @@ def account_view(request):
             user.first_name = request.POST['first_name']
         else:
             args['error'] = True
-            args['error_first_name'] = "error_field"
+            args['first_name_error'] = "error_field"
 
         if 'last_name' in request.POST and request.POST.get('last_name', '') != '':
             user.last_name = request.POST['last_name']
         else:
             args['error'] = True
-            args['error_last_name'] = "error_field"
+            args['last_name_error'] = "error_field"
 
         if 'email' in request.POST and request.POST.get('last_name', '') != '':
             user.email = request.POST['email']
         else:
             args['error'] = True
-            args['error_email'] = "error_field"
+            args['email_error'] = "error_field"
 
         if 'phone' in request.POST:
             user.first_name = request.POST['phone']
