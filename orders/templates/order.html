@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load catalog_menu %}
+
+
+{% block content %}
+<div id="left-block">
+    {% catalog_menu %}
+</div>
+
+<div id="center-block" class="user_cart">
+    <h1 class="title_h1">Заказ №1233</h1>
+
+    <p>Доставка - тип доставки</p>
+    <p>г. Оренбург, ул. Кима 8, 210</p>
+
+    <table class="table-cart table-order">
+        <tr>
+            <th colspan="2">Наименование товара</th>
+            <th width="80px">Цена</th>
+            <th width="100px">Количество</th>
+            <th width="90px">Сумма</th>
+            <th width="30px"></th>
+        </tr>
+        <tr class="product_item">
+            <td width="80px">
+                <a href="#">1233</a>
+            </td>
+            <td>
+                16.06.2015г
+            </td>
+            <td>
+                <span class="my_order_status">В обработке</span>
+            </td>
+            <td>
+                1500 руб.
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

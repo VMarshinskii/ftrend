@@ -127,3 +127,7 @@ def reg_thank_order(request):
 
 def orders_view(request):
     return render_to_response("orders.html")
+
+
+def order_view(request):
+    return render_to_response("order.html")
