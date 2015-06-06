@@ -43,7 +43,7 @@
             <div style="clear: both"></div>
 
             <div class="time-item">
-                <input type="submit" style="float: right" value="Сохранть" class="yellow_button"/>
+                <input type="submit" style="float: right" value="Сохранть изменения" class="yellow_button account"/>
             </div>
         </div>
     </form>
@@ -62,9 +62,13 @@
                 <input type="password" name="last_name" value="{{ form.last_name.value }}" id="id_last_name"/>
             </div>
         </div>
+
+        <div class="time-item">
+            <input type="submit" style="float: right" value="Изменить пароль" class="yellow_button account"/>
+        </div>
     </form>
 
-        <div style="clear: both"></div>
+    <div style="clear: both"></div>
 
 
     {% else %}
