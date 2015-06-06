@@ -14,11 +14,6 @@
         <img src="/static/images/user91.png" alt="">
         <p>Вы авторизованы как <a href="/account/">{{ user.last_name }} {{ user.first_name }}</a>. Пожалуйста, подтвердите или обновите вашу контактную информацию. Изменения будут автоматически сохранены в вашем профиле.</p>
     </div>
-    {% else %}
-     <div class="user_information">
-        <p>У меня уже есть аккаунт на FamilyTrend - <a href="#">войти</a></p>
-     </div>
-    {% endif %}
 
     <form action="/account/" method="post">
         {% csrf_token %}
@@ -46,7 +41,6 @@
             <div style="clear: both"></div>
         </div>
 
-
         <div class="form_group" style="width: 100%; margin-top: 10px">
             <h3>Сохранить изменения</h3>
 
@@ -59,7 +53,11 @@
         <div style="clear: both"></div>
 
     </form>
-
+    {% else %}
+     <div class="user_information">
+        <p>Вы не вошли в систему - <a href="#" class="login_show">войти</a></p>
+     </div>
+    {% endif %}
 
 
 </div>
