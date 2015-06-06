@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load catalog_menu %}
+
+
+{% block content %}
+<div id="left-block">
+    {% catalog_menu %}
+</div>
+<div id="center-block" class="orders">
+    <h1 class="title_h1">Оформление заказа</h1>
+
+    {% if user_active %}
+    <div class="user_information">
+        <img src="/static/images/user91.png" alt="">
+        <p>Вы авторизованы как <a href="/account/">{{ user.last_name }} {{ user.first_name }}</a>. Пожалуйста, подтвердите или обновите вашу контактную информацию. Изменения будут автоматически сохранены в вашем профиле.</p>
+    </div>
+    {% else %}
+     <div class="user_information">
+        <p>У меня уже есть аккаунт на FamilyTrend - <a href="#">войти</a></p>
+     </div>
+    {% endif %}
+
+    <form action="/account/" method="post">
+        {% csrf_token %}
+
+        <div class="form_group" style="width: 664px; border-right: 1px solid #eee;">
+            {% if user_inform_error %}
+            <span style="display:block; margin: 10px 0; color:#ff0000;">Заполните обязательные поля</span>
+            {% endif %}
+            <div class="form_group_item {{ first_name_error }}">
+                <label for="id_first_name">Ваше имя * </label>
+                <input type="text" name="first_name" value="{{ form.first_name.value }}" id="id_first_name"/>
+            </div>
+            <div class="form_group_item {{ last_name_error }}">
+                <label for="id_last_name">Фамилия * </label>
+                <input type="text" name="last_name" value="{{ form.last_name.value }}" id="id_last_name"/>
+            </div>
+            <div class="form_group_item {{ email_error }}">
+                <label for="id_email">Email * </label>
+                <input type="text" name="email" value="{{ form.email.value }}" id="id_email"/>
+            </div>
+            <div class="form_group_item {{ phone_error }}">
+                <label for="id_phone">Телефон * </label>
+                <input type="text" name="phone" value="{{ form.phone.value }}" id="id_phone"/>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+
+
+        <div class="form_group" style="width: 100%; margin-top: 10px">
+            <h3>Сохранить изменения</h3>
+
+                <div class="time-item">
+                    <input type="submit" value="Сохранть" class="yellow_button"/>
+                </div>
+            </div>
+        </div>
+
+        <div style="clear: both"></div>
+
+    </form>
+
+
+
+</div>
+{% endblock %}

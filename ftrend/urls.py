@@ -11,5 +11,6 @@ urlpatterns = patterns('',
     url(r'^cart/', include('cart.urls')),
     url(r'^orders/', include('orders.urls')),
     url(r'^sale/', include('sale.urls')),
+    url(r'^account/', include('account.urls')),
     url(r'^(?P<url>[\-\w]+)', 'pages.views.page_view'),
 )

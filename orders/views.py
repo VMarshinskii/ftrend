@@ -60,7 +60,7 @@ def create_order(request):
 
         if request.POST.get('delivery', "") == "":
             args['delivery_error'] = "выберите тип доставки"
-            args['email_error'] = "error_field"
+            args['delivery_error'] = "error_field"
             is_valid = False
 
         if 'register' in request.POST:

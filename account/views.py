@@ -46,3 +46,7 @@ def registration(request):
             args['form'] = form
             args.update(errors)
     return render_to_response("registration.html", args)
+
+
+def account_view(request):
+    return render_to_response("my_account.html", {'user': request.user})
