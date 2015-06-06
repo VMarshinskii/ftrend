@@ -1769,3 +1769,9 @@ p.catalog_price_stable {
 .yellow_button.account {
     margin: 10px 216px 10px 0;
 }
+
+
+.table-order a {
+    color: #f6b436;
+    text-decoration: underline;
+}
