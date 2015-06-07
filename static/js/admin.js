@@ -167,7 +167,7 @@ $(document).ready(function(){
     if($("div").is(".field-colors"))
     {
         alert("ok");
-        $(this).find(".controls").html('');
+        $(".field-colors").find(".controls").html('');
 
          $(document).on('click', "#field-sizes .item", function(){
              alert($(this).val());
