@@ -164,19 +164,23 @@ $(document).ready(function(){
     });
 
 
-    if($("div").is(".field-colors"))
-    {
+    if($("div").is(".field-colors")) {
         alert("ok");
         $(".field-colors").find(".controls").html('');
 
-         $(document).on('click', ".field-sizes .item", function(){
+        $(document).on('click', ".field-sizes .item", function () {
 
-             $(".field-colors").find(".controls").html('<div class="related-widget-wrapper">select</div>');
+            $(".field-colors").find(".controls").html('<div class="related-widget-wrapper" id="ajax_size_colors"></div>');
+            $("#ajax_size_colors").load("/admin/size_colors/");
 
-             var id_size_colors = $("#id_size_colors").val();
-             var item_active = $(this).attr('data-value');
-             $("#id_size_colors").val(id_size_colors + ";" + item_active);
-         });
+            $("#ajax_size_colors").selectize({
+                delimiter: ','
+            });
+
+            var id_size_colors = $("#id_size_colors").val();
+            var item_active = $(this).attr('data-value');
+            $("#id_size_colors").val(id_size_colors + ";" + item_active);
+        });
 
     }
 
