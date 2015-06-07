@@ -32,7 +32,7 @@ def product_view(request, id=-1):
                 mass_color_id = cl[1].split(",")
                 for color_id in mass_color_id:
                     try:
-                        size_colors[cl[0]].append(Color.objects.get(id=color_id))
+                        size_colors[cl[0]].append(Color.objects.get(id=int(color_id)))
                     except Color.DoesNotExist:
                         pass
 
