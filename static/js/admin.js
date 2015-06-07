@@ -161,9 +161,18 @@ $(document).ready(function(){
             $(".adminBoxImgHead").first().attr('id', 'hidden_image_active');
         }
 
-    })
+    });
 
 
+    if($("div").is("#field-colors"))
+    {
+        $(this).children(".controls").html('');
+
+         $(document).on('click', "#field-sizes .item", function(){
+             alert($(this).val());
+         });
+
+    }
 
 
 });
