@@ -183,7 +183,7 @@ $(document).ready(function(){
             }
             else
             {
-                $(this).attr('data-colors', '');
+                $(this).attr('data-colors', '-1');
             }
         });
 
