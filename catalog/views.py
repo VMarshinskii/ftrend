@@ -31,10 +31,11 @@ def product_view(request, id=-1):
                 size_colors[cl[0]] = []
                 mass_color_id = cl[1].split(",")
                 for color_id in mass_color_id:
-                    try:
-                        size_colors[cl[0]].append(Color.objects.get(id=int(color_id)))
-                    except Color.DoesNotExist:
-                        pass
+                    if color_id != '':
+                        try:
+                            size_colors[cl[0]].append(Color.objects.get(id=int(color_id)))
+                        except Color.DoesNotExist:
+                            pass
 
         return render_to_response("product.html", {
             'user': request.user,
