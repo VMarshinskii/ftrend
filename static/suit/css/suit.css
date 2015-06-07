@@ -598,4 +598,6 @@ a.append-icon i{margin-left:5px}
 
 #size_select {
     background: #f6b436;
+    color: #FFFFFF;
+    border: 1px solid #bf8e2b;
 }
