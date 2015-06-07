@@ -204,7 +204,7 @@ $(document).ready(function(){
                     delimiter: ',',
                     onItemAdd: function(value, $item){
                         var select_size_colors = SelectSize.attr('data-colors');
-                        if (select_size_colors === undefined) {
+                        if (select_size_colors == -1) {
                             SelectSize.attr('data-colors',',' + value);
                         } else {
                             SelectSize.attr('data-colors', select_size_colors + ',' + value);
