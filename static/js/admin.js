@@ -171,10 +171,10 @@ $(document).ready(function(){
         $(document).on('click', ".field-sizes .item", function () {
 
             $(".field-colors").find(".controls").html('<div class="related-widget-wrapper" id="ajax_size_colors"></div>');
-            $("#ajax_size_colors").load("/admin/size_colors/sada/");
-
-            $("#id_ajax_size_colors").selectize({
-                delimiter: ','
+            $("#ajax_size_colors").load("/admin/size_colors/sada/", function(){
+                $("#id_ajax_size_colors").selectize({
+                    delimiter: ','
+                });
             });
 
             var id_size_colors = $("#id_size_colors").val();
