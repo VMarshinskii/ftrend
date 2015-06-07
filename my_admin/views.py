@@ -15,7 +15,6 @@ def video_upload(request):
 def size_colors(request, data):
     if request.user.is_authenticated():
         selected_colors = data.split(",")
-        print selected_colors
         colors = []
         for color in Color.objects.all():
             if str(color.id) in selected_colors:

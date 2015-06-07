@@ -28,7 +28,9 @@ def product_view(request, id=-1):
         for st_color in product.size_colors.split(";"):
             cl = st_color.split(":")
             size_colors[cl[0]] = []
-            for color_id in cl[1].split(","):
+            mass_color_id = cl[1].split(",")
+            print mass_color_id
+            for color_id in mass_color_id:
                 try:
                     size_colors[cl[0]].append(Color.objects.get(id=color_id))
                 except Color.DoesNotExist:
