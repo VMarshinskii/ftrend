@@ -26,15 +26,15 @@ def product_view(request, id=-1):
 
         size_colors = {}
         for st_color in product.size_colors.split(";"):
-            cl = st_color.split(":")
-            size_colors[cl[0]] = []
-            mass_color_id = cl[1].split(",")
-            print mass_color_id
-            for color_id in mass_color_id:
-                try:
-                    size_colors[cl[0]].append(Color.objects.get(id=color_id))
-                except Color.DoesNotExist:
-                    pass
+            if st_color != '':
+                cl = st_color.split(":")
+                size_colors[cl[0]] = []
+                mass_color_id = cl[1].split(",")
+                for color_id in mass_color_id:
+                    try:
+                        size_colors[cl[0]].append(Color.objects.get(id=color_id))
+                    except Color.DoesNotExist:
+                        pass
 
         return render_to_response("product.html", {
             'user': request.user,
