@@ -175,13 +175,17 @@ $(document).ready(function(){
             var SelectSize = $(this);
 
             $(".field-colors").find(".controls").html('<div class="related-widget-wrapper" id="ajax_size_colors"></div>');
-            $("#ajax_size_colors").load("/admin/size_colors/sada/", function(){
+            $("#ajax_size_colors").load("/admin/size_colors/" + SelectSize.attr('data-colors') + "/", function(){
                 $("#id_ajax_size_colors").selectize({
                     delimiter: ',',
                     onItemAdd: function(value, $item){
                         alert(value + "   " + $item);
                         var select_size_colors = SelectSize.attr('data-colors');
-                        SelectSize.attr('data-colors', select_size_colors + ',' + value);
+                        if (select_size_colors === undefined) {
+                            SelectSize.attr('data-colors',',' + value);
+                        } else {
+                            SelectSize.attr('data-colors', select_size_colors + ',' + value);
+                        }
                     }
                 });
             });
