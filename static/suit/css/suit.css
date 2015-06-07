@@ -601,3 +601,7 @@ a.append-icon i{margin-left:5px}
     color: #FFFFFF;
     border: 1px solid #bf8e2b;
 }
+
+.field-size_colors {
+    display: none;
+}

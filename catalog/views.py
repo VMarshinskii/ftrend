@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response, redirect
 from django.http import Http404, HttpResponse
 from django.middleware.csrf import get_token
 from django.template import RequestContext
-from catalog.models import Product, Category, Age, Brand
+from catalog.models import Product, Category, Age, Brand, Color
 from django.utils.encoding import smart_str
 from catalog.admin import sort_list
 
@@ -24,6 +24,16 @@ def product_view(request, id=-1):
             if img != "":
                 images.append(img)
 
+        size_colors = {}
+        for st_color in product.size_colors.split(";"):
+            cl = st_color.split(":")
+            size_colors[cl[0]] = []
+            for color_id in cl[1].split(","):
+                try:
+                    size_colors[cl[0]].append(Color.objects.get(id=color_id))
+                except Color.DoesNotExist:
+                    pass
+
         return render_to_response("product.html", {
             'user': request.user,
             'product': product,
@@ -32,6 +42,7 @@ def product_view(request, id=-1):
             'colors': product.colors.all(),
             'recommended': product.similar.all(),
             'ages': product.age.all(),
+            'size_colors': size_colors,
         })
     except Product.DoesNotExist:
         raise Http404

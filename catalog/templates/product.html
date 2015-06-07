@@ -65,11 +65,13 @@
         <div class="cart-info-block">
             <div class="l-c-i-block">
                 <label for="select1">Цвет:</label>
-                <select id="select1" class="selectpicker" name="colors[]">
-                    {% for color in colors %}
+                {% for key,sizes_cl in size_colors.items %}
+                <select id="select1" class="selectpicker" name="colors[]" data-size="{{ key }}">
+                    {% for color in sizes_cl %}
                     <option>{{ color }}</option>
                     {% endfor %}
                 </select>
+                {% endfor %}
                 <label for="select2">Количество:</label>
                 <input type="text" name="count" id="id_count" value="1"/>
             </div>
