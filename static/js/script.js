@@ -221,8 +221,15 @@ $(document).ready(function(){
         var val = $(this).html();
         $(".select_color_active").css('display', 'none');
         $(".select_color_active").removeClass("select_color_active");
-        $(".select_color_item[data-size:" + val +"]").addClass("select_color_active");
-        $(".select_color_active").css('display','block');
+
+        $(".select_color_item").each(function(){
+            if ($(this).attr('data-size') == val)
+            {
+                $(".select_color_item").addClass("select_color_active");
+                $(".select_color_active").css('display', 'inline');
+            }
+        });
+
     });
 
 

@@ -71,7 +71,7 @@
                 <label for="select1">Цвет:</label>
                 {% for key,sizes_cl in size_colors.items %}
                     {% if forloop.counter == 1 %}
-                        <div class="select_color_item select_color_active" data-size="{{ key }}">
+                        <div class="select_color_item select_color_active" data-size="{{ key }}" style="display: inline">
                     {% else %}
                         <div class="select_color_item" data-size="{{ key }}" style="display: none">
                     {% endif %}
