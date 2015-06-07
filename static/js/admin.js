@@ -173,7 +173,7 @@ $(document).ready(function(){
             $(".field-colors").find(".controls").html('<div class="related-widget-wrapper" id="ajax_size_colors"></div>');
             $("#ajax_size_colors").load("/admin/size_colors/sada/");
 
-            $("#ajax_size_colors").selectize({
+            $("#id_ajax_size_colors").selectize({
                 delimiter: ','
             });
 
