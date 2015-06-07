@@ -164,7 +164,7 @@ $(document).ready(function(){
     });
 
 
-    if($("div").is("#field-colors"))
+    if($("div").is(".field-colors"))
     {
         $(this).children(".controls").html('');
 
