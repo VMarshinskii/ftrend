@@ -171,7 +171,7 @@ $(document).ready(function(){
 
          $(document).on('click', ".field-sizes .item", function(){
 
-             $(".field-colors").find(".related-widget-wrapper").html("select");
+             $(".field-colors").find(".controls").html('<div class="related-widget-wrapper">select</div>');
 
              var id_size_colors = $("#id_size_colors").val();
              var item_active = $(this).attr('data-value');
