@@ -130,7 +130,7 @@ class Product(models.Model):
     sale_value = models.IntegerField("Скидка, %", default=0)
     sale_status = models.BooleanField("Сделать скидку", default=False)
     sizes = models.CharField("Размеры", max_length=200, blank=True)
-    # size_colors = models.TextField("Цвета размеров", blank=True)
+    size_colors = models.TextField("Цвета размеров", blank=True)
     colors = models.ManyToManyField(Color, verbose_name="Цвета", blank=True)
     age = models.ManyToManyField(Age, verbose_name="Возраст", blank=True)
     brand = models.ForeignKey(Brand, verbose_name="Бренд", blank=True, null=True, on_delete=models.SET_NULL)
