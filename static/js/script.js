@@ -217,4 +217,13 @@ $(document).ready(function(){
     });
 
 
+    $(".cart-radiobt label").click(function(){
+        var val = $(this).html();
+        $(".select_color_active").css('display', 'none');
+        $(".select_color_active").removeClass("select_color_active");
+        $(".select_color_item[data-size:" + val +"]").addClass("select_color_active");
+        $(".select_color_active").css('display','block');
+    });
+
+
 });

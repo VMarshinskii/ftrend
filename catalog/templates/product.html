@@ -56,8 +56,12 @@
             <div class="cart-radiobt">
                 <form>
                     {% for size in sizes %}
-                    <input type="radio" id="test-check{{ forloop.counter }}" name="size" value="{{ size }}"/>
-                    <label for="test-check{{ forloop.counter }}">{{ size }}</label>
+                        {% if forloop.counter == 1 %}
+                            <input type="radio" id="test-check{{ forloop.counter }}" name="size" value="{{ size }}" checked/>
+                        {% else %}
+                            <input type="radio" id="test-check{{ forloop.counter }}" name="size" value="{{ size }}"/>
+                        {% endif %}
+                        <label for="test-check{{ forloop.counter }}">{{ size }}</label>
                     {% endfor %}
                 </form>
             </div>
@@ -66,11 +70,17 @@
             <div class="l-c-i-block">
                 <label for="select1">Цвет:</label>
                 {% for key,sizes_cl in size_colors.items %}
-                <select id="select1" class="selectpicker" name="colors[]" data-size="{{ key }}">
-                    {% for color in sizes_cl %}
-                    <option>{{ color }}</option>
-                    {% endfor %}
-                </select>
+                    {% if forloop.counter == 1 %}
+                        <div class="select_color_item select_color_active" data-size="{{ key }}">
+                    {% else %}
+                        <div class="select_color_item" data-size="{{ key }}" style="display: none">
+                    {% endif %}
+                            <select id="select1" class="selectpicker" name="colors[]">
+                                {% for color in sizes_cl %}
+                                <option>{{ color }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
                 {% endfor %}
                 <label for="select2">Количество:</label>
                 <input type="text" name="count" id="id_count" value="1"/>
