@@ -172,12 +172,16 @@ $(document).ready(function(){
             $("#size_select").removeAttr('id');
             $(this).attr('id', 'size_select');
 
+            var SelectSize = $(this);
+
             $(".field-colors").find(".controls").html('<div class="related-widget-wrapper" id="ajax_size_colors"></div>');
             $("#ajax_size_colors").load("/admin/size_colors/sada/", function(){
                 $("#id_ajax_size_colors").selectize({
                     delimiter: ',',
                     onItemAdd: function(value, $item){
-                        alert(value + "   " + $item)
+                        alert(value + "   " + $item);
+                        var select_size_colors = SelectSize.attr('data-colors');
+                        SelectSize.attr('data-colors', select_size_colors + ',' + value);
                     }
                 });
             });
