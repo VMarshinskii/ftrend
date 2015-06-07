@@ -595,3 +595,7 @@ a.append-icon i{margin-left:5px}
     height: 45px;
     overflow: hidden;
 }
+
+#size_select {
+    background: #f6b436;
+}
