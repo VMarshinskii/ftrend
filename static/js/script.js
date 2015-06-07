@@ -219,7 +219,7 @@ $(document).ready(function(){
 
     $(".cart-radiobt label").click(function(){
         var val = $(this).html();
-        var select_color_active = $(".select_color_active")
+        var select_color_active = $(".select_color_active");
         select_color_active.css('display', 'none');
         select_color_active.removeClass("select_color_active");
 
@@ -227,7 +227,7 @@ $(document).ready(function(){
             if ($(this).attr('data-size') == val)
             {
                 $(this).addClass("select_color_active");
-                $(".select_color_active").css('display', 'inline');
+                $(".select_color_active").css('display', 'inline-block');
             }
         });
 
