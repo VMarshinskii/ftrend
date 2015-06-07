@@ -169,8 +169,13 @@ $(document).ready(function(){
         alert("ok");
         $(".field-colors").find(".controls").html('');
 
-         $(document).on('click', "#field-sizes .item", function(){
-             alert($(this).val());
+         $(document).on('click', ".field-sizes .item", function(){
+
+             $(".field-colors").find(".related-widget-wrapper").html("select");
+
+             var id_size_colors = $("#id_size_colors").val();
+             var item_active = $(this).attr('data-value');
+             $("#id_size_colors").val(id_size_colors + ";" + item_active);
          });
 
     }
