@@ -174,20 +174,28 @@ $(document).ready(function(){
 
             var SelectSize = $(this);
 
-            $(".field-colors").find(".controls").html('<div class="related-widget-wrapper" id="ajax_size_colors"></div>');
+            var Controls = $(".field-colors").find(".controls");
+            Controls.hide(100);
+            Controls.html('<div class="related-widget-wrapper" id="ajax_size_colors"></div>');
             $("#ajax_size_colors").load("/admin/size_colors/" + SelectSize.attr('data-colors') + "/", function(){
                 $("#id_ajax_size_colors").selectize({
                     delimiter: ',',
                     onItemAdd: function(value, $item){
-                        alert(value + "   " + $item);
                         var select_size_colors = SelectSize.attr('data-colors');
                         if (select_size_colors === undefined) {
                             SelectSize.attr('data-colors',',' + value);
                         } else {
                             SelectSize.attr('data-colors', select_size_colors + ',' + value);
                         }
+
+                        var id_size_colors = $("#id_size_colors").val('');
+                        $(".field-sizes .item").each(function(){
+                             var id_size_colors = $("#id_size_colors").val();
+                            $("#id_size_colors").val(id_size_colors + ";" + $(this).attr('data-value') + ":" + $(this).attr('data-colors'));
+                        });
                     }
                 });
+                Controls.show(200);
             });
 
             var id_size_colors = $("#id_size_colors").val();
