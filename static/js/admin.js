@@ -165,10 +165,16 @@ $(document).ready(function(){
 
 
     if($("div").is(".field-colors")) {
-        alert("ok");
+
         $(".field-colors").find(".controls").html('');
 
         $(document).on('click', ".field-sizes .item", function () {
+
+            var size_select = $("#size_select");
+
+            size_select.removeAttr('id');
+            $(this).attr('id', 'size_select');
+            size_select.css('background', '#f6b436');
 
             $(".field-colors").find(".controls").html('<div class="related-widget-wrapper" id="ajax_size_colors"></div>');
             $("#ajax_size_colors").load("/admin/size_colors/sada/", function(){
@@ -178,7 +184,7 @@ $(document).ready(function(){
             });
 
             var id_size_colors = $("#id_size_colors").val();
-            var item_active = $(this).attr('data-value');
+            var item_active = size_select.attr('data-value');
             $("#id_size_colors").val(id_size_colors + ";" + item_active);
         });
 
