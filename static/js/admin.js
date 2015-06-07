@@ -166,6 +166,7 @@ $(document).ready(function(){
 
     if($("div").is(".field-colors"))
     {
+        alert("ok");
         $(this).children(".controls").html('');
 
          $(document).on('click', "#field-sizes .item", function(){
