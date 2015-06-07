@@ -166,6 +166,28 @@ $(document).ready(function(){
 
     if($("div").is(".field-colors")) {
 
+        var id_size_colors = $("#id_size_colors").val().split(";");
+        var sizes = {};
+
+        for (var j = 0; j < id_size_colors.length; j++)
+        {
+            var st = id_size_colors[j].split(":");
+            sizes[st[0]] = st[1];
+        }
+
+        $(".field-sizes .item").each(function(){
+            var key = $(this).attr('data-value');
+            if (key in sizes)
+            {
+                $(this).attr('data-colors', sizes[key]);
+            }
+            else
+            {
+                $(this).attr('data-colors', '');
+            }
+        });
+
+
         $(".field-colors").find(".controls").html('');
 
         $(document).on('click', ".field-sizes .item", function () {
@@ -188,7 +210,7 @@ $(document).ready(function(){
                             SelectSize.attr('data-colors', select_size_colors + ',' + value);
                         }
 
-                        var id_size_colors = $("#id_size_colors").val('');
+                        $("#id_size_colors").val('');
                         $(".field-sizes .item").each(function(){
                              var id_size_colors = $("#id_size_colors").val();
                             $("#id_size_colors").val(id_size_colors + ";" + $(this).attr('data-value') + ":" + $(this).attr('data-colors'));
@@ -197,10 +219,6 @@ $(document).ready(function(){
                 });
                 Controls.show(200);
             });
-
-            var id_size_colors = $("#id_size_colors").val();
-            var item_active = $(this).attr('data-value');
-            $("#id_size_colors").val(id_size_colors + ";" + item_active);
         });
 
     }
