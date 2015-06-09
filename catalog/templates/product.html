@@ -120,6 +120,13 @@
                     </tr>
                     {% endif %}
 
+                    {% if product.brand %}
+                    <tr>
+                        <td>Бренд:</td>
+                        <td>{{ product.brand }}</td>
+                    </tr>
+                    {% endif %}
+
                     {% if product.country %}
                     <tr>
                         <td>Страна производитель:</td>

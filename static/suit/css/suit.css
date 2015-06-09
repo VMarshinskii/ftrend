@@ -603,5 +603,5 @@ a.append-icon i{margin-left:5px}
 }
 
 .field-size_colors {
-    display: none;
+    display: none !important;
 }

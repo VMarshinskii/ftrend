@@ -48,6 +48,11 @@ $(document).ready(function(){
         });
     }
 
+    if($("select").is("#id_category"))
+    {
+        $("#id_category").load("/admin/tree_categories/" + $("#id_category").val());
+    }
+
     if($("select").is("#id_collection"))
     {
         $('#id_collection').selectize({

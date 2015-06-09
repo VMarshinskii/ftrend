@@ -1184,6 +1184,7 @@ footer .last-menu:before {
 #cart-right .cart-about {
     padding: 10px 0;
     border-bottom: 1px solid #c2c2c2;
+    color: #222;
 }
 #cart-right .cart-about .cart-about-header {
     font-size: 18px;

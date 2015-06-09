@@ -1,6 +1,6 @@
-from django.shortcuts import render_to_response, HttpResponse
+from django.shortcuts import render_to_response, HttpResponse, Http404
 from ftrend.additions import upload_file
-from catalog.models import Color
+from catalog.models import Color, Category
 
 
 def video_upload(request):
@@ -22,3 +22,14 @@ def size_colors(request, data):
             colors.append(color)
         return render_to_response("size_colors.html", {'colors': colors})
     return HttpResponse("False")
+
+
+def tree_categories(request):
+    if request.user.is_authenticated() and request.GET:
+        select = request.GET.get('id', -1)
+        categories = Category.objects.all()
+        return render_to_response("tree_categories.html", {
+            'select': select,
+            'categories': categories,
+        })
+    raise Http404
