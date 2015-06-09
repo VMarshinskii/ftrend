@@ -24,12 +24,11 @@ def size_colors(request, data):
     return HttpResponse("False")
 
 
-def tree_categories(request):
-    if request.user.is_authenticated() and request.GET:
-        select = request.GET.get('id', -1)
+def tree_categories(request, id=-1):
+    if request.user.is_authenticated():
         categories = Category.objects.all()
         return render_to_response("tree_categories.html", {
-            'select': select,
+            'select': id,
             'categories': categories,
         })
     raise Http404
