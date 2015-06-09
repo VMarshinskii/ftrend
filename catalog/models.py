@@ -161,5 +161,5 @@ class Product(models.Model):
     def get_prew(self):
         return '<img src="/uploads/' + str(self.image) + '" style="height:40px"/>'
 
-    get_prew.allow_tags = True
+    # get_prew.allow_tags = True
     get_prew.short_description = 'Изображение'
