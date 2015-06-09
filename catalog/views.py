@@ -35,10 +35,10 @@ def product_view(request, id=-1):
                 for color_id in mass_color_id:
                     if color_id != '':
                         try:
-                            cl = Color.objects.get(id=int(color_id))
+                            col = Color.objects.get(id=int(color_id))
                             if cl[0] == sizes[0]:
-                                cl.active = True
-                            size_colors[cl[0]].append(cl)
+                                col.active = True
+                            size_colors[cl[0]].append(col)
                         except Color.DoesNotExist:
                             pass
 
