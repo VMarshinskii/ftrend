@@ -231,6 +231,9 @@ $(document).ready(function(){
             }
         });
 
+        $(".jq-selectbox__dropdown").css('width', '140px');
+        $(".jq-selectbox__dropdown ul").css('width', '140px');
+
     });
 
 
