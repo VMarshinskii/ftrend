@@ -83,7 +83,7 @@
                 <li>
                     <input name="delivery" id="id_delivery_{{ delivery_item.id }}" type="radio" value="{{ delivery_item.id }}" data-sum="{{ delivery_item.price }}"/>
                     <label for="id_delivery_{{ delivery_item.id }}">{{ delivery_item.title }} - <span>{{ delivery_item.price }} руб.</span></label>
-                    <p>Полное описание самовывоза</p>
+                    <p>{{ delivery_item.description }}</p>
                 </li>
                 {% endfor %}
             </ul>
