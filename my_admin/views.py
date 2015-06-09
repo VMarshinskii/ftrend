@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render_to_response, HttpResponse, Http404
+from django.utils.encoding import smart_str
 from ftrend.additions import upload_file
 from catalog.models import Color, Category
 
@@ -24,11 +26,28 @@ def size_colors(request, data):
     return HttpResponse("False")
 
 
+def sort_list():
+    mass_object = []
+    roots = Category.objects.filter(parent=None)
+
+    def rec_list(obj):
+        obj.title = smart_str("— "*obj.step) + smart_str(obj.title)
+        mass_object.append(obj)
+        children = Category.objects.filter(parent=obj)
+
+        for child in children:
+            rec_list(child)
+
+    for root in roots:
+        rec_list(root)
+
+    return mass_object
+
+
 def tree_categories(request, id=-1):
     if request.user.is_authenticated():
-        categories = Category.objects.all()
         return render_to_response("tree_categories.html", {
             'select': id,
-            'categories': categories,
+            'categories': sort_list(),
         })
     raise Http404
