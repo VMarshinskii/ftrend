@@ -45,7 +45,7 @@ def select_res(categoryes):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'get_prew', 'name', 'code', 'category', 'brand')
+    list_display = ('id', 'name', 'code', 'category', 'brand')
     search_fields = ['name', 'category']
 
 
