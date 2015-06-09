@@ -36,7 +36,8 @@ def product_view(request, id=-1):
                     if color_id != '':
                         try:
                             col = Color.objects.get(id=int(color_id))
-                            if cl[0] == sizes[0]:
+                            if str(cl[0]) == str(sizes[0]):
+                                print cl[0] + " : " + sizes[0]
                                 col.active = True
                             size_colors[cl[0]].append(col)
                         except Color.DoesNotExist:
