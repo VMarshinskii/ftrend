@@ -160,7 +160,7 @@ class Product(models.Model):
 
     def get_prew(self):
         image = u'<img src="/uploads/' + str(self.image) + u'" style="height:40px"/>'
-        return image.encode('utf-8')
+        return self.image.encode('utf-8')
 
     # get_prew.allow_tags = True
     get_prew.short_description = 'Изображение'
