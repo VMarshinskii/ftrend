@@ -159,7 +159,7 @@ class Product(models.Model):
         super(Product, self).save(*args, **kwargs)
 
     def get_prew(self):
-        return '<img src="/uploads/' + str(self.image) + '" style="height:40px"/>'
+        return '<img src="/uploads/' + str(self.image).encode('utf-8') + '" style="height:40px"/>'
 
     # get_prew.allow_tags = True
     get_prew.short_description = 'Изображение'
