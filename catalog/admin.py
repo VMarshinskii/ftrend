@@ -42,7 +42,13 @@ def select_res(categoryes):
         str_res += smart_str(category.title) + ":" + smart_str(category.id) + ";"
     return str_res
 
-admin.site.register(Product)
+
+
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'code', 'category', 'brand')
+
+
+admin.site.register(Product, ProductAdmin)
 admin.site.register(Color)
 admin.site.register(Age)
 admin.site.register(Brand)

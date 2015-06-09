@@ -1599,6 +1599,7 @@ label[for=select2] {
     display: block;
     width: 307px;
     float: left;
+    height: 56px;
     margin: 0 10px 10px 10px;
 }
 .delivery_option label {
