@@ -47,7 +47,7 @@ def sort_list():
 def tree_categories(request, id=-1):
     if request.user.is_authenticated():
         return render_to_response("tree_categories.html", {
-            'select': id,
+            'select': str(id),
             'categories': sort_list(),
         })
     raise Http404
