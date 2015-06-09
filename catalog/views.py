@@ -24,6 +24,8 @@ def product_view(request, id=-1):
             if img != "":
                 images.append(img)
 
+        sizes = product.sizes.split(",")
+
         size_colors = {}
         for st_color in product.size_colors.split(";"):
             if st_color != '':
@@ -33,7 +35,10 @@ def product_view(request, id=-1):
                 for color_id in mass_color_id:
                     if color_id != '':
                         try:
-                            size_colors[cl[0]].append(Color.objects.get(id=int(color_id)))
+                            cl = Color.objects.get(id=int(color_id))
+                            if cl[0] == sizes[0]:
+                                cl.active = True
+                            size_colors[cl[0]].append(cl)
                         except Color.DoesNotExist:
                             pass
 
@@ -41,7 +46,7 @@ def product_view(request, id=-1):
             'user': request.user,
             'product': product,
             'images': images,
-            'sizes': product.sizes.split(","),
+            'sizes': sizes,
             'colors': product.colors.all(),
             'recommended': product.similar.all(),
             'ages': product.age.all(),

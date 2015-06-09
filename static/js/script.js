@@ -140,7 +140,7 @@ $(document).ready(function(){
                 product_id: $(this).attr("data-id"),
                 size: $('input[name=size]:checked').val(),
                 count: $("#id_count").val(),
-                color: $(".jq-selectbox__select-text").html()
+                color: $(".select_color_active .jq-selectbox__select-text").html()
             },
              function(msg){
                  alert(msg);
@@ -231,8 +231,8 @@ $(document).ready(function(){
             }
         });
 
-        $(".jq-selectbox__dropdown").css('width', '140px');
-        $(".jq-selectbox__dropdown ul").css('width', '140px');
+        $(".jq-selectbox__dropdown").css('width', '152px');
+        $(".jq-selectbox__dropdown ul").css('width', '152px');
 
     });
 

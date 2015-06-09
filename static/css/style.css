@@ -1323,18 +1323,18 @@ select option {
 label[for=select1], label[for=select2] {
     font-size: 12px;
     color: #737270;
-    width: 60px;
+    width: 36px;
     display: inline-block;
 }
 label[for=select2] {
-    width: 90px;
+    width: 75px;
     margin-left: 30px;
 }
 #select2-styler .jq-selectbox__select {
     width: 10px;
 }
 #select1-styler .jq-selectbox__select {
-    width: 65px;
+    width: 125px;
 }
 .r-c-i-block .time-item {
     position: absolute;
