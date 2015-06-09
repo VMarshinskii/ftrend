@@ -157,3 +157,9 @@ class Product(models.Model):
         if self.sale_status is True:
             self.price_sale = self.price / 100 * (100 - self.sale_value)
         super(Product, self).save(*args, **kwargs)
+
+    def get_prew(self):
+        return '<img src="/' + str(self.images) + '" style="height:40px"/>'
+
+    get_prew.allow_tags = True
+    get_prew.short_description = 'Изображение'
