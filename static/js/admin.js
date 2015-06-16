@@ -51,6 +51,12 @@ $(document).ready(function(){
     if($("select").is("#id_category"))
     {
         var val = $("#id_category").val();
+
+        if(val == "")
+        {
+            val = -1;
+        }
+
         $("#id_category").load("/admin/tree_categories/" + val + "/", function(){
             $("#id_category").val(val);
         });
