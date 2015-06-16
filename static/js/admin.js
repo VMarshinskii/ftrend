@@ -54,7 +54,7 @@ $(document).ready(function(){
 
         if(val == "")
         {
-            val = -1;
+            val = 0;
         }
 
         $("#id_category").load("/admin/tree_categories/" + val + "/", function(){
