@@ -104,9 +104,9 @@ $(document).ready(function(){
     $("#input-price").ionRangeSlider({
         type: "double",
         min: 0,
-        max: $("#input-price").attr('data-max'),
+        max: $(".sort-price").attr('data-max'),
         from: 0,
-        to: $("#input-price").attr('data-max')
+        to: $(".sort-price").attr('data-max')
     });
     $("#input-size").ionRangeSlider({
         type: "double",
