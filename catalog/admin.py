@@ -46,7 +46,7 @@ def select_res(categoryes):
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'code', 'category', 'brand')
-    search_fields = ['name', 'category']
+    search_fields = ['name']
 
 
 admin.site.register(Product, ProductAdmin)
