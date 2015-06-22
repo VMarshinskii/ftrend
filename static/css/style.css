@@ -810,7 +810,7 @@ footer .last-menu:before {
     vertical-align: top;
 }
 #content-wrapper #center-block .category-sort {
-    height: 108px;
+    /*height: 108px;*/
     border: 1px solid #c2c2c2;
     background: #f7f7f7;
     padding: 5px;
@@ -898,6 +898,7 @@ footer .last-menu:before {
     margin-right: 30px;
     display: inline-block;
     height: 30px;
+    width: 122px;
 }
 .category-sort input[type=checkbox] + label:before {
     content: " ";
