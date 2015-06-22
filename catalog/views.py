@@ -61,7 +61,7 @@ def category_view(request, url="none"):
         categ = Category.objects.get(url=url)
         products = products_filter({
             'products': categ.get_all_product(),
-            'start_price': 200,
+            'start_price': 300,
             'stop_price': 600,
             'collections': [2, 6, 1]
         })
