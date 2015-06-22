@@ -95,8 +95,8 @@ def category_ajax_view(request):
             print request.GET
             products = products_filter({
                 'products': categ.get_all_product(),
-                'start_price': int(request.GET.get('start_price', '0')),
-                'stop_price': int(request.GET.get('stop_price', '0')),
+                'start_price': 12,
+                'stop_price': 123,
                 'collections': request.GET.get('collections', '').split(";"),
             })
         except Category.DoesNotExist:
