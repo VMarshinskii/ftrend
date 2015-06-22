@@ -2,6 +2,7 @@
 
 def products_filter(args):
     products_new = []
+    print args
     start_price = args['start_price']
     stop_price = args['stop_price']
     collections = args['collections']
