@@ -92,18 +92,15 @@ def category_ajax_view(request):
     if request.GET and 'filter' in request.GET:
         try:
             categ = Category.objects.get(id=request.GET.get('categ', ''))
-            products = categ.get_all_product()
             start_price = int(request.GET.get('start_price', '0'))
             stop_price = int(request.GET.get('stop_price', '0'))
             collections = request.GET.get('collections', '').split(";")
 
-            products_new = []
-
-            for product in products:
+            for product in categ.get_all_product():
                 if start_price <= product.price <= stop_price:
                     for pr_coll in product.collection.all():
                         if pr_coll.id in collections:
-                            products_new.append(product)
+                            products.append(product)
 
         except Category.DoesNotExist:
             pass
