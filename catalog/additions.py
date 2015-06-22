@@ -9,9 +9,9 @@ def products_filter(args):
     for product in args['products']:
         if start_price <= product.price <= stop_price:
             print product.name
-            for pr_coll in product.collection.all().values_list('id'):
-                print pr_coll
-                if pr_coll in collections:
+            for pr_coll in product.collection.all():
+                print pr_coll.id
+                if pr_coll.id in collections:
                     products_new.append(product)
 
     return products_new
