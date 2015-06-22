@@ -62,6 +62,20 @@ $(document).ready(function(){
         });
     }
 
+    if($("select").is("#id_parent"))
+    {
+        var val = $("#id_parent").val();
+
+        if(val == "")
+        {
+            val = 0;
+        }
+
+        $("#id_parent").load("/admin/tree_categories/" + val + "/", function(){
+            $("#id_parent").val(val);
+        });
+    }
+
     if($("select").is("#id_collection"))
     {
         $('#id_collection').selectize({

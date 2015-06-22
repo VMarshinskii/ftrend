@@ -511,11 +511,12 @@ a.catalog_item_link {
     margin-right: 0;
 }
 #content-wrapper .wrapper-rekl {
+    display: block;
     width: 290px;
     height: 443px;
     padding: 3px;
     border: 1px solid #c2c2c2;
-    display: inline-block;
+    /*display: inline-block;*/
     margin-top: -30px;
     vertical-align: top;
 }
@@ -1656,8 +1657,8 @@ label[for=select2] {
     margin-top: 17px;
     margin-right: 17px;
     display: inline-block;
-    width: 613px;
-    height: 380px;
+    width: 930px;
+    height: 420px;
     overflow: hidden;
     position: relative;
     vertical-align: bottom;
@@ -1671,8 +1672,11 @@ label[for=select2] {
 }
 .sale_home .img-block {
   width: 100%;
-  height: 334px;
+  height: 400px;
   overflow: hidden;
+}
+.sale_home .img-block img {
+    width: 100%;
 }
 .sale_home.small .img-block {
     width: 100%;
