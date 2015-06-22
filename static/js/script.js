@@ -256,8 +256,11 @@ $(document).ready(function(){
         var collections = [];
 
         $(".category-sort-right-collection input").each(function(){
-            var id = $(this).attr("data-id");
-            collections.push(id);
+            if($(this).prop("checked"))
+            {
+                var id = $(this).attr("data-id");
+                collections.push(id);
+            }
         });
 
         $.get("/catalog/filter/",
@@ -275,12 +278,10 @@ $(document).ready(function(){
     };
 
     $(".category-sort-right-collection input").change(function(){
-        alert("ok");
         filter_handler();
     });
 
     $(".irs-block").mouseup(function(){
-         alert("ok");
         filter_handler();
     });
 
