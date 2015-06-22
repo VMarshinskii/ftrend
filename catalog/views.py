@@ -10,9 +10,17 @@ from additions import products_filter
 
 def catalog_view(request):
     products = Product.objects.all()[:40]
+    stop_price = 0
+
+    for product in products:
+        if product.sale_status and product.price_sale > stop_price:
+            stop_price = product.price_sale
+        elif product.price > stop_price:
+            stop_price = product.price
+
     categ = Category()
     categ.name = "Каталог"
-    return render_to_response("category.html", {'categ': categ, 'products': products})
+    return render_to_response("category.html", {'categ': categ, 'products': products, 'stop_price': stop_price})
 
 
 def product_view(request, id=-1):
@@ -75,7 +83,7 @@ def category_view(request, url="none"):
         'path': path,
         'categ': categ,
         'products': products,
-        'stop_price': 123123,
+        'stop_price': stop_price,
     })
 
 
