@@ -57,10 +57,10 @@ def product_view(request, id=-1):
 
 
 def category_view(request, url="none"):
+    stop_price = 0
     try:
         categ = Category.objects.get(url=url)
         products = categ.get_all_product()
-        stop_price = 0
 
         for product in products:
             if product.sale_status and product.price_sale >= stop_price:
