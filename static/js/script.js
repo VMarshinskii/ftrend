@@ -242,6 +242,10 @@ $(document).ready(function(){
     var filter_handler = function()
     {
         var categ = $(".category-sort").attr("data-id");
+        if (categ == "None")
+        {
+            categ = 0;
+        }
         var start = $(".irs-from").html();
         var stop = $(".irs-to").html();
 
@@ -264,7 +268,7 @@ $(document).ready(function(){
                 $(".categories").html(data);
             }
         );
-    }
+    };
 
     $(".category-sort-right-collection input").change(filter_handler());
 
