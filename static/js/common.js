@@ -6,16 +6,16 @@ $(document).ready(function () {
     $("#input-price").ionRangeSlider({
         type: "double",
         min: 0,
-        max: 1500,
-        from: 100,
-        to: 1000
+        max: $("#input-price").attr('data-max'),
+        from: 0,
+        to: $("#input-price").attr('data-max')
     });
     $("#input-size").ionRangeSlider({
         type: "double",
         min: 0,
-        max: 1500,
-        from: 100,
-        to: 1000
+        max: 160,
+        from: 0,
+        to: 160
     });
     $(".carousel").sliderkit({
         auto:false,

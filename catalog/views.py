@@ -59,17 +59,40 @@ def product_view(request, id=-1):
 def category_view(request, url="none"):
     try:
         categ = Category.objects.get(url=url)
-        products = products_filter({
-            'products': categ.get_all_product(),
-            'start_price': 300,
-            'stop_price': 600,
-            'collections': [2, 6, 1]
-        })
+        products = categ.get_all_product()
+        stop_price = 0
+
+        for product in products:
+            if product.sale_status and product.price_sale >= stop_price:
+                stop_price = product.price_sale
+            elif product.price >= stop_price:
+                stop_price = product.price
 
         path = list(reversed(categ.get_path_categ()))
     except Category.DoesNotExist:
         return Http404
-    return render_to_response("category.html", {'path': path, 'categ': categ, 'products': products})
+    return render_to_response("category.html", {
+        'path': path,
+        'categ': categ,
+        'products': products,
+        'stop_price': stop_price,
+    })
+
+
+def category_ajax_view(request):
+    products = []
+    if request.GET:
+        try:
+            categ = Category.objects.get(id=request.GET.get('categ', ''))
+            products = products_filter({
+                'products': categ.get_all_product(),
+                'start_price': int(request.GET.get('start_price', '0')),
+                'stop_price': int(request.GET.get('stop_price', '0')),
+                'collections': request.GET.get('collections', '').split(";"),
+            })
+        except Category.DoesNotExist:
+            pass
+    return render_to_response("category_ajax.html", {'products': products})
 
 
 def age_filter_view(request, id=-1):
