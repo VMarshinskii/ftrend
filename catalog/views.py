@@ -87,7 +87,7 @@ def category_view(request, url="none"):
 
 
 def category_ajax_view(request):
-    categ = Category.objects.get(id=request.GET.get('categ', ''))
+    categ = Category.objects.get(id=int(request.GET.get('categ', '')))
     products = categ.get_all_product()
     if request.GET and 'filter' in request.GET:
         try:
