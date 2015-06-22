@@ -243,6 +243,8 @@ $(document).ready(function(){
 
     var filter_handler = function()
     {
+        alert("ok");
+
         var categ = $(".category-sort").attr("data-id");
         if (categ == "None")
         {
