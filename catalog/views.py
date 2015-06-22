@@ -5,7 +5,6 @@ from django.middleware.csrf import get_token
 from django.template import RequestContext
 from catalog.models import Product, Category, Age, Brand, Color
 from django.utils.encoding import smart_str
-from additions import products_filter
 
 
 def catalog_view(request):
