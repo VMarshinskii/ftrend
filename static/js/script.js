@@ -269,7 +269,7 @@ $(document).ready(function(){
                 categ: categ,
                 start_price: start,
                 stop_price: stop,
-                collections: collections.join(";")
+                collections: collections.join(",")
             },
             function(data){
                 $(".categories").html(data);

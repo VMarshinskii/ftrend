@@ -104,16 +104,17 @@ def category_ajax_view(request):
         products_new = []
         start_price = int(request.GET.get('start_price', '0'))
         stop_price = int(request.GET.get('stop_price', '0'))
-        collections = request.GET.get('collections', '').split(";")
+        collections = request.GET.get('collections', '').split(",")
 
         for product in products:
             if start_price <= product.price <= stop_price:
                 if collections.__len__() > 0:
+                    print "okokoko"
                     for pr_coll in product.collection.all():
                         if str(pr_coll.id) in collections:
-                            products.append(product)
+                            products_new.append(product)
                 else:
-                    products.append(product)
+                    products_new.append(product)
         products = products_new
 
     return render_to_response("category_ajax.html", {'products': products})
