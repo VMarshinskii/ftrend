@@ -63,9 +63,9 @@ def category_view(request, url="none"):
         products = categ.get_all_product()
 
         for product in products:
-            if product.sale_status and product.price_sale >= stop_price:
+            if product.sale_status and product.price_sale > stop_price:
                 stop_price = product.price_sale
-            elif product.price >= stop_price:
+            elif product.price > stop_price:
                 stop_price = product.price
 
         path = list(reversed(categ.get_path_categ()))
@@ -75,7 +75,7 @@ def category_view(request, url="none"):
         'path': path,
         'categ': categ,
         'products': products,
-        'stop_price': stop_price,
+        'stop_price': 123123,
     })
 
 
