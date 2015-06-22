@@ -5,7 +5,7 @@ from django.middleware.csrf import get_token
 from django.template import RequestContext
 from catalog.models import Product, Category, Age, Brand, Color
 from django.utils.encoding import smart_str
-from catalog.admin import sort_list
+from additions import products_filter
 
 
 def catalog_view(request):
@@ -59,7 +59,13 @@ def product_view(request, id=-1):
 def category_view(request, url="none"):
     try:
         categ = Category.objects.get(url=url)
-        products = categ.get_all_product()
+        products = products_filter({
+            'products': categ.get_all_product(),
+            'start_price': 200,
+            'stop_price': 600,
+            'collections': [2, 6]
+        })
+
         path = list(reversed(categ.get_path_categ()))
     except Category.DoesNotExist:
         return Http404
