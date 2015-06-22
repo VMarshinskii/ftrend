@@ -239,12 +239,35 @@ $(document).ready(function(){
 
     /* ========================== ФИЛЬТР ========================== */
 
-    $(".category-sort-right-collection input").change(function(){
-        alert("ok");
-    });
+    var filter_handler = function()
+    {
+        var categ = $(".category-sort").attr("data-id");
+        var start = $(".irs-from").html();
+        var stop = $(".irs-to").html();
 
-    $(".irs-block").mouseup(function(){
-        alert("ok");
-    });
+        var collections = [];
+
+        $(".category-sort-right-collection input").each(function(){
+            var id = $(this).attr("data-id");
+            collections.push(id);
+        });
+
+        $.get("/catalog/filter/",
+            {
+                filter: 1,
+                categ: categ,
+                start_price: start,
+                stop_price: stop,
+                collections: collections.join(";")
+            },
+            function(data){
+                $(".categories").html(data);
+            }
+        );
+    }
+
+    $(".category-sort-right-collection input").change(filter_handler());
+
+    $(".irs-block").mouseup(filter_handler());
 
 });

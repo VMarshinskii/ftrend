@@ -104,9 +104,12 @@ def category_ajax_view(request):
 
             for product in products:
                 if start_price <= product.price <= stop_price:
-                    for pr_coll in product.collection.all():
-                        if pr_coll.id in collections:
-                            products.append(product)
+                    if collections.count > 0:
+                        for pr_coll in product.collection.all():
+                            if pr_coll.id in collections:
+                                products.append(product)
+                    else:
+                        products.append(product)
             products = products_new
 
         except Category.DoesNotExist:
