@@ -120,6 +120,13 @@
                     </tr>
                     {% endif %}
 
+                    {% if product.collection %}
+                    <tr>
+                        <td>Коллекция:</td>
+                        <td>{{ product.collection }}</td>
+                    </tr>
+                    {% endif %}
+
                     {% if product.brand %}
                     <tr>
                         <td>Бренд:</td>
