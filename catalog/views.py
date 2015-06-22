@@ -63,7 +63,7 @@ def category_view(request, url="none"):
             'products': categ.get_all_product(),
             'start_price': 200,
             'stop_price': 600,
-            'collections': ['2', '6']
+            'collections': ['2', '6', '1']
         })
 
         path = list(reversed(categ.get_path_categ()))
