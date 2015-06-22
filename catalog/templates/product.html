@@ -120,10 +120,18 @@
                     </tr>
                     {% endif %}
 
-                    {% if product.collection %}
+                    {% if collection.count > 0 %}
                     <tr>
                         <td>Коллекция:</td>
-                        <td>{{ product.collection }}</td>
+                        <td>
+                        {% for item in collection %}
+                            {% if forloop.first %}
+                                {{ item }}
+                            {% else %}
+                                , {{ item }}
+                            {% endif %}
+                        {% endfor %}
+                        </td>
                     </tr>
                     {% endif %}
 

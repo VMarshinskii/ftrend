@@ -50,6 +50,7 @@ def product_view(request, id=-1):
             'recommended': product.similar.all(),
             'ages': product.age.all(),
             'size_colors': size_colors,
+            'collection': product.collection.all(),
         })
     except Product.DoesNotExist:
         raise Http404
