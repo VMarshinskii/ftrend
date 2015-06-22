@@ -6,6 +6,6 @@ urlpatterns = patterns('',
     url(r'^product/(?P<id>\d+)/$', 'catalog.views.product_view'),
     url(r'^age/(?P<id>\d+)/$', 'catalog.views.age_filter_view'),
     url(r'^brand/(?P<id>\d+)/$', 'catalog.views.brand_filter_view'),
-    url(r'^filter/$', 'catalog.views.products_filter'),
+    url(r'^filter/$', 'catalog.views.category_ajax_view'),
     url(r'^(?P<url>[\-\w]+)/$', 'catalog.views.category_view')
 )
