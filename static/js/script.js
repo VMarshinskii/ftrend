@@ -237,4 +237,14 @@ $(document).ready(function(){
     });
 
 
+    /* ========================== ФИЛЬТР ========================== */
+
+    $(".category-sort-right-collection input").change(function(){
+        alert("ok");
+    });
+
+    $(".irs-block").mouseup(function(){
+        alert("ok");
+    });
+
 });
