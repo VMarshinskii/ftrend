@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response, redirect
 from django.http import Http404, HttpResponse
 from django.middleware.csrf import get_token
 from django.template import RequestContext
-from catalog.models import Product, Category, Age, Brand, Color
+from catalog.models import Product, Category, Age, Brand, Color, Collection
 from django.utils.encoding import smart_str
 
 
@@ -19,7 +19,12 @@ def catalog_view(request):
 
     categ = Category()
     categ.name = "Каталог"
-    return render_to_response("category.html", {'categ': categ, 'products': products, 'stop_price': stop_price})
+    return render_to_response("category.html", {
+        'categ': categ,
+        'products': products,
+        'stop_price': stop_price,
+        'collections': Collection.objects.all(),
+    })
 
 
 def product_view(request, id=-1):
@@ -83,11 +88,12 @@ def category_view(request, url="none"):
         'categ': categ,
         'products': products,
         'stop_price': stop_price,
+        'collections': Collection.objects.all(),
     })
 
 
 def category_ajax_view(request):
-    categ = Category.objects.get(id=int(request.GET.get('categ', '')))
+    categ = Category.objects.get(id=int(request.GET.get('categ', '0')))
     products = categ.get_all_product()
     if request.GET and 'filter' in request.GET:
         try:

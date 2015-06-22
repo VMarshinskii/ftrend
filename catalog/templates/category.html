@@ -32,14 +32,10 @@
         <div class="category-sort-right">
             <div class="category-sort-right-header"><p>Коллекции:</p></div>
             <div class="category-sort-right-collection">
-                <input type="checkbox" id="test-check1"/>
-                <label for="test-check1">Весна-лето 2015</label>
-                <input type="checkbox" id="test-check2"/>
-                <label for="test-check2">Весна-лето 2015</label>
-                <input type="checkbox" id="test-check3"/>
-                <label for="test-check3">Весна-лето 2015</label>
-                <input type="checkbox" id="test-check4"/>
-                <label for="test-check4">Весна-лето 2015</label>
+                {% for collection in collections %}
+                    <input type="checkbox" data-id="{{ collection.id }}" id="test-check{{ forloop.counter }}"/>
+                    <label for="test-check{{ forloop.counter }}">{{ collection }}</label>
+                {% endfor %}
             </div>
         </div>
     </div>
