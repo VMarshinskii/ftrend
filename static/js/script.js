@@ -274,8 +274,14 @@ $(document).ready(function(){
         );
     };
 
-    $(".category-sort-right-collection input").change(filter_handler());
+    $(".category-sort-right-collection input").change(function(){
+        alert("ok");
+        filter_handler();
+    });
 
-    $(".irs-block").mouseup(filter_handler());
+    $(".irs-block").mouseup(function(){
+         alert("ok");
+        filter_handler();
+    });
 
 });
