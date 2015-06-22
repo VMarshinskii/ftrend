@@ -106,14 +106,16 @@ $(document).ready(function(){
         min: 0,
         max: $(".sort-price").attr('data-max'),
         from: 0,
-        to: $(".sort-price").attr('data-max')
+        to: $(".sort-price").attr('data-max'),
+        prettify_enabled: false
     });
     $("#input-size").ionRangeSlider({
         type: "double",
         min: 0,
         max: 160,
         from: 0,
-        to: 160
+        to: 160,
+        prettify_enabled: false
     });
     $(".carousel").sliderkit({
         auto:false,
