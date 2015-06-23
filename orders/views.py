@@ -15,7 +15,7 @@ def pay_with_robokassa(request):
     order = get_object_or_404(Order, pk=4)
 
     form = RobokassaForm(initial={
-        'OutSum': order.price,
+        'OutSum': order.sum,
         'InvId': order.id,
         'Desc': "FamilyTrend",
         'Email': order.email,
