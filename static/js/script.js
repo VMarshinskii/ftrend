@@ -253,7 +253,7 @@ $(document).ready(function(){
         var start = $(".irs-from").html();
         var stop = $(".irs-to").html();
 
-        var collections = [];
+        var collections = ["-1"];
 
         $(".category-sort-right-collection input").each(function(){
             if($(this).prop("checked"))
