@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render_to_response, HttpResponse, redirect
+from django.shortcuts import render_to_response, HttpResponse, redirect, get_object_or_404, render
 from django.core.context_processors import csrf
 from django.contrib import auth
 from forms import OrderForm
@@ -8,6 +8,22 @@ from models import DeliveryType, Order
 from cart.additions import get_cart, get_sum
 from cart.models import CartProduct
 from account.models import User
+from robokassa.forms import RobokassaForm
+
+
+def pay_with_robokassa(request):
+    order = get_object_or_404(Order, pk=4)
+
+    form = RobokassaForm(initial={
+        'OutSum': order.price,
+        'InvId': order.id,
+        'Desc': "FamilyTrend",
+        'Email': order.email,
+        # 'IncCurrLabel': '',
+        'Culture': 'ru',
+    })
+
+    return render(request, 'pay_with_robokassa.html', {'form': form})
 
 
 def create_order(request):

@@ -13,5 +13,6 @@ urlpatterns = patterns('',
     url(r'^sale/', include('sale.urls')),
     url(r'^account/', include('account.urls')),
     url(r'^redactor/', include('redactor.urls')),
+    url(r'^robokassa/', include('robokassa.urls')),
     url(r'^(?P<url>[\-\w]+)', 'pages.views.page_view'),
 )
