@@ -243,8 +243,6 @@ $(document).ready(function(){
 
     var filter_handler = function()
     {
-        alert("ok");
-
         var categ = $(".category-sort").attr("data-id");
         if (categ == "None")
         {
@@ -282,6 +280,10 @@ $(document).ready(function(){
     });
 
     $(".irs-block").mouseup(function(){
+        filter_handler();
+    });
+
+    $(".irs-block").mouseleave(function(){
         filter_handler();
     });
 
