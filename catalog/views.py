@@ -109,7 +109,7 @@ def category_ajax_view(request):
         for product in products:
             if start_price <= product.price <= stop_price:
                 print request.GET.get('collections', '')
-                if request.GET.get('collections', '') == '':
+                if request.GET.get('collections', '') != '-1':
                     for pr_coll in product.collection.all():
                         if str(pr_coll.id) in collections:
                             products_new.append(product)
