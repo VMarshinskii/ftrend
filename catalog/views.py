@@ -121,24 +121,42 @@ def category_ajax_view(request):
 
 
 def age_filter_view(request, id=-1):
+    stop_price = 0
     try:
         age = Age.objects.get(id=id)
         products = Product.objects.filter(age=age)
+
+        for product in products:
+            if product.sale_status and product.price_sale > stop_price:
+                stop_price = product.price_sale
+            elif product.price > stop_price:
+                stop_price = product.price
+
         return render_to_response("category.html", {
             'categ': age,
-            'products': products
+            'products': products,
+            'stop_price': stop_price,
         })
     except Age.DoesNotExist:
         raise Http404
 
 
 def brand_filter_view(request, id=-1):
+    stop_price = 0
     try:
         brand = Brand.objects.get(id=id)
         products = Product.objects.filter(brand=brand)
+
+        for product in products:
+            if product.sale_status and product.price_sale > stop_price:
+                stop_price = product.price_sale
+            elif product.price > stop_price:
+                stop_price = product.price
+
         return render_to_response("category.html", {
             'categ': brand,
-            'products': products
+            'products': products,
+            'stop_price': stop_price,
         })
     except Brand.DoesNotExist:
         raise Http404
