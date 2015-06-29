@@ -2,6 +2,10 @@
 {% load catalog_menu %}
 
 
+{% block title %}
+    <title>Family Trend | {{ sale.title }}</title>
+{% endblock %}
+
 {% block content %}
 <div id="left-block">
     {% catalog_menu %}

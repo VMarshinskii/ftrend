@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}
+    <title>Family Trend | {{ product.name }}</title>
+{% endblock %}
+
 {% block content %}
 <div class="cart">
     <div class="bread-crumbs"><a href="/">Главная</a> → <a href="/catalog/{{ product.category.url }}/">{{ product.category.title }}</a> → <span>{{ product.name }}</span></div>
