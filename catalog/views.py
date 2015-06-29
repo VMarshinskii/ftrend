@@ -136,6 +136,7 @@ def age_filter_view(request, id=-1):
             'categ': age,
             'products': products,
             'stop_price': stop_price,
+            'collections': Collection.objects.all(),
         })
     except Age.DoesNotExist:
         raise Http404
@@ -157,6 +158,7 @@ def brand_filter_view(request, id=-1):
             'categ': brand,
             'products': products,
             'stop_price': stop_price,
+            'collections': Collection.objects.all(),
         })
     except Brand.DoesNotExist:
         raise Http404
