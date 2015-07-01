@@ -13,10 +13,10 @@ STAUSES = (
 class Order(models.Model):
     user = models.ForeignKey(User, verbose_name="Пользователь")
     sum = models.IntegerField("Сумма заказа", default=0)
-    status = models.IntegerField("Статус заказа", )
+    status = models.IntegerField("Статус заказа", choices=STAUSES)
 
     first_name = models.CharField("Имя", max_length=200, default="")
-    patronymic = models.CharField("Отчество", max_length=200, default="")
+    patronymic = models.CharField("Отчество", max_length=200, default="", blank=True, editable=False)
     last_name = models.CharField("Фамилия", max_length=200, default="")
     email = models.CharField("Email", max_length=200, default="")
     phone = models.CharField("Телефон", max_length=200, default="")

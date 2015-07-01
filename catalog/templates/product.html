@@ -97,7 +97,7 @@
         </div>
         <div class="cart-about">
             <div class="cart-about-header"><p>Описание</p></div>
-            <article><p>{{ product.text }}</p>
+            <article><p>{{ product.text|safe }}</p>
                 <table>
                     {% if product.code %}
                     <tr>

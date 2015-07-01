@@ -95,6 +95,7 @@ def create_order(request):
             order.delivery = delivery.title
             order.delivery_price = delivery.price
             order.status = 0
+            order.sum = get_sum(request)
             order.user = request.user
             order.save()
             cart = get_cart(request)
@@ -117,6 +118,7 @@ def create_order(request):
                 password = random_str(7)
                 new_user.set_password(password)
                 new_user.save()
+                # отправка уведомления
                 user = auth.authenticate(username=new_user.username, password=password)
                 if user is not None and user.is_active:
                     auth.login(request, user)
