@@ -95,6 +95,7 @@ def create_order(request):
             order.delivery = delivery.title
             order.delivery_price = delivery.price
             order.status = 0
+            print(get_sum(request))
             order.sum = get_sum(request)
             order.user = request.user
             order.save()
