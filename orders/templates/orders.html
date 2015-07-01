@@ -26,7 +26,7 @@
         {% for order in orders %}
         <tr class="product_item">
             <td width="80px">
-                <a href="/catalog/product/{{ order.id }}">№ {{ order.id }}</a>
+                <a href="/orders/view/{{ order.id }}/">№ {{ order.id }}</a>
             </td>
             <td>
                 {{ order.date_create }}
