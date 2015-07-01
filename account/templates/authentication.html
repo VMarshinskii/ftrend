@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load catalog_menu %}
+
+
+{% block content %}
+<div id="left-block">
+    {% catalog_menu %}
+</div>
+<div id="center-block" class="orders">
+     <h1 class="title_h1">Авторизация</h1>
+
+     <div class="user_information">
+        <p>Вы не вошли в систему - <a href="#" class="login_show">войти</a></p>
+     </div>
+
+
+</div>
+{% endblock %}

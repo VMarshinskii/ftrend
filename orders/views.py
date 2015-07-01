@@ -126,6 +126,7 @@ def create_order(request):
                 return redirect("/orders/reg_thanks/")
             else:
                 request.user.last_name = request.POST.get('last_name', "")
+                request.user.first_name = request.POST.get('first_name', "")
                 request.user.phone = request.POST.get('phone', "")
                 request.user.city = request.POST.get('city', "")
                 request.user.address = request.POST.get('address', "")
@@ -145,8 +146,13 @@ def reg_thank_order(request):
 
 
 def orders_view(request):
-    return render_to_response("orders.html")
+    if request.user.is_authenticated():
+        return render_to_response("orders.html")
 
+    return redirect("/authentication/")
 
 def order_view(request):
-    return render_to_response("order.html")
+    if request.user.is_authenticated():
+        return render_to_response("order.html")
+
+    return redirect("/authentication/")

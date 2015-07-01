@@ -1,6 +1,6 @@
 # _*_ coding: utf-8 _*_
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, HttpResponse
+from django.shortcuts import render_to_response, HttpResponse, redirect
 from django.core.context_processors import csrf
 from django.contrib import auth
 from models import User
@@ -51,42 +51,45 @@ def registration(request):
 
 
 def account_view(request):
-    args = {
-        'user': request.user,
-        'user_active': request.user.is_authenticated(),
-    }
-    args.update(csrf(request))
-    args['error'] = False
+    if request.user.is_authenticated():
+        args = {
+            'user': request.user,
+            'user_active': request.user.is_authenticated(),
+        }
+        args.update(csrf(request))
+        args['error'] = False
 
-    if request.POST:
-        user = request.user
+        if request.POST:
+            user = request.user
 
-        if 'first_name' in request.POST and request.POST.get('first_name', '') != '':
-            user.first_name = request.POST['first_name']
-        else:
-            args['error'] = True
-            args['first_name_error'] = "error_field"
+            if 'first_name' in request.POST and request.POST.get('first_name', '') != '':
+                user.first_name = request.POST['first_name']
+            else:
+                args['error'] = True
+                args['first_name_error'] = "error_field"
 
-        if 'last_name' in request.POST and request.POST.get('last_name', '') != '':
-            user.last_name = request.POST['last_name']
-        else:
-            args['error'] = True
-            args['last_name_error'] = "error_field"
+            if 'last_name' in request.POST and request.POST.get('last_name', '') != '':
+                user.last_name = request.POST['last_name']
+            else:
+                args['error'] = True
+                args['last_name_error'] = "error_field"
 
-        if 'email' in request.POST and request.POST.get('email', '') != '':
-            user.email = request.POST['email']
-        else:
-            args['error'] = True
-            args['email_error'] = "error_field"
+            if 'email' in request.POST and request.POST.get('email', '') != '':
+                user.email = request.POST['email']
+            else:
+                args['error'] = True
+                args['email_error'] = "error_field"
 
-        if 'phone' in request.POST:
-            user.phone = request.POST['phone']
+            if 'phone' in request.POST:
+                user.phone = request.POST['phone']
 
-        if args['error'] is False:
-            user.save()
-            return render_to_response("my_account.html", args)
+            if args['error'] is False:
+                user.save()
+                return render_to_response("my_account.html", args)
 
-    return render_to_response("my_account.html", args)
+        return render_to_response("my_account.html", args)
+
+    return redirect("/authentication/")
 
 
 def change_password(request):
@@ -107,10 +110,13 @@ def change_password(request):
             return HttpResponse("Ваш пароль изменён!")
         else:
             return HttpResponse("Старый пароль не верный!")
-    else:
-        return HttpResponse("Ошибка")
+
+    return redirect("/authentication/")
 
 
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect("/")
+
+def authentication():
+    return render_to_response("authentication.html")
