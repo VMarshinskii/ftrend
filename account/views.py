@@ -1,4 +1,5 @@
 # _*_ coding: utf-8 _*_
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, HttpResponse
 from django.core.context_processors import csrf
 from django.contrib import auth
@@ -108,3 +109,8 @@ def change_password(request):
             return HttpResponse("Старый пароль не верный!")
     else:
         return HttpResponse("Ошибка")
+
+
+def logout(request):
+    auth.logout(request)
+    return HttpResponseRedirect("/")

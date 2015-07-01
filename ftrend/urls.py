@@ -4,6 +4,7 @@ from django.contrib import admin
 urlpatterns = patterns('',
     url(r'^$', 'sale.views.index_view'),
     url(r'^login/$', 'account.views.login'),
+    url(r'^logout/$', 'account.views.logout'),
     url(r'^registration/$', 'account.views.registration'),
     url(r'^admin/', include('my_admin.urls')),
     url(r'^admin/', include(admin.site.urls)),
