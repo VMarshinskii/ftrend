@@ -118,5 +118,5 @@ def logout(request):
     auth.logout(request)
     return HttpResponseRedirect("/")
 
-def authentication():
+def authentication(request):
     return render_to_response("authentication.html")
