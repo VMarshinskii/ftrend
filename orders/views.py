@@ -143,6 +143,7 @@ def orders_view(request):
         for order in Order.objects.filter(user=request.user):
             order.status_title = STAUSES[order.status]
             order.sum += order.delivery_price
+            orders.append(order)
 
         return render_to_response("orders.html", {'orders': orders})
 
