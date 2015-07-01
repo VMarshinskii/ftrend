@@ -18,24 +18,35 @@
     <table class="table-cart table-order">
         <tr>
             <th>Номер заказа</th>
-            <th width="80px">Дата</th>
+            <th width="80px">Дата заказа</th>
             <th width="100px">Статус</th>
             <th width="90px">Сумма</th>
+            <th width="100px">Доставка</th>
         </tr>
+        {% for order in orders %}
         <tr class="product_item">
             <td width="80px">
-                <a href="#">1233</a>
+                <a href="/catalog/product/{{ order.id }}">№ {{ order.id }}</a>
             </td>
             <td>
-                16.06.2015г
+                {{ order.date_create }}
             </td>
             <td>
-                <span class="my_order_status">В обработке</span>
+                <span class="my_order_status">{{ order.status_title }}</span>
             </td>
             <td>
-                1500 руб.
+                {{ order.sum }} руб.
+            </td>
+            <td>
+                {{ order.delivery }}
             </td>
         </tr>
+
+        {% empty %}
+            <tr class="product_item">
+                <td colspan="5">Заказов ещё нет</td>
+            </tr>
+        {% endfor %}
     </table>
 </div>
 {% endblock %}

@@ -36,6 +36,8 @@ def add_product_ajax(request):
         try:
             cart_product.product = Product.objects.get(id=int(request.GET.get('product_id', -1)))
             cart_product.cart = cart
+            cart_product.image = cart_product.product.image
+            cart_product.title = cart_product.product.name
             cart_product.save()
             return HttpResponse("Товар добавлен в корзину")
         except Product.DoesNotExist:

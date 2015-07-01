@@ -8,22 +8,9 @@ from models import DeliveryType, Order
 from cart.additions import get_cart, get_sum
 from cart.models import CartProduct
 from account.models import User
-from robokassa.forms import RobokassaForm
 
 
-def pay_with_robokassa(request):
-    order = get_object_or_404(Order, pk=4)
-
-    form = RobokassaForm(initial={
-        'OutSum': order.sum,
-        'InvId': order.id,
-        'Desc': "FamilyTrend",
-        'Email': order.email,
-        # 'IncCurrLabel': '',
-        'Culture': 'ru',
-    })
-
-    return render(request, 'pay_with_robokassa.html', {'form': form})
+STAUSES = ["В обработке", "Ждёт оплаты"]
 
 
 def create_order(request):
@@ -102,6 +89,10 @@ def create_order(request):
             cart = get_cart(request)
             if cart:
                 for pr in CartProduct.objects.filter(cart=cart):
+                    if pr.product.sale_status:
+                        pr.price_order = pr.product.price_sale
+                    else:
+                        pr.price_order = pr.product.price
                     order.products.add(pr)
             else:
                 args['cart_error'] = "в вашей корзине ничего нет"
@@ -147,12 +138,26 @@ def reg_thank_order(request):
 
 def orders_view(request):
     if request.user.is_authenticated():
-        return render_to_response("orders.html")
+        orders = []
+
+        for order in Order.objects.filter(user=request.user):
+            order.status_title = STAUSES[order.status]
+            order.sum += order.delivery_price
+
+        return render_to_response("orders.html", {'orders': orders})
 
     return redirect("/authentication/")
 
-def order_view(request):
+def order_view(request, id=-1):
     if request.user.is_authenticated():
-        return render_to_response("order.html")
+        try:
+            order = Order.objects.get(id=id)
+            return render_to_response("order.html", {
+                'order': order,
+                'status': STAUSES[order.status],
+                'products': order.products.all(),
+            })
+        except Order.DoesNotExist:
+            pass
 
     return redirect("/authentication/")
