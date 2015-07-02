@@ -192,6 +192,15 @@ $(document).ready(function(){
     });
 
 
+    if($("div").is(".field-products"))
+    {
+        $(".field-products .item").click(function(){
+            var id = $(this).attr("data-value");
+            window.open("/catalog/product/" + id + "/")
+        });
+    }
+
+
     if($("div").is(".field-colors")) {
 
         var id_size_colors = $("#id_size_colors").val().split(";");

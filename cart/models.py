@@ -17,5 +17,8 @@ class CartProduct(models.Model):
     image = models.CharField(verbose_name="Картинка", max_length=250, blank=True)
     title = models.CharField(verbose_name="Название", max_length=250, blank=True)
 
+    def __unicode__(self):
+        return self.title
+
 
 
