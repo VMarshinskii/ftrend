@@ -56,7 +56,7 @@ def tree_categories(request, id=-1):
 
 def settings(request):
     if request.user.is_authenticated():
-        model = Settings.objects.get_or_create(id=1)
+        model = Settings.objects.get(id=1)
         args = {}
         if request.POST:
             model.title = request.POST.get('title')
