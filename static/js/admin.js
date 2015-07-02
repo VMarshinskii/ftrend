@@ -136,15 +136,16 @@ $(document).ready(function(){
     }
 
 
-    var myDropzone = new Dropzone(".adminBoxImgLast",
-        {
-            url: "/admin/upload_image/",
-            sending: function(file, xhr, formData) {
-                formData.append("csrfmiddlewaretoken", getCookie("csrftoken"));
-            },
-            success: function(file, response)
+    if($("div").is(".adminBoxImgLast"))
+    {
+        var myDropzone = new Dropzone(".adminBoxImgLast",
             {
-                var html = '<div class="adminBoxImg">\
+                url: "/admin/upload_image/",
+                sending: function (file, xhr, formData) {
+                    formData.append("csrfmiddlewaretoken", getCookie("csrftoken"));
+                },
+                success: function (file, response) {
+                    var html = '<div class="adminBoxImg">\
                                 <img src="/static/uploads/' + response + '" alt="">\
                                 <div class="adminBoxSettingsImages">\
                                     <img class="adminBoxImgClose" src="/static/images/close_icon.png" data-image="' + response + '" alt="Удалить">\
@@ -152,20 +153,21 @@ $(document).ready(function(){
                                 </div>\
                             </div>\
                             ';
-                $(".adminBoxImgLast").before(html);
+                    $(".adminBoxImgLast").before(html);
 
-                var images = $("#id_images").val();
-                $("#id_images").val(images + ";" + response);
+                    var images = $("#id_images").val();
+                    $("#id_images").val(images + ";" + response);
 
-                var image = $("#id_image").val();
-                if (image == "")
-                {
-                    $("#id_image").val(response);
-                    $(".adminBoxImgHead").first().attr('id', 'hidden_image_active');
+                    var image = $("#id_image").val();
+                    if (image == "") {
+                        $("#id_image").val(response);
+                        $(".adminBoxImgHead").first().attr('id', 'hidden_image_active');
+                    }
                 }
             }
-        }
-    );
+        );
+    }
+
 
     $(document).on('click', '.adminBoxImgHead', function(){
         $("#hidden_image_active").attr('id', '');
