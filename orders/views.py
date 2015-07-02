@@ -93,6 +93,7 @@ def create_order(request):
                         pr.price_order = pr.product.price_sale
                     else:
                         pr.price_order = pr.product.price
+                    pr.save()
                     order.products.add(pr)
             else:
                 args['cart_error'] = "в вашей корзине ничего нет"
