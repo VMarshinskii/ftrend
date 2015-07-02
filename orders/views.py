@@ -146,7 +146,7 @@ def orders_view(request):
             order.sum += order.delivery_price
             orders.append(order)
 
-        return render_to_response("orders.html", {'orders': orders})
+        return render_to_response("orders.html", {'orders': reversed(orders)})
 
     return redirect("/authentication/")
 
