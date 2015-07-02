@@ -154,10 +154,16 @@ def order_view(request, id=-1):
     if request.user.is_authenticated():
         try:
             order = Order.objects.get(id=id)
+            products = []
+
+            for product in order.products.all():
+                product.sum = product.price_order * product.count
+                products.append(product)
+
             return render_to_response("order.html", {
                 'order': order,
                 'status': STAUSES[order.status],
-                'products': order.products.all(),
+                'products': products,
             })
         except Order.DoesNotExist:
             pass
