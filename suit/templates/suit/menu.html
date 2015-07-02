@@ -12,6 +12,10 @@
       </li>
     {% endblock %}
 
+    <li>
+        <a href="/admin/settings/"><i class="icon-lock"></i>Настройки</a>
+    </li>
+
     {% get_menu request as app_list %}
     {% if app_list %}
       {% for app in app_list %}
