@@ -13,9 +13,9 @@
 <div id="center-block" class="user_cart">
     <h1 class="title_h1">Заказ №1233</h1>
 
-    <p style="margin: 10px 0">Доставка: {{ order.delivery }} ({{ order.delivery_price }} руб.)</p>
-    <p style="margin: 10px 0">Адрес: {{ order.address }}</p>
-    <p style="margin: 10px 0">Сатаус заказа: <span class="my_order_status">{{ status }}</span></p>
+    <p style="margin: 10px 0"><span style="font-weight: bold">Доставка:</span> {{ order.delivery }} ({{ order.delivery_price }} руб.)</p>
+    <p style="margin: 10px 0"><span style="font-weight: bold">Адрес:</span> {{ order.address }}</p>
+    <p style="margin: 10px 0"><span style="font-weight: bold">Сатаус заказа:</span> <span class="my_order_status">{{ status }}</span></p>
 
     <table class="table-cart table-order">
         <tr>
