@@ -223,10 +223,10 @@
     <div class="control-group form-row">
         <div>
             <div class="control-label">
-                <label>Одноклассники:</label>
+                <label>Доставка:</label>
             </div>
             <div class="controls">
-                <input class="vTextField" id="id_odnoklassniki" maxlength="200" name="odnoklassniki" type="text" value="{{ model.odnoklassniki }}">
+                <input class="vTextField" id="id_delivery" maxlength="200" name="delivery" type="text" value="{{ model.delivery }}">
             </div>
         </div>
     </div>
@@ -234,10 +234,10 @@
     <div class="control-group form-row">
         <div>
             <div class="control-label">
-                <label>Twitter:</label>
+                <label>Оплата:</label>
             </div>
             <div class="controls">
-                <input class="vTextField" id="id_twitter" maxlength="200" name="twitter" type="text" value="{{ model.twitter }}">
+                <input class="vTextField" id="id_pay" maxlength="200" name="pay" type="text" value="{{ model.pay }}">
             </div>
         </div>
     </div>
@@ -245,10 +245,10 @@
     <div class="control-group form-row">
         <div>
             <div class="control-label">
-                <label>Facebook:</label>
+                <label>Возврат:</label>
             </div>
             <div class="controls">
-                <input class="vTextField" id="id_facebook" maxlength="200" name="facebook" type="text" value="{{ model.facebook }}">
+                <input class="vTextField" id="id_recovery" maxlength="200" name="recovery" type="text" value="{{ model.recovery }}">
             </div>
         </div>
     </div>
@@ -256,33 +256,13 @@
     <div class="control-group form-row">
         <div>
             <div class="control-label">
-                <label>Вконтакте:</label>
+                <label>Условия:</label>
             </div>
             <div class="controls">
-                <input class="vTextField" id="id_vk" maxlength="200" name="vk" type="text" value="{{ model.vk }}">
+                <input class="vTextField" id="id_terms" maxlength="200" name="terms" type="text" value="{{ model.terms }}">
             </div>
         </div>
     </div>
-  
-    
-      <div class="control-group form-row field-text ">
-        
-          <div><div class="control-label"><label for="id_text">Текст в футере:</label></div><div class="controls">
-              <textarea cols="40" id="id_text" name="footer" rows="10">
-                {{ model.footer }}
-              </textarea>
-              <script type="text/javascript">
-                    jQuery(document).ready(function(jQuery){
-                        var $field = jQuery("#id_text");
-                        options = {"lang": "ru", "fileUpload": "/redactor/upload/file/", "plugins": ["fontcolor", "fontsize", "fontfamily", "textdirection"], "imageUpload": "/redactor/upload/image/", "buttonSource": "true"};
-                        options.imageUploadErrorCallback = function(json){
-                            alert(json.error);
-                        };
-                        $field.redactor(options);
-                    });
-                 </script></div></div>
-
-      </div>
 
     <div class="control-group form-row field-url ">
 
