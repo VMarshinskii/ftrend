@@ -1,0 +1,60 @@
+{#{% load sitetree %}#}
+{% load i18n suit_menu %}
+{% load url from future %}
+
+<div class="left-nav" id="left-nav">
+  <ul>
+    {% block menu_home %}
+      {% url 'admin:index' as index_url %}
+      <li{% if index_url == request.path %} class="active"{% endif %}>
+        <a href="{{ index_url }}"><i class="icon-home"></i>{% trans 'Home' %}
+        </a>
+      </li>
+    {% endblock %}
+
+    <li>
+        <a href="/admin/catalog/category/"><i class="icon-chevron-right"></i>Catalog</a>
+        <ul>
+             <li><a href="/admin/catalog/category/">Категории</a></li>
+             <li><a href="/admin/catalog/product/">Продукты</a></li>
+        </ul>
+    </li>
+
+    <li>
+        <a href="/admin/clients/client/"><i class="icon-chevron-right"></i>Clients</a>
+        <ul>
+            <li><a href="/admin/clients/client/">Клиенты</a></li>
+        </ul>
+    </li>
+
+    <li>
+        <a href="/admin/orders/order/"><i class="icon-chevron-right"></i>Orders</a>
+        <ul>
+            <li><a href="/admin/orders/order/">Заказы</a></li>
+        </ul>
+    </li>
+
+    <li>
+        <a href="/admin/pages/section/"><i class="icon-chevron-right"></i>Pages</a>
+        <ul>
+            <li><a href="/admin/pages/section/">Разделы</a></li>
+            <li><a href="/admin/pages/page/">Страницы</a></li>
+        </ul>
+    </li>
+
+    <li>
+        <a href="/admin/auth/group/"><i class="icon-lock"></i>Пользователи и группы</a>
+        <ul>
+            <li><a href="/admin/auth/group/">Группы</a></li>
+            <li><a href="/admin/auth/user/">Пользователи</a></li>
+        </ul>
+    </li>
+
+    <li>
+        <a href="/admin/settings/"><i class="icon-lock"></i>Настройки</a>
+    </li>
+    <li>
+        <a href="/admin/contact/"><i class="icon-lock"></i>Контакты</a>
+    </li>
+  </ul>
+</div>

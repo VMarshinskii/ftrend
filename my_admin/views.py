@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render_to_response, HttpResponse, Http404
+from django.shortcuts import render_to_response, HttpResponse, Http404, redirect
+from django.template.context_processors import csrf
 from django.utils.encoding import smart_str
 from ftrend.additions import upload_file
 from catalog.models import Color, Category
+from models import Settings
 
 
 def video_upload(request):
@@ -50,3 +52,28 @@ def tree_categories(request, id=-1):
             'categories': sort_list(),
         })
     raise Http404
+
+
+def settings(request):
+    if request.user.is_authenticated():
+        model = Settings.objects.get_or_create(id=1)
+        args = {}
+        if request.POST:
+            model.title = request.POST.get('title')
+            model.email = request.POST.get('email')
+            model.description = request.POST.get('description')
+            model.phone_home = request.POST.get('phone')
+            model.contacts = request.POST.get('contacts')
+            model.odnoklassniki = request.POST.get('odnoklassniki')
+            model.twitter = request.POST.get('twitter')
+            model.facebook = request.POST.get('facebook')
+            model.vk = request.POST.get('vk')
+            model.footer = request.POST.get('footer')
+            model.footer_link = request.POST.get('footer_link')
+            model.save()
+            args['message'] = "yes"
+        args.update(csrf(request))
+        args['model'] = model
+        return render_to_response("set.html", args)
+    else:
+        return redirect('/admin/')

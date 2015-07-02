@@ -1,0 +1,557 @@
+
+<!DOCTYPE html>
+<html lang="ru-ru" >
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Изменить Страница | Django Suit</title>
+  <link rel="stylesheet" type="text/css" href=""/>
+  <link rel="stylesheet" type="text/css" href="/static/suit/bootstrap/css/bootstrap.min.css" media="all"/>
+  <link rel="stylesheet" type="text/css" href="/static/suit/css/suit.css" media="all">
+  
+  
+
+  
+  <script type="text/javascript">window.__admin_media_prefix__ = "/static/admin/";</script>
+  <script src="/static/suit/js/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript">var Suit = { $: $.noConflict() }; if (!$) $ = Suit.$; </script>
+  <script src="/static/suit/bootstrap/js/bootstrap.min.js"></script>
+  
+  <style type="text/css">.required:after { content: '*'; margin: 0 0 0 5px; position: absolute; color: #ccc;}</style>
+  
+  
+  
+  <script type="text/javascript" src="/admin/jsi18n/"></script>
+
+  <link href="/static/redactor/css/redactor.css" type="text/css" media="all" rel="stylesheet" />
+<link href="/static/redactor/css/django_admin.css" type="text/css" media="all" rel="stylesheet" />
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="/static/redactor/jquery.redactor.init.js"></script>
+<script type="text/javascript" src="/static/redactor/redactor.js"></script>
+<script type="text/javascript" src="/static/redactor/langs/ru.js"></script>
+<script type="text/javascript" src="/static/redactor/plugins/fontcolor.js"></script>
+<script type="text/javascript" src="/static/redactor/plugins/fontsize.js"></script>
+<script type="text/javascript" src="/static/redactor/plugins/fontfamily.js"></script>
+<script type="text/javascript" src="/static/redactor/plugins/textdirection.js"></script>
+
+
+  
+    <meta name="robots" content="NONE,NOARCHIVE"/>
+</head>
+
+
+<body class="pages-page change-form">
+
+<!-- Sticky footer wrap -->
+<div id="wrap">
+
+  <!-- Container -->
+  
+    <div id="container">
+
+      
+        
+          <!-- Header -->
+          <div id="header" class="header">
+            <div id="branding">
+              <a href="/admin/"><h1 id="site-name">Django Suit</h1></a>
+            </div>
+
+            
+            <div class="header-content header-content-first">
+              <div class="header-column icon">
+                <i class="icon-time"></i>
+              </div>
+              <div class="header-column">
+              </div>
+            </div>
+            
+
+            
+              <!--<div class="header-content">
+                <div class="header-column icon">
+                  <i class="icon-comment"></i>
+                </div>
+                <div class="header-column">
+                  <a href="" class="grey"><b>2</b> new messages</a>
+                </div>
+              </div>-->
+            
+
+            
+              <div id="user-tools">
+                Добро пожаловать,
+                <strong>
+                  
+                    admin</strong>.
+                <span class="user-links">
+                
+                  
+                  
+                  <a href="/admin/password_change/">Изменить пароль</a>
+                  <span class="separator">|</span>
+                  <a href="/admin/logout/">Выйти</a>
+                  </span>
+                
+              </div>
+            
+            
+          </div>
+        
+        <!-- END Header -->
+      
+
+
+      <div class="suit-columns two-columns">
+
+        
+          <div id="suit-center" class="suit-column">
+
+            
+              
+    <ul class="breadcrumb">
+      <li>
+        <a href="/admin/">Начало</a>
+        <span class="divider">&raquo;</span>
+      </li>
+      <li class="active">
+        Настройки
+      </li>
+    </ul>
+  
+            
+
+            
+              
+            
+
+            <!-- Content -->
+            <div id="content" class="colM row-fluid">
+              
+              
+                <h2 class="content-title">Контакты</h2>
+              
+              
+  <div id="content-main" class="inner-two-columns">
+
+    <form enctype="multipart/form-data" action="/admin/settings/" method="post"
+          id="page_form" class="form-horizontal">
+
+      <div class="inner-right-column">
+
+        <div class="box save-box">
+
+          
+<div class="submit-row clearfix">
+  <button type="submit" class="btn btn-high btn-info" name="_save">Сохранить</button>
+</div>
+
+
+        </div>
+
+      </div>
+      <div class="inner-center-column">
+        {% csrf_token %}
+        
+          
+        
+        <div class="tab-content tab-content-main">
+
+              
+<fieldset class="module aligned first ">
+
+    <div class="control-group form-row field-title ">
+        <div>
+            <div class="control-label">
+                <label class="required" for="id_title">Название сайта:</label>
+            </div>
+            <div class="controls">
+                <input class="vTextField" id="id_title" maxlength="200" name="title" type="text" value="{{ model.title }}">
+            </div>
+        </div>
+    </div>
+
+    <div class="control-group form-row field-description ">
+        <div>
+            <div class="control-label">
+                <label class="required" for="id_description">Описание:</label>
+            </div>
+            <div class="controls">
+                <input class="vTextField" id="id_description" maxlength="200" name="description" type="text" value="{{ model.description }}">
+            </div>
+        </div>
+    </div>
+
+    <div class="control-group form-row">
+        <div>
+            <div class="control-label">
+                <label class="required">Телефон (в шапке):</label>
+            </div>
+            <div class="controls">
+                <input class="vTextField" id="id_phone" maxlength="200" name="phone" type="text" value="{{ model.phone_home }}">
+            </div>
+        </div>
+    </div>
+
+    <div class="control-group form-row">
+        <div>
+            <div class="control-label">
+                <label class="required">E-mail:</label>
+            </div>
+            <div class="controls">
+                <input class="vTextField" id="id_mail" maxlength="200" name="email" type="text" value="{{ model.email }}">
+            </div>
+        </div>
+    </div>
+
+    <div class="control-group form-row">
+        <div>
+            <div class="control-label">
+                <label>Контакты:</label>
+            </div>
+            <div class="controls">
+                <input class="vTextField" id="id_contacts" maxlength="200" name="contacts" type="text" value="{{ model.contacts }}">
+            </div>
+        </div>
+    </div>
+
+    <div class="control-group form-row">
+        <div>
+            <div class="control-label">
+                <label>Одноклассники:</label>
+            </div>
+            <div class="controls">
+                <input class="vTextField" id="id_odnoklassniki" maxlength="200" name="odnoklassniki" type="text" value="{{ model.odnoklassniki }}">
+            </div>
+        </div>
+    </div>
+
+    <div class="control-group form-row">
+        <div>
+            <div class="control-label">
+                <label>Twitter:</label>
+            </div>
+            <div class="controls">
+                <input class="vTextField" id="id_twitter" maxlength="200" name="twitter" type="text" value="{{ model.twitter }}">
+            </div>
+        </div>
+    </div>
+
+    <div class="control-group form-row">
+        <div>
+            <div class="control-label">
+                <label>Facebook:</label>
+            </div>
+            <div class="controls">
+                <input class="vTextField" id="id_facebook" maxlength="200" name="facebook" type="text" value="{{ model.facebook }}">
+            </div>
+        </div>
+    </div>
+
+    <div class="control-group form-row">
+        <div>
+            <div class="control-label">
+                <label>Вконтакте:</label>
+            </div>
+            <div class="controls">
+                <input class="vTextField" id="id_vk" maxlength="200" name="vk" type="text" value="{{ model.vk }}">
+            </div>
+        </div>
+    </div>
+  
+    
+      <div class="control-group form-row field-text ">
+        
+          <div><div class="control-label"><label for="id_text">Текст в футере:</label></div><div class="controls">
+              <textarea cols="40" id="id_text" name="footer" rows="10">
+                {{ model.footer }}
+              </textarea>
+              <script type="text/javascript">
+                    jQuery(document).ready(function(jQuery){
+                        var $field = jQuery("#id_text");
+                        options = {"lang": "ru", "fileUpload": "/redactor/upload/file/", "plugins": ["fontcolor", "fontsize", "fontfamily", "textdirection"], "imageUpload": "/redactor/upload/image/", "buttonSource": "true"};
+                        options.imageUploadErrorCallback = function(json){
+                            alert(json.error);
+                        };
+                        $field.redactor(options);
+                    });
+                 </script></div></div>
+
+      </div>
+
+    <div class="control-group form-row field-url ">
+
+          <div><div class="control-label"><label for="id_url">Код счётчиков в футере:</label></div><div class="controls">
+              <textarea style="width:686px" class="vTextField" name="footer_link">{{ model.footer_link }}</textarea>
+          </div></div>
+
+    </div>
+    
+  
+</fieldset>
+
+
+
+            
+          
+
+          
+
+          
+          
+
+
+          
+            
+          
+
+        </div>
+
+        
+
+        
+        
+
+
+        
+
+        
+        
+<script type="text/javascript">
+(function($) {
+    var field;
+
+
+    field = {
+        id: '#id_url',
+        dependency_ids: [],
+        dependency_list: [],
+        maxLength: 200
+    };
+
+    
+    field['dependency_ids'].push('#id_title');
+    field['dependency_list'].push('title');
+    
+
+    
+    $('.empty-form .form-row .field-url, .empty-form.form-row .field-url').addClass('prepopulated_field');
+    $(field.id).data('dependency_list', field['dependency_list'])
+               .prepopulate(field['dependency_ids'], field.maxLength);
+
+})(django.jQuery);
+</script>
+
+
+      </div>
+    </form>
+  </div>
+
+              
+            </div>
+            <!-- END Content -->
+          </div>
+        
+
+
+        
+          
+            <div id="suit-left" class="suit-column">
+              
+                
+                  
+                    <form class="form-search nav-quick-search" autocomplete="off" action="/admin/auth/user/" method="GET">
+                      <input type="text" name="q" class="input-medium search-query" id="quick-search">
+                      <i class="input-icon icon-search"></i>
+                      <input type="submit" class="submit" value="">
+                    </form>
+                  
+                
+              
+
+              
+
+
+
+<div class="left-nav" id="left-nav">
+  <ul>
+    
+      
+      <li>
+        <a href="/admin/"><i class="icon-home"></i>Начало
+        </a>
+      </li>
+    
+
+    
+    
+      
+        
+          <li>
+            <a href="/admin/catalog/category/"><i class="icon-chevron-right"></i>Catalog
+            </a>
+            
+              <ul>
+                
+                  <li>
+                    <a href="/admin/catalog/category/">Категории</a></li>
+                
+                  <li>
+                    <a href="/admin/catalog/product/">Продукты</a></li>
+                
+              </ul>
+            
+          </li>
+        
+      
+        
+          <li>
+            <a href="/admin/clients/client/"><i class="icon-chevron-right"></i>Clients
+            </a>
+            
+              <ul>
+                
+                  <li>
+                    <a href="/admin/clients/client/">Клиенты</a></li>
+                
+              </ul>
+            
+          </li>
+        
+      
+        
+          <li>
+            <a href="/admin/orders/order/"><i class="icon-chevron-right"></i>Orders
+            </a>
+            
+              <ul>
+                
+                  <li>
+                    <a href="/admin/orders/order/">Заказы</a></li>
+                
+              </ul>
+            
+          </li>
+        
+      
+        
+          <li>
+              <a href="/admin/pages/section/"><i class="icon-chevron-right"></i>Pages</a>
+              <ul>
+                  <li><a href="/admin/pages/section/">Разделы</a></li>
+                  <li><a href="/admin/pages/page/">Страницы</a></li>
+              </ul>
+          </li>
+        
+      
+        
+          <li>
+            <a href="/admin/auth/group/"><i class="icon-lock"></i>Пользователи и группы
+            </a>
+            
+              <ul>
+                
+                  <li>
+                    <a href="/admin/auth/group/">Группы</a></li>
+                
+                  <li>
+                    <a href="/admin/auth/user/">Пользователи</a></li>
+                
+              </ul>
+            
+          </li>
+        
+      
+    
+      <li>
+         <a href="/admin/settings/"><i class="icon-lock"></i>Настройки</a>
+      </li>
+      <li>
+         <a href="/admin/contact/"><i class="icon-lock"></i>Контакты</a>
+      </li>
+  </ul>
+</div>
+
+
+            </div>
+          
+        
+
+      </div>
+    </div>
+  
+
+  
+  <!-- Sticky footer push -->
+  <div id="push"></div>
+  
+
+</div>
+
+
+  
+  <div id="footer" class="footer">
+    <div class="content">
+      <div class="tools">
+        
+          <a href="http://djangosuit.com/support/" target="_blank" class="icon"><i class="icon-question-sign"></i>Support</a>
+          <a href="http://djangosuit.com/pricing/" target="_blank" class="icon"><i class="icon-bookmark"></i>Licence</a>
+          <a href="http://github.com/darklow/django-suit/issues" target="_blank" class="icon"><i class="icon-comment"></i>Report a bug</a>
+        
+      </div>
+
+      <div class="copyright">
+        
+          Copyright &copy; 2013 DjangoSuit.com<br>Developed by <a href="http://djangosuit.com" target="_blank">DjangoSuit.com</a>
+        
+      </div>
+
+      <div class="branding">
+        
+          Django Suit
+          
+            v0.2.11
+          
+        
+      </div>
+    </div>
+  </div>
+  
+
+
+  <script src="/static/suit/js/suit.js"></script>
+  
+  
+
+  
+    <!-- Warn on leaving unsaved form -->
+    <script src="/static/suit/js/suit-form-confirm.js"></script>
+    <script type="text/javascript">
+      confirmExitIfModified('page_form', 'You have unsaved changes.');
+    </script>
+  
+
+  
+        
+  <script>
+    (function ($) {
+      $(function () {
+        $("#page_form").suit_form_debounce();
+      });
+    }(Suit.$))    
+  </script>
+
+  <style>
+      .form-row input {
+          width: 685px;
+      }
+  </style>
+
+
+</body>
+</html>
