@@ -29,7 +29,7 @@ class Order(models.Model):
     date_create = models.DateField("Дата создания заказа", auto_now_add=True)
     date_now = models.DateField("Дата редактирования", auto_now=True)
 
-    products = models.ManyToManyField(CartProduct, verbose_name="Товары", blank=True, editable=False)
+    products = models.ManyToManyField(CartProduct, verbose_name="Товары", blank=True)
 
     class Meta:
         verbose_name = "Заказ"
