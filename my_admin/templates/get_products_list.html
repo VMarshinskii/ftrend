@@ -1,30 +1,32 @@
 <table class="table-cart table-order">
 	<tbody>
 		<tr>
-			<th colspan="2">Наименование товара</th>
+			<th colspan="2" style="text-align: left; padding-left: 10px;">Наименование товара</th>
 			<th width="110px">Цена</th>
 			<th width="110px">Количество</th>
 			<th width="110px">Сумма</th>
 		</tr>
+        {% for product in products %}
 		<tr class="product_item">
 			<td>
-				<a href="#"><img src="/static/uploads/d7mqcCtL92jqDw5qKJCc.jpg" alt="" width="60px"></a>
+				<a target="_blank" href="/catalog/product/{{ product.product.id }}"><img src="{{ product.image }}" alt="" width="60px"></a>
 			</td>
 			<td>
-				Джемпер 132093
+				<a target="_blank" href="/catalog/product/{{ product.product.id }}">{{ product.title }}</a>
 			</td>
 			<td align="center">
-				300 руб.
+				{{ product.price_order }} руб.
 			</td>
-			<td align="center">1 шт.</td>
+			<td align="center">{{ product.count }} шт.</td>
 			<td align="center">
-				300 руб.
+				{{ product.sum }} руб.
 			</td>
 		</tr>
+        {% endfor %}
 		<tr class="result">
-			<td colspan="3" align="right">Итого c учётом доставки:</td>
+			<td colspan="3" align="right" style="font-weight: bold">Итого без учёта доставки:</td>
 			<td></td>
-			<td><span id="cart_result_sum">300 руб.</span></td>
+			<td align="right"><span style="font-weight: bold">{{ sum }} руб.</span></td>
 		</tr>
 	</tbody>
 </table>

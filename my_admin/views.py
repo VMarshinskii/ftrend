@@ -86,5 +86,11 @@ def get_products_list(request):
         if id != "":
             mass_id.append(int(id))
 
-    products = CartProduct.objects.filter(id__in=mass_id)
-    return render_to_response("get_products_list.html", {'products': products})
+    sum_all = 0
+
+    products = []
+    for product in CartProduct.objects.filter(id__in=mass_id):
+        product.sum = product.price_order * product.count
+        sum_all += product.price_order * product.count
+
+    return render_to_response("get_products_list.html", {'products': products, 'sum': sum_all})

@@ -609,6 +609,7 @@ a.append-icon i{margin-left:5px}
 .table-order {
     border-collapse: collapse;
     background: #fff;
+    width: 100%;
 }
 .table-order td {
     padding: 4px;
