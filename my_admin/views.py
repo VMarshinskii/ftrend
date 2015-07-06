@@ -4,6 +4,7 @@ from django.template.context_processors import csrf
 from django.utils.encoding import smart_str
 from ftrend.additions import upload_file
 from catalog.models import Color, Category
+from cart.models import CartProduct
 from models import Settings
 
 
@@ -76,3 +77,14 @@ def settings(request):
         return render_to_response("set.html", args)
     else:
         return redirect('/admin/')
+
+
+def get_products_list(request):
+    mass_id = []
+
+    for id in request.GET.get("mass_id", "").split(";"):
+        if id != "":
+            mass_id.append(int(id))
+
+    products = CartProduct.objects.filter(id__in=mass_id)
+    return render_to_response("get_products_list.html", {'products': products})
