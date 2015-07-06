@@ -256,8 +256,15 @@ $(document).ready(function(){
 
     if($("div").is(".field-delivery_price"))
     {
-        var sd = $("#id_products").val();
-        alert(sd);
+        var sd = $("#id_products");
+
+        var mass = [];
+
+        sd.find(':selected').forEach(function(){
+            alert($(this).val());
+            mass.push($(this).val());
+        });
+
         $(".field-products .controls").load("/admin/get_products_list/");
     }
 
