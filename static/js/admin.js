@@ -265,7 +265,7 @@ $(document).ready(function(){
 
         alert(mass);
 
-        $(".field-products .controls").load("/admin/get_products_list/?mass_id=" + mass.join(","));
+        $(".field-products .controls").load("/admin/get_products_list/?mass_id=," + mass.join(","));
     }
 
 
