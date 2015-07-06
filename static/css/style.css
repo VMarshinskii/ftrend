@@ -1732,6 +1732,10 @@ label[for=select2] {
     color: #333;
     font-size: 15px !important;
 }
+.page ul {
+    margin: 10px 25px;
+}
+
 
 
 p.catalog_price,
@@ -1799,6 +1803,6 @@ p.catalog_price_stable {
     border-collapse: collapse;
 }
 .delivery_table td {
-    border: 1px solid #777;
+    border: 1px solid #B3B3B3;
     padding: 5px;
 }
