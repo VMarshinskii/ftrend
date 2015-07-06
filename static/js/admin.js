@@ -196,7 +196,7 @@ $(document).ready(function(){
 
     if($("div").is("#id_delivery_price"))
     {
-        $(".field-products .controls").html("/get_products_list/");
+        $(".field-products .controls").html("/admin/get_products_list/");
     }
 
 
