@@ -194,13 +194,6 @@ $(document).ready(function(){
     });
 
 
-    if($("div").is(".field-delivery_price"))
-    {
-        alert("ok");
-        $(".field-products .controls").html("/admin/get_products_list/");
-    }
-
-
     if($("div").is(".field-colors")) {
 
         var id_size_colors = $("#id_size_colors").val().split(";");
@@ -258,6 +251,13 @@ $(document).ready(function(){
             });
         });
 
+    }
+
+
+    if($("div").is(".field-delivery_price"))
+    {
+        alert("ok");
+        $(".field-products .controls").load("/admin/get_products_list/");
     }
 
 
