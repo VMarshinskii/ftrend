@@ -259,11 +259,11 @@ $(document).ready(function(){
         var mass = [];
 
         $("#id_products option:selected").each(function(){
-            alert($(this).val());
             mass.push($(this).val());
+            alert(mass);
         });
 
-        //$(".field-products .controls").load("/admin/get_products_list/");
+        $(".field-products .controls").load("/admin/get_products_list/?mass_id=" + mass.join(";"));
     }
 
 
