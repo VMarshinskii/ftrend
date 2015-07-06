@@ -258,12 +258,14 @@ $(document).ready(function(){
     {
         var mass = [];
 
-        $("#id_products option:selected").each(function(index, el){
-            mass.push(el.val());
-            alert(mass);
+        $("#id_products option:selected").each(function(){
+            var val = $(this).val();
+            mass.push(val);
         });
 
-        $(".field-products .controls").load("/admin/get_products_list/?mass_id=" + mass.join(";"));
+        alert(mass);
+
+        $(".field-products .controls").load("/admin/get_products_list/?mass_id=" + mass.join(","));
     }
 
 

@@ -82,7 +82,7 @@ def settings(request):
 def get_products_list(request):
     mass_id = []
 
-    for id in request.GET.get("mass_id", "").split(";"):
+    for id in request.GET.get("mass_id", "").split(","):
         if id != "":
             mass_id.append(int(id))
 
