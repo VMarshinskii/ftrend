@@ -9,7 +9,7 @@
         {% for product in products %}
 		<tr class="product_item">
 			<td>
-				<a target="_blank" href="/catalog/product/{{ product.product.id }}"><img src="{{ product.image }}" alt="" width="60px"></a>
+				<a target="_blank" href="/catalog/product/{{ product.product.id }}"><img src="/static/uploads/{{ product.image }}" alt="" width="60px"></a>
 			</td>
 			<td>
 				<a target="_blank" href="/catalog/product/{{ product.product.id }}">{{ product.title }}</a>
