@@ -613,3 +613,7 @@ a.append-icon i{margin-left:5px}
 .table-order td {
     padding: 4px;
 }
+.table-order .product_item {
+    border-bottom: 1px solid #6E6E6E;
+    border-top: 1px solid #6E6E6E;
+}
