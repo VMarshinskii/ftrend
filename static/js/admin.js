@@ -194,8 +194,9 @@ $(document).ready(function(){
     });
 
 
-    if($("div").is("#id_delivery_price"))
+    if($("div").is(".field-delivery_price"))
     {
+        alert("ok");
         $(".field-products .controls").html("/admin/get_products_list/");
     }
 
