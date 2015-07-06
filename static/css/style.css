@@ -1794,3 +1794,11 @@ p.catalog_price_stable {
     color: #fff;
     font-size: 14px;
 }
+
+.delivery_table {
+    border-collapse: collapse;
+}
+.delivery_table td {
+    border: 1px solid #777;
+    padding: 5px;
+}
