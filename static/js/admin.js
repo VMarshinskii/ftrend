@@ -258,8 +258,8 @@ $(document).ready(function(){
     {
         var mass = [];
 
-        $("#id_products option:selected").each(function(){
-            mass.push($(this).val());
+        $("#id_products option:selected").each(function(index, el){
+            mass.push(el.val());
             alert(mass);
         });
 
