@@ -166,8 +166,6 @@ $(document).ready(function(){
                 }
             }
         );
-
-        $(".field-products .controls").html("/get_products_list/");
     }
 
 
@@ -194,6 +192,12 @@ $(document).ready(function(){
         }
 
     });
+
+
+    if($("div").is("#id_delivery_price"))
+    {
+        $(".field-products .controls").html("/get_products_list/");
+    }
 
 
     if($("div").is(".field-colors")) {
