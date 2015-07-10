@@ -1,4 +1,5 @@
 from django.shortcuts import render_to_response
+from models import DeliveryCDEK
 import xlrd
 
 def points_sdk_view(request):
@@ -8,4 +9,5 @@ def points_sdk_view(request):
         row = sheet.row_values(rownum)
         for c_el in row:
             print c_el
+        # DeliveryCDEK(name=row[0], code=row[1], address=row[2], phone=row[3], mail=row[4], time=row[5]).save()
     return render_to_response("points_sdk_view.html")
