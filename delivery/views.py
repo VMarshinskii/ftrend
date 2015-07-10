@@ -9,6 +9,11 @@ def points_sdk_view(request):
     #     row = sheet.row_values(rownum)
         # obj = DeliveryCDEK(name=row[0], code=row[1], address=row[2], phone=row[3], mail=row[4], time=row[5])
         # obj.save()
+
+    f = open('/var/www/ftrend/delivery/pec.txt')
+    for line in f:
+        print(line)
+
     return render_to_response("points_sdk_view.html")
 
 
