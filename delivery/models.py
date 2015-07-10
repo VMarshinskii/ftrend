@@ -9,4 +9,4 @@ class DeliveryCDEK(models.Model):
     phone = models.CharField(verbose_name="Телефон", max_length=250)
     mail = models.CharField(verbose_name="Почта", max_length=250)
     time = models.CharField(verbose_name="Время работы", max_length=250)
-    url = models.CharField(verbose_name="Url", max_length=250, unique=True, blank=True)
+    # url = models.CharField(verbose_name="Url", max_length=250, unique=True, blank=True)
