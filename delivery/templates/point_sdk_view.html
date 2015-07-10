@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load catalog_menu %}
+
+{% block title %}
+    <title>Family Trend | пункты выдачи СДЭК</title>
+{% endblock %}
+
+{% block content %}
+<div id="left-block">
+    {% catalog_menu %}
+</div>
+
+<div id="center-block">
+    <h1 class="title_h1">Пункты выдачи СДЭК в городе {{ city }}</h1>
+
+    <ul>
+        {% for point in points %}
+        <li>{{ point.name }}</li>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock %}
