@@ -10,3 +10,10 @@ class DeliveryCDEK(models.Model):
     mail = models.CharField(verbose_name="Почта", max_length=250)
     time = models.CharField(verbose_name="Время работы", max_length=250)
     url = models.CharField(verbose_name="Url", max_length=250, blank=True)
+
+    class Meta:
+        verbose_name = "Пункт выдачи"
+        verbose_name_plural = "Пункты выдачи"
+
+    def __unicode__(self):
+        return self.name
