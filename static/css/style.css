@@ -1846,3 +1846,8 @@ p.catalog_price_stable {
 .cities-list-item ul li a {
     color: #333333;
 }
+
+.delivery_point {
+    padding: 10px 0;
+    border-bottom: 1px solid #E0E0E0;
+}
