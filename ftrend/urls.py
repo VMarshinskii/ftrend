@@ -15,5 +15,6 @@ urlpatterns = patterns('',
     url(r'^sale/', include('sale.urls')),
     url(r'^account/', include('account.urls')),
     url(r'^redactor/', include('redactor.urls')),
+    url(r'^delivery/', include('delivery.urls')),
     url(r'^(?P<url>[\-\w]+)', 'pages.views.page_view'),
 )

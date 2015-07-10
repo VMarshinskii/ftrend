@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load catalog_menu %}
+
+{% block title %}
+    <title>Family Trend | пункты выдачи СДЭК</title>
+{% endblock %}
+
+{% block content %}
+<div id="left-block">
+    {% catalog_menu %}
+</div>
+
+<div id="center-block">
+    <div class="recent-cities">
+        <ul>
+            <li><a href="/contacts/ekaterinburg.html" title="">Екатеринбург</a></li>
+            <li><a href="/contacts/krasnodar.html" title="">Краснодар</a></li>
+            <li><a href="/contacts/moskva.html" title="">Москва</a></li>
+            <li><a href="/contacts/nizhniy-novgorod.html" title="">Нижний Новгород</a></li>
+            <li><a href="/contacts/novosibirsk.html" title="">Новосибирск</a></li>
+            <li><a href="/contacts/rostov-na-donu.html" title="">Ростов-на-Дону</a></li>
+            <li><a href="/contacts/sankt-peterburg.html" title="">Санкт-Петербург</a></li>
+        </ul>
+    </div>
+
+    <div class="cities-list-item">
+        <ul>
+            <li class="country">Беларусь</li>
+            <li><a href="/contacts/g_brest_ul_vorovskogo_d_29.html" title="">Брест</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
