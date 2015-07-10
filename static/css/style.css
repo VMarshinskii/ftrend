@@ -1807,9 +1807,16 @@ p.catalog_price_stable {
     padding: 5px;
 }
 
+.delivery_list {
+    -moz-column-count: 4;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 4;
+    -webkit-column-gap: 20px;
+    column-count: 4;
+    column-gap: 20px;
+}
 .recent-cities {
     width: 200px;
-    /*background-color: #eee;*/
     margin-bottom: 11px;
 }
 .recent-cities ul {
@@ -1823,7 +1830,6 @@ p.catalog_price_stable {
 
 .cities-list-item {
     width: 200px;
-    /* background-color: #eee; */
     margin-bottom: 11px;
 }
 .cities-list-item ul {
