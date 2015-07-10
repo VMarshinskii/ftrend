@@ -5,6 +5,7 @@ from django.middleware.csrf import get_token
 from django.template import RequestContext
 from catalog.models import Product, Category, Age, Brand, Color, Collection
 from django.utils.encoding import smart_str
+from my_admin.models import Settings
 
 
 def catalog_view(request):
@@ -63,6 +64,7 @@ def product_view(request, id=-1):
             'ages': product.age.all(),
             'size_colors': size_colors,
             'collection': product.collection.all(),
+            'settings': Settings.objects.get(id=1),
         })
     except Product.DoesNotExist:
         raise Http404
