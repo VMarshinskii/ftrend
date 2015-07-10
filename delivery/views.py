@@ -12,7 +12,8 @@ def points_sdk_view(request):
 
     f = open('/var/www/ftrend/delivery/pec.txt')
     for line in f:
-        print(line)
+        data = line.split(": ")
+        print(data[0] + "===" + data[1],)
 
     return render_to_response("points_sdk_view.html")
 
