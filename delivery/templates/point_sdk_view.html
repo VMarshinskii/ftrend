@@ -13,11 +13,13 @@
 <div id="center-block">
     <h1 class="title_h1">Пункты выдачи СДЭК в городе {{ city }}</h1>
 
-    <ul>
-        {% for point in points %}
-        <li>{{ point.name }} - {{ point.address }}</li>
-        {% endfor %}
-    </ul>
+    {% for point in points %}
+        <div class="delivery_point">
+            <p><span style="font-weight: bold">Адрес:</span> {{ point.address }}</p>
+            <p><span style="font-weight: bold">Телефон:</span> {{ point.phone }}</p>
+            <p><span style="font-weight: bold">Время работы:</span> {{ point.time }}</p>
+        </div>
+    {% endfor %}
 
 </div>
 {% endblock %}
