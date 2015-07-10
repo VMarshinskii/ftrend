@@ -1806,3 +1806,36 @@ p.catalog_price_stable {
     border: 1px solid #B3B3B3;
     padding: 5px;
 }
+
+.recent-cities {
+    width: 200px;
+    /*background-color: #eee;*/
+    margin-bottom: 11px;
+}
+.recent-cities ul {
+    list-style: none;
+    font-size: 17px;
+}
+.recent-cities ul li a {
+    color: #333;
+    font-weight: 500;
+}
+
+.cities-list-item {
+    width: 200px;
+    /* background-color: #eee; */
+    margin-bottom: 11px;
+}
+.cities-list-item ul {
+    list-style: none;
+    font-size: 17px;
+}
+.cities-list-item ul li.country {
+    color: #D38202;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+.cities-list-item ul li a {
+    color: #333333;
+}
