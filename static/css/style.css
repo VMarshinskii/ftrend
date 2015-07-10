@@ -1829,7 +1829,8 @@ p.catalog_price_stable {
     font-weight: 500;
 }
 .recent-cities ul li a:hover {
-    color: #D38202;
+    color: #f29400;
+    text-decoration: underline;
 }
 
 .cities-list-item {
@@ -1850,7 +1851,8 @@ p.catalog_price_stable {
     color: #333333;
 }
 .cities-list-item ul li a:hover {
-    color: #D38202;
+    color: #f29400;
+    text-decoration: underline;
 }
 
 .delivery_point {
