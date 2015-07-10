@@ -1814,6 +1814,7 @@ p.catalog_price_stable {
     -webkit-column-gap: 20px;
     column-count: 4;
     column-gap: 20px;
+    margin-top: 20px;
 }
 .recent-cities {
     width: 200px;
