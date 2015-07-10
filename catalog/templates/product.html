@@ -25,6 +25,7 @@
             {% endif %}
         </div>
         {% endfor %}
+        {% if recommended.count > 0 %}
         <div class="header-of-block"><p>Рекомендуем: </p></div>
         <div class="sliderkit carousel">
             <div class="sliderkit-nav">
@@ -39,6 +40,7 @@
                 <div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-next"><a href="#" title="Next line"><span></span></a></div>
             </div>
         </div>
+        {% endif %}
     </div>
     <div id="cart-right">
         <div class="top-cart-block">
