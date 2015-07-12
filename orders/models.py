@@ -11,7 +11,7 @@ STAUSES = (
 
 
 class Order(models.Model):
-    user = models.ForeignKey(User, verbose_name="Пользователь")
+    user = models.ForeignKey(User, verbose_name="Пользователь", blank=True)
     sum = models.IntegerField("Сумма заказа", default=0)
     status = models.IntegerField("Статус заказа", choices=STAUSES)
 
