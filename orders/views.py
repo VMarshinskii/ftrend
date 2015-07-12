@@ -117,7 +117,7 @@ def create_order(request):
                 if user is not None and user.is_active:
                     auth.login(request, user)
                 return redirect("/orders/reg_thanks/")
-            else:
+            elif request.user.is_authenticated():
                 request.user.last_name = request.POST.get('last_name', "")
                 request.user.first_name = request.POST.get('first_name', "")
                 request.user.phone = request.POST.get('phone', "")
