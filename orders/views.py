@@ -84,7 +84,8 @@ def create_order(request):
             order.status = 0
             print(get_sum(request))
             order.sum = get_sum(request)
-            order.user = request.user
+            if request.user.is_authenticated():
+                order.user = request.user
             order.save()
             cart = get_cart(request)
             if cart:
