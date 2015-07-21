@@ -104,17 +104,17 @@ $(document).ready(function(){
     $("#input-price").ionRangeSlider({
         type: "double",
         min: 0,
-        max: $(".sort-price").attr('data-max'),
+        max: 10000,
         from: 0,
-        to: $(".sort-price").attr('data-max'),
+        to: 10000,
         prettify_enabled: false
     });
     $("#input-size").ionRangeSlider({
         type: "double",
         min: 0,
-        max: 160,
+        max: 182,
         from: 0,
-        to: 160,
+        to: 182,
         prettify_enabled: false
     });
     $(".carousel").sliderkit({
