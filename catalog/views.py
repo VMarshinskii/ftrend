@@ -9,7 +9,7 @@ from my_admin.models import Settings
 
 
 def catalog_view(request):
-    products = Product.objects.all()[:40]
+    products = Product.objects.all()
     stop_price = 0
 
     for product in products:
