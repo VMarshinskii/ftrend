@@ -13,6 +13,9 @@ def home_view(request):
     sell_products = Product.objects.filter(sell=True)[:3]
     popular_products = Product.objects.all().order_by('-popular_count')[:3]
 
+    for cat in Category.objects.all():
+        cat.save()
+
     return render_to_response("home.html", {
         'novelty_products': novelty_products,
         'sell_products': sell_products,
