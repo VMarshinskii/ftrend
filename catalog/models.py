@@ -9,6 +9,7 @@ class Category(models.Model):
     description = models.CharField("Description", max_length=200, blank=True)
     keywords = models.CharField("Ключевые слова", max_length=200, blank=True)
     step = models.IntegerField("Вложенность", blank=True)
+    products_count = models.IntegerField("Количество товаров", default=0, editable=False)
 
     class Meta:
         verbose_name_plural = u"Категории"

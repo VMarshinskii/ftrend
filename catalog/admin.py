@@ -16,6 +16,9 @@ class CategoryAdmin(admin.ModelAdmin):
         mass = {'result_content': html}
         return super(CategoryAdmin, self).changelist_view(request, extra_context=mass)
 
+    def save_model(self, request, obj, form, change):
+        obj.products_count = Product.objects.filter(category=obj).count()
+        obj.save()
 
 def sort_list():
     mass_object = []
@@ -47,6 +50,10 @@ def select_res(categoryes):
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'code', 'category', 'brand')
     search_fields = ['name']
+
+    def save_model(self, request, obj, form, change):
+        obj.category.products_count = Product.objects.filter(category=obj).count()
+        obj.category.save()
 
 
 admin.site.register(Product, ProductAdmin)
