@@ -13,9 +13,6 @@ def home_view(request):
     sell_products = Product.objects.filter(sell=True)[:3]
     popular_products = Product.objects.all().order_by('-popular_count')[:3]
 
-    for cat in Category.objects.all():
-        cat.save()
-
     return render_to_response("home.html", {
         'novelty_products': novelty_products,
         'sell_products': sell_products,
@@ -196,3 +193,16 @@ def product_edit_ajax_research(request, pr_id=-1):
         return Http404
     pr = Product.objects.get(id=pr_id)
     return render_to_response("admin/edit_ajax_research.html", {'product': pr})
+
+
+def novelty_view(request):
+    products = Product.objects.filter(novelty=True)
+    return render_to_response("novelty.html", {'products': products})
+
+def sell_view(request):
+    products = Product.objects.filter(sell=True)
+    return render_to_response("sell.html", {'products': products})
+
+def popular_view(request):
+    products = Product.objects.all().order_by('-popular_count')
+    return render_to_response("popular.html", {'products': products})

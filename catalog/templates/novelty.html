@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load catalog_menu %}
+
+{% block title %}
+    <title>Одежда для детей и подростков - НОВИНКИ</title>
+{% endblock %}
+
+{% block content %}
+<div id="left-block">
+    {% catalog_menu %}
+</div>
+<div id="center-block" class="category">
+
+    <h1 class="home_h2">Одежда для детей и подростков - НОВИНКИ</h1>
+
+    <div class="categories">
+        {% for product in products %}
+        <div class="content-item">
+            <a class="catalog_item_link" href="/catalog/product/{{ product.id }}/">
+                <div class="img-block"><img src="/static/uploads/{{ product.image }}" alt="{{ product.name }}"/></div>
+                <h3 class="catalog_product_item_name">{{ product.name }}</h3>
+            </a>
+
+            <div class="itrm-link">
+                {% if product.sale_status %}
+                    <p class="cat-price catalog_price"><span>{{ product.price_sale }}</span> руб.</p>
+                    <p class="cat-price catalog_price_old"><span>{{ product.price }}</span> руб.</p>
+                {% else %}
+                    <p class="cat-price catalog_price_stable"><span class="catalog_price">{{ product.price }}</span> руб.</p>
+                {% endif %}
+            </div>
+
+            <div class="time-item">
+                <input type="button" class="catalog_order_submit" data-id="{{ product.id }}" value="В корзину"/>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
