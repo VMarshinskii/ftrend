@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
 urlpatterns = patterns('',
-    url(r'^$', 'sale.views.index_view'),
+    url(r'^$', 'catalog.views.home_view'),
     url(r'^login/$', 'account.views.login'),
     url(r'^logout/$', 'account.views.logout'),
     url(r'^authentication/$', 'account.views.authentication'),
