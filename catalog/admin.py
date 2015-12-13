@@ -52,7 +52,7 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
     def save_model(self, request, obj, form, change):
-        obj.category.products_count = Product.objects.filter(category=obj).count()
+        obj.category.products_count = Product.objects.filter(category=obj.category).count()
         obj.category.save()
 
 
