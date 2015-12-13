@@ -8,6 +8,18 @@ from django.utils.encoding import smart_str
 from my_admin.models import Settings
 
 
+def home_view(request):
+    novelty = Product.objects.filter(novelty=True)
+    sell = Product.objects.filter(sell=True)
+    popular = Product.objects.filter(popular=True)
+
+    return render_to_response("home.html", {
+        'novelty': novelty,
+        'sell': sell,
+        'popular': popular
+    })
+
+
 def catalog_view(request):
     products = Product.objects.all()
     stop_price = 0
