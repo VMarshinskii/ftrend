@@ -30,7 +30,6 @@ def sort_list():
         obj.title = smart_str("— " * obj.step) + smart_str(obj.title)
         mass_object.append(obj)
         children = Category.objects.filter(parent=obj)
-        print("sdsd")
 
         for child in children:
             rec_list(child)
