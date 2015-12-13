@@ -204,5 +204,5 @@ def sell_view(request):
     return render_to_response("sell.html", {'products': products})
 
 def popular_view(request):
-    products = Product.objects.all().order_by('-popular_count')
-    return render_to_response("popular.html", {'products': products})[:15]
+    products = Product.objects.all().order_by('-popular_count')[:15]
+    return render_to_response("popular.html", {'products': products})
