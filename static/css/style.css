@@ -1880,12 +1880,13 @@ p.catalog_price_stable {
     border-bottom: 1px solid #E0E0E0;
 }
 
-article {
+.art {
     border: 1px solid #eeeeee;
-    border-radius: 15px;
-    padding: 10px;
+    border-radius: 2px;
+    padding: 5px 10px;
     box-sizing: border-box;
 }
-article p {
+.art p {
     font: 16px/16pt sans-serif;
+    margin: 5px 0;
 }
