@@ -12,9 +12,14 @@
 </div>
 <div id="center-block" class="category">
 
-    <h1 class="title_h1">{{ categ.name }}</h1>
+    <a href="#">
+        <img src="/static/images/Banner.png" alt="Зимняя одежда Family Trend"/>
+    </a>
 
     <div class="categories">
+        <h2>Новинки</h2>
+        <a href="#">посмотреть всё</a>
+    
         {% for product in novelty %}
         <div class="content-item">
             <a class="catalog_item_link" href="/catalog/product/{{ product.id }}/">

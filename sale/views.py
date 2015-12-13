@@ -2,10 +2,10 @@ from django.shortcuts import render_to_response, Http404
 from sale.models import Sale
 
 
-def index_view(request):
+def sales_view(request):
     sales = list(Sale.objects.filter(is_active=True))
     sale_1 = sales.pop(0)
-    return render_to_response("index.html", {
+    return render_to_response("sales.html", {
         'user': request.user,
         'sale_1': sale_1,
         'sales': sales
