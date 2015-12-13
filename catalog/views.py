@@ -9,14 +9,14 @@ from my_admin.models import Settings
 
 
 def home_view(request):
-    novelty = Product.objects.filter(novelty=True)
-    sell = Product.objects.filter(sell=True)
-    popular = Product.objects.filter(popular=True)
+    novelty_products = Product.objects.filter(novelty=True)[:3]
+    sell_products = Product.objects.filter(sell=True)[:3]
+    popular_products = Product.objects.filter(popular=True)[:3]
 
     return render_to_response("home.html", {
-        'novelty': novelty,
-        'sell': sell,
-        'popular': popular
+        'novelty_products': novelty_products,
+        'sell_products': sell_products,
+        'popular_products': popular_products
     })
 
 

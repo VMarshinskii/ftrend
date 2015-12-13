@@ -400,6 +400,23 @@ h1.title_h1:after {
     top: 0;
     right: -8px;
 }
+
+.home_h2 {
+    display: inline-block;
+    float: left;
+    margin-top: 15px;
+    color: #e7145e;
+    font-size: 22px;
+}
+.read_more {
+    display: inline-block;
+    font-size: 12px;
+    float: left;
+    margin-top: 20px;
+    margin-left: 9px;
+    text-decoration: underline;
+}
+
 #content-wrapper .content-item {
     padding: 3px;
     border: 1px solid #c2c2c2;
