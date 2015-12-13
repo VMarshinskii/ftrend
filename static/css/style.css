@@ -1879,3 +1879,13 @@ p.catalog_price_stable {
     padding: 10px 0;
     border-bottom: 1px solid #E0E0E0;
 }
+
+article {
+    border: 1px solid #eeeeee;
+    border-radius: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+article p {
+    font: 16px/16pt sans-serif;
+}
