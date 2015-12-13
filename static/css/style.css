@@ -937,6 +937,9 @@ footer .last-menu:before {
     background-position: 0 -54px;
 }
 
+.categories {
+    clear: both;
+}
 .categories .content-item {
     width: 210px !important;
     height: 300px !important;
