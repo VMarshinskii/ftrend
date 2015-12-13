@@ -11,7 +11,7 @@ from my_admin.models import Settings
 def home_view(request):
     novelty_products = Product.objects.filter(novelty=True)[:3]
     sell_products = Product.objects.filter(sell=True)[:3]
-    popular_products = Product.objects.filter(popular=True)[:3]
+    popular_products = Product.objects.all().order_by('-popular_count')[:3]
 
     return render_to_response("home.html", {
         'novelty_products': novelty_products,
@@ -43,6 +43,10 @@ def catalog_view(request):
 def product_view(request, id=-1):
     try:
         product = Product.objects.get(id=id)
+
+        product.popular_count += 1
+        product.save()
+
         images_mass = product.images.split(";")
         images = []
         for img in images_mass:

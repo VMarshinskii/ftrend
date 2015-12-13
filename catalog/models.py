@@ -147,7 +147,7 @@ class Product(models.Model):
 
     novelty = models.BooleanField("Новинки", default=False)
     sell = models.BooleanField("Самые продаваемые", default=False)
-    popular = models.BooleanField("Популярные товары", default=False)
+    popular_count = models.IntegerField("Популярность", default=0)
 
     is_active = models.BooleanField("Видимость", default=True)
 
