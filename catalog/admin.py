@@ -17,15 +17,17 @@ class CategoryAdmin(admin.ModelAdmin):
         return super(CategoryAdmin, self).changelist_view(request, extra_context=mass)
 
     def save_model(self, request, obj, form, change):
-        obj.products_count = Product.objects.filter(category=obj).count()
+        obj.products_count = Product.objects.filter(category=obj).cont()
+        print obj.products_count
         obj.save()
+
 
 def sort_list():
     mass_object = []
     roots = Category.objects.filter(parent=None)
 
     def rec_list(obj):
-        obj.title = smart_str("— "*obj.step) + smart_str(obj.title)
+        obj.title = smart_str("— " * obj.step) + smart_str(obj.title)
         mass_object.append(obj)
         children = Category.objects.filter(parent=obj)
         print("sdsd")
@@ -44,7 +46,6 @@ def select_res(categoryes):
     for category in categoryes:
         str_res += smart_str(category.title) + ":" + smart_str(category.id) + ";"
     return str_res
-
 
 
 class ProductAdmin(admin.ModelAdmin):
