@@ -1885,6 +1885,9 @@ p.catalog_price_stable {
     border-radius: 2px;
     padding: 5px 10px;
     box-sizing: border-box;
+    float: left;
+    clear: both;
+    margin-top: 10px;
 }
 .art p {
     font: 16px/16pt sans-serif;
