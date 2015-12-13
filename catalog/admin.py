@@ -17,7 +17,7 @@ class CategoryAdmin(admin.ModelAdmin):
         return super(CategoryAdmin, self).changelist_view(request, extra_context=mass)
 
     def save_model(self, request, obj, form, change):
-        obj.products_count = Product.objects.filter(category=obj).cont()
+        obj.products_count = Product.objects.filter(category=obj).count()
         print obj.products_count
         obj.save()
 
