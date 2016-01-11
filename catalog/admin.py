@@ -49,7 +49,7 @@ def select_res(categoryes):
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'code', 'category', 'brand')
-    search_fields = ['name']
+    search_fields = ['name', 'code']
 
     def save_model(self, request, obj, form, change):
         obj.category.products_count = Product.objects.filter(category=obj.category).count()
