@@ -122,7 +122,7 @@ $(document).ready(function(){
         shownavitems:4,
         circular:true
     });
-    $('select').styler();
+    $('#select1').styler();
 
 
     $(".small-cart-img img").each(function(index, element){
@@ -285,6 +285,13 @@ $(document).ready(function(){
 
     $(".irs-block").mouseleave(function(){
         filter_handler();
+    });
+
+
+    $("#id_categ_sort").change(function(){
+        var sort_option = $(this).val();
+        document.cookie = "sort=" + sort_option;
+        location.reload();
     });
 
 });

@@ -1893,3 +1893,12 @@ p.catalog_price_stable {
     font: 16px/16pt sans-serif;
     margin: 5px 0;
 }
+
+.categ_sort {
+    margin: 5px;
+    display: inline-block;
+    float: right;
+}
+.categ_sort label {
+    font-size: 14px;
+}
