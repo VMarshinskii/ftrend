@@ -112,6 +112,7 @@ def category_view(request, url="none"):
         'products': products,
         'stop_price': stop_price,
         'collections': Collection.objects.all(),
+        'sort_option': sort,
     })
 
 
