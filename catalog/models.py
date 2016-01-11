@@ -145,6 +145,7 @@ class Product(models.Model):
     keywords = models.CharField("Ключевые слова", max_length=200)
     description = models.CharField("Description", max_length=200)
     similar = models.ManyToManyField("self", verbose_name="Похожие товары", blank=True)
+    date = models.DateTimeField(verbose_name="Дата создания", auto_now_add=True)
 
     novelty = models.BooleanField("Новинки", default=False)
     sell = models.BooleanField("Самые продаваемые", default=False)
@@ -158,6 +159,11 @@ class Product(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def get_price(self):
+        if self.sale_status:
+            return self.price_sale
+        return self.price
 
     def save(self, *args, **kwargs):
         if self.sale_status is True:

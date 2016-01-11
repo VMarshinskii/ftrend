@@ -6,6 +6,7 @@ from django.template import RequestContext
 from catalog.models import Product, Category, Age, Brand, Color, Collection
 from django.utils.encoding import smart_str
 from my_admin.models import Settings
+from additions import sorted_product
 
 
 def home_view(request):
@@ -91,6 +92,10 @@ def category_view(request, url="none"):
     try:
         categ = Category.objects.get(url=url)
         products = categ.get_all_product()
+
+        sort = request.COOKIES.get('sort', 'default')
+        if sort:
+            products = sorted_product(products, sort)
 
         for product in products:
             if product.sale_status and product.price_sale > stop_price:

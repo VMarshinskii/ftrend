@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% load catalog_menu %}
+{% load categ_sort %}
 
 {% block title %}
     <title>Family Trend | {{ categ.title }}</title>
@@ -43,6 +44,8 @@
 {#            </div>#}
 {#        </div>#}
 {#    </div>#}
+
+    {% categ_sort sort_option %}
 
     <div class="categories">
         {% for product in products %}
