@@ -1902,3 +1902,7 @@ p.catalog_price_stable {
 .categ_sort label {
     font-size: 14px;
 }
+.categ_sort select {
+    font-size: 12px;
+    border-radius: 1px;
+}
