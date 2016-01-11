@@ -156,11 +156,16 @@ def age_filter_view(request, id=-1):
             elif product.price > stop_price:
                 stop_price = product.price
 
+        sort = request.COOKIES.get('sort', 'default')
+        if sort:
+            products = sorted_product(products, sort)
+
         return render_to_response("category.html", {
             'categ': age,
             'products': products,
             'stop_price': stop_price,
             'collections': Collection.objects.all(),
+            'sort_option': sort,
         })
     except Age.DoesNotExist:
         raise Http404
@@ -178,11 +183,16 @@ def brand_filter_view(request, id=-1):
             elif product.price > stop_price:
                 stop_price = product.price
 
+        sort = request.COOKIES.get('sort', 'default')
+        if sort:
+            products = sorted_product(products, sort)
+
         return render_to_response("category.html", {
             'categ': brand,
             'products': products,
             'stop_price': stop_price,
             'collections': Collection.objects.all(),
+            'sort_option': sort,
         })
     except Brand.DoesNotExist:
         raise Http404
