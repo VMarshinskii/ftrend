@@ -245,6 +245,18 @@ $(document).ready(function(){
                              var id_size_colors = $("#id_size_colors").val();
                             $("#id_size_colors").val(id_size_colors + ";" + $(this).attr('data-value') + ":" + $(this).attr('data-colors'));
                         });
+                    },
+                    onItemRemove: function(value){
+                        var select_size_colors = SelectSize.attr('data-colors');
+                        if (select_size_colors != -1 || select_size_colors !== undefined) {
+                            SelectSize.attr('data-colors', select_size_colors.replace(',' + value, ''));
+                        }
+
+                        $("#id_size_colors").val('');
+                        $(".field-sizes .item").each(function(){
+                             var id_size_colors = $("#id_size_colors").val();
+                            $("#id_size_colors").val(id_size_colors + ";" + $(this).attr('data-value') + ":" + $(this).attr('data-colors'));
+                        });
                     }
                 });
                 Controls.show(200);
