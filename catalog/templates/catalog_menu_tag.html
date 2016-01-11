@@ -3,7 +3,7 @@
     <a href="/catalog/{{ parent.url }}/" class="title girl">{{ parent }}</a>
     <ul>
         {% for child in parent.childs %}
-        <li><a href="/catalog/{{ child.url }}/">{{ child }} - {{ child.products_count }} шт.</a></li>
+        <li><a href="/catalog/{{ child.url }}/">{{ child }}</a></li>
         {% endfor %}
     </ul>
 </div>

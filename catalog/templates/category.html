@@ -17,32 +17,32 @@
     {% else %}
         <h1 class="title_h1">{{ categ.title }}</h1>
     {% endif %}
-
-    <div class="category-sort" data-id="{{ categ.id }}">
-        <div class="category-sort-left">
-            <div class="sort-price" data-max="{{ stop_price }}">
-                <label>Цена (Руб):</label>
-                <div class="irs-block">
-                    <input id="input-price" class="" readonly="">
-                </div>
-            </div>
-            <div class="sort-price">
-                <label>Рост (См.):</label>
-                <div class="irs-block">
-                    <input id="input-size" class="" readonly="">
-                </div>
-            </div>
-        </div>
-        <div class="category-sort-right">
-            <div class="category-sort-right-header"><p>Коллекции:</p></div>
-            <div class="category-sort-right-collection">
-                {% for collection in collections %}
-                    <input type="checkbox" data-id="{{ collection.id }}" id="test-check{{ forloop.counter }}"/>
-                    <label for="test-check{{ forloop.counter }}">{{ collection }}</label>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
+{##}
+{#    <div class="category-sort" data-id="{{ categ.id }}">#}
+{#        <div class="category-sort-left">#}
+{#            <div class="sort-price" data-max="{{ stop_price }}">#}
+{#                <label>Цена (Руб):</label>#}
+{#                <div class="irs-block">#}
+{#                    <input id="input-price" class="" readonly="">#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="sort-price">#}
+{#                <label>Рост (См.):</label>#}
+{#                <div class="irs-block">#}
+{#                    <input id="input-size" class="" readonly="">#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="category-sort-right">#}
+{#            <div class="category-sort-right-header"><p>Коллекции:</p></div>#}
+{#            <div class="category-sort-right-collection">#}
+{#                {% for collection in collections %}#}
+{#                    <input type="checkbox" data-id="{{ collection.id }}" id="test-check{{ forloop.counter }}"/>#}
+{#                    <label for="test-check{{ forloop.counter }}">{{ collection }}</label>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
 
     <div class="categories">
         {% for product in products %}
