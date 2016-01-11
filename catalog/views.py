@@ -94,6 +94,7 @@ def category_view(request, url="none"):
         products = categ.get_all_product()
 
         sort = request.COOKIES.get('sort', 'default')
+        print sort
         if sort:
             products = sorted_product(products, sort)
 
@@ -157,6 +158,7 @@ def age_filter_view(request, id=-1):
                 stop_price = product.price
 
         sort = request.COOKIES.get('sort', 'default')
+        print sort
         if sort:
             products = sorted_product(products, sort)
 
@@ -184,6 +186,7 @@ def brand_filter_view(request, id=-1):
                 stop_price = product.price
 
         sort = request.COOKIES.get('sort', 'default')
+        print sort
         if sort:
             products = sorted_product(products, sort)
 
