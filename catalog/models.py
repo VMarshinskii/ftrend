@@ -11,7 +11,7 @@ class Category(models.Model):
     step = models.IntegerField("Вложенность", blank=True)
     products_count = models.IntegerField("Количество товаров", default=0, editable=False)
 
-    # text = models.TextField("Описание категории", blank=True, null=True)
+    text = models.TextField("Описание категории", blank=True, null=True)
 
     class Meta:
         verbose_name_plural = u"Категории"
