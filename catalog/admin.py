@@ -58,13 +58,11 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class AgeAdmin(admin.ModelAdmin):
-    pass
-    # prepopulated_fields = {"url": ("title",)}
+    prepopulated_fields = {"url": ("title",)}
 
 
 class BrandAdmin(admin.ModelAdmin):
-    pass
-    # prepopulated_fields = {"url": ("title",)}
+    prepopulated_fields = {"url": ("title",)}
 
 
 admin.site.register(Product, ProductAdmin)

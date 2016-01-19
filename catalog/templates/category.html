@@ -19,11 +19,6 @@
         <h1 class="title_h1">{{ categ.title }}</h1>
     {% endif %}
 
-    {% if categ.text %}
-        <article class="art">
-            <p>{{ categ.text }}</p>
-        </article>
-    {% endif %}
 
 {##}
 {#    <div class="category-sort" data-id="{{ categ.id }}">#}
@@ -53,6 +48,12 @@
 {#    </div>#}
 
     {% categ_sort sort_option %}
+
+    {% if categ.text %}
+        <article class="art">
+            <p>{{ categ.text }}</p>
+        </article>
+    {% endif %}
 
     <div class="categories">
         {% for product in products %}

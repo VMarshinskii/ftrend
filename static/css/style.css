@@ -1881,6 +1881,7 @@ p.catalog_price_stable {
 }
 
 .art {
+    width: 100%;
     border: 1px solid #eeeeee;
     border-radius: 2px;
     padding: 5px 10px;
