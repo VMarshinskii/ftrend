@@ -48,7 +48,7 @@
                     <ul>
                         <li class="top_menu_title">Для мальчиков</li>
                         {% for category in age_boys %}
-                        <li><a href="/catalog/age/{{ category.id }}/">{{ category.title }}</a></li>
+                        <li><a href="/catalog/age/{{ category.url }}/">{{ category.title }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -58,7 +58,7 @@
                 <div>
                     <ul>
                         {% for brand in brands %}
-                        <li><a href="/catalog/brand/{{ brand.id }}/">{{ brand.title }}</a></li>
+                        <li><a href="/catalog/brand/{{ brand.url }}/">{{ brand.title }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>

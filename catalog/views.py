@@ -145,10 +145,10 @@ def category_ajax_view(request):
     return render_to_response("category_ajax.html", {'products': products})
 
 
-def age_filter_view(request, id=-1):
+def age_filter_view(request, url):
     stop_price = 0
     try:
-        age = Age.objects.get(id=id)
+        age = Age.objects.get(url=url)
         products = Product.objects.filter(age=age)
 
         for product in products:
@@ -173,10 +173,10 @@ def age_filter_view(request, id=-1):
         raise Http404
 
 
-def brand_filter_view(request, id=-1):
+def brand_filter_view(request, url):
     stop_price = 0
     try:
-        brand = Brand.objects.get(id=id)
+        brand = Brand.objects.get(url=url)
         products = Product.objects.filter(brand=brand)
 
         for product in products:
