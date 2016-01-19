@@ -74,8 +74,8 @@ class Color(models.Model):
 
 class Brand(models.Model):
     title = models.CharField("Название", max_length=200)
-    text = models.TextField("Описание", blank=True, null=True)
-    url = models.CharField("Url", max_length=200, blank=True)
+    # text = models.TextField("Описание", blank=True, null=True)
+    # url = models.CharField("Url", max_length=200, blank=True)
 
     class Meta:
         verbose_name_plural = "Бренды"
