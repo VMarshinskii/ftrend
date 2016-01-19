@@ -5,13 +5,13 @@ from django.db import models
 class Category(models.Model):
     title = models.CharField(max_length=250, verbose_name="Название")
     parent = models.ForeignKey("self", verbose_name="Родительская категория", blank=True, null=True, default="-1")
-    url = models.CharField("Url", max_length=200, blank=True, unique=True)
-    description = models.CharField("Description", max_length=200, blank=True)
-    keywords = models.CharField("Ключевые слова", max_length=200, blank=True)
-    step = models.IntegerField("Вложенность", blank=True)
+    step = models.IntegerField("Вложенность", blank=True, editable=False)
     products_count = models.IntegerField("Количество товаров", default=0, editable=False)
+    text = models.TextField("Описание категории", blank=True, null=True, help_text="Текст на странице")
+    url = models.CharField("Url", max_length=200, blank=True, unique=True)
 
-    text = models.TextField("Описание категории", blank=True, null=True)
+    description = models.CharField("Description", max_length=200, blank=True, help_text="Небольшое seo описание страницы")
+    keywords = models.CharField("Ключевые слова", max_length=200, blank=True, help_text="Клучевые слова (через запятую)")
 
     class Meta:
         verbose_name_plural = u"Категории"
@@ -77,6 +77,9 @@ class Brand(models.Model):
     text = models.TextField("Описание", blank=True, null=True)
     url = models.CharField("Url", max_length=200, blank=True)
 
+    description = models.CharField("Description", max_length=200, blank=True, help_text="Небольшое seo описание страницы")
+    keywords = models.CharField("Ключевые слова", max_length=200, blank=True, help_text="Клучевые слова (через запятую)")
+
     class Meta:
         verbose_name_plural = "Бренды"
         verbose_name = "Бренд"
@@ -96,6 +99,9 @@ class Age(models.Model):
     title = models.CharField("Название", max_length=200)
     text = models.TextField("Описание", blank=True, null=True)
     url = models.CharField("Url", max_length=200, blank=True)
+
+    description = models.CharField("Description", max_length=200, blank=True, help_text="Небольшое seo описание страницы")
+    keywords = models.CharField("Ключевые слова", max_length=200, blank=True, help_text="Клучевые слова (через запятую)")
 
     class Meta:
         verbose_name_plural = "Возраст"
