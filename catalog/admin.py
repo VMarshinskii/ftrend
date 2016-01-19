@@ -54,6 +54,7 @@ class ProductAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.category.products_count = Product.objects.filter(category=obj.category).count()
         obj.category.save()
+        super(ProductAdmin, self).save_model(request, obj, form, change)
 
 
 admin.site.register(Product, ProductAdmin)
