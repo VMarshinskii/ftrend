@@ -57,6 +57,7 @@ class ProductAdmin(admin.ModelAdmin):
         super(ProductAdmin, self).save_model(request, obj, form, change)
 
 
+
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Color)
 admin.site.register(Age)
