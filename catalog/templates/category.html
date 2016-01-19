@@ -4,7 +4,13 @@
 {% load categ_sort %}
 
 {% block title %}
-    <title>Family Trend | {{ categ.title }}</title>
+    <title>{{ categ.title }} | Family Trend</title>
+    {% if categ.description %}
+        <meta name="description" content="{{ categ.description }}">
+    {% endif %}
+    {% if categ.keywords %}
+        <meta name="keywords" content="{{ categ.keywords }}">
+    {% endif %}
 {% endblock %}
 
 {% block content %}

@@ -2,7 +2,13 @@
 {% load static %}
 
 {% block title %}
-    <title>Family Trend | {{ product.name }}</title>
+    <title>{{ product.name }} | Family Trend</title>
+    {% if product.description %}
+        <meta name="description" content="{{ product.description }}">
+    {% endif %}
+    {% if product.keywords %}
+        <meta name="keywords" content="{{ product.keywords }}">
+    {% endif %}
 {% endblock %}
 
 {% block content %}
