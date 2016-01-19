@@ -18,6 +18,13 @@
     {% else %}
         <h1 class="title_h1">{{ categ.title }}</h1>
     {% endif %}
+
+    {% if categ.text %}
+        <article class="art">
+            <p>{{ categ.text }}</p>
+        </article>
+    {% endif %}
+
 {##}
 {#    <div class="category-sort" data-id="{{ categ.id }}">#}
 {#        <div class="category-sort-left">#}

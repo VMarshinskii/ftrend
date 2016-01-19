@@ -57,10 +57,17 @@ class ProductAdmin(admin.ModelAdmin):
         super(ProductAdmin, self).save_model(request, obj, form, change)
 
 
+class AgeAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"url": ("title",)}
+
+
+class BrandAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"url": ("title",)}
+
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Color)
-admin.site.register(Age)
-admin.site.register(Brand)
+admin.site.register(Age, AgeAdmin)
+admin.site.register(Brand, BrandAdmin)
 admin.site.register(Collection)
 admin.site.register(Category, CategoryAdmin)
