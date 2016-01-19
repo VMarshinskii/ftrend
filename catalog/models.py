@@ -11,7 +11,7 @@ class Category(models.Model):
     step = models.IntegerField("Вложенность", blank=True)
     products_count = models.IntegerField("Количество товаров", default=0, editable=False)
 
-    # text = models.TextField("Описание категории", blank=True, null=True)
+    text = models.TextField("Описание категории", blank=True, null=True)
 
     class Meta:
         verbose_name_plural = u"Категории"
@@ -74,7 +74,7 @@ class Color(models.Model):
 
 class Brand(models.Model):
     title = models.CharField("Название", max_length=200)
-    # text = models.TextField("Описание", blank=True, null=True)
+    text = models.TextField("Описание", blank=True, null=True)
     url = models.CharField("Url", max_length=200, blank=True)
 
     class Meta:
@@ -94,7 +94,7 @@ List = {'boys': 'Мальчики', 'girls': 'Девочки'}
 class Age(models.Model):
     type = models.CharField("Для кого", max_length=200, choices=AGE_CHOICES, default='boys')
     title = models.CharField("Название", max_length=200)
-    # text = models.TextField("Описание", blank=True, null=True)
+    text = models.TextField("Описание", blank=True, null=True)
     url = models.CharField("Url", max_length=200, blank=True)
 
     class Meta:
