@@ -16,6 +16,13 @@ $(document).ready(function(){
                     value: input,
                     text: input
                 }
+            },
+            onItemRemove: function(value) {
+                $("#id_size_colors").val('');
+                $(".field-sizes .item").each(function () {
+                    var id_size_colors = $("#id_size_colors").val();
+                    $("#id_size_colors").val(id_size_colors + ";" + $(this).attr('data-value') + ":" + $(this).attr('data-colors'));
+                });
             }
         });
     }
