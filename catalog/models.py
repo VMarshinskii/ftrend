@@ -74,7 +74,7 @@ class Color(models.Model):
 
 class Brand(models.Model):
     title = models.CharField("Название", max_length=200)
-    text = models.TextField("Описание", blank=True, null=True)
+    # text = models.TextField("Описание", blank=True, null=True)
     url = models.CharField("Url", max_length=200, blank=True)
 
     class Meta:
@@ -94,7 +94,7 @@ List = {'boys': 'Мальчики', 'girls': 'Девочки'}
 class Age(models.Model):
     type = models.CharField("Для кого", max_length=200, choices=AGE_CHOICES, default='boys')
     title = models.CharField("Название", max_length=200)
-    text = models.TextField("Описание", blank=True, null=True)
+    # text = models.TextField("Описание", blank=True, null=True)
     url = models.CharField("Url", max_length=200, blank=True)
 
     class Meta:
