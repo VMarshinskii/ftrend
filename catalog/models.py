@@ -148,7 +148,7 @@ class Product(models.Model):
     date = models.DateTimeField(verbose_name="Дата создания", auto_now_add=True)
 
     novelty = models.BooleanField("Новинки", default=False)
-    sell = models.BooleanField("Самые продаваемые", default=False)
+    sell = models.BooleanField("Рекомендуемые", default=False)
     popular_count = models.IntegerField("Популярность", default=0)
 
     is_active = models.BooleanField("Видимость", default=True)
