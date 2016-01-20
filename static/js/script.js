@@ -101,22 +101,6 @@ $(document).ready(function(){
     });
 
 
-    $("#input-price").ionRangeSlider({
-        type: "double",
-        min: 0,
-        max: 10000,
-        from: 0,
-        to: 10000,
-        prettify_enabled: false
-    });
-    $("#input-size").ionRangeSlider({
-        type: "double",
-        min: 0,
-        max: 182,
-        from: 0,
-        to: 182,
-        prettify_enabled: false
-    });
     $(".carousel").sliderkit({
         auto:false,
         shownavitems:4,
