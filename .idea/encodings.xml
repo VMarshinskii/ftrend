@@ -4,5 +4,6 @@
     <file url="file://$PROJECT_DIR$/catalog/templates/catalog_menu_tag.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/delivery/pec.txt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/suit/templates/suit/menu.html" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
